@@ -51,7 +51,7 @@ const Solutions = ({
         animationDuration={3.0}
       />
     );
-  }, []);
+  }, [content_width]);
 
   const renderTopHeader = useCallback(() => {
     return (
