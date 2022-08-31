@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Theme from "../Config/Theme";
 //import Button from "@material-ui/core/Button";
 import { RootState } from "../Redux/Store";
-import { TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View, Image, Text } from "react-native";
 
 const mapStateToProps = (state: RootState) => {
   return {

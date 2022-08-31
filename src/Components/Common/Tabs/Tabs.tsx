@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import Tab from "./Tab";
+import { View } from 'react-native'
 
 interface TabModel {
   index: number;

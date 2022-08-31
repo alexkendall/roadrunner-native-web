@@ -5,7 +5,7 @@ import Theme from "../Config/Theme";
 import CaseStudyModal from "./CaseStudyModal";
 import { RootState } from "../Redux/Store";
 import { WordpressPost } from "../Redux/Slices/WordpressSlice";
-import { View } from 'react-native'
+import { View, Text, Image } from 'react-native'
 
 const mapStateToProps = (state: RootState) => {
   return {

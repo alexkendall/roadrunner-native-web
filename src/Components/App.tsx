@@ -6,15 +6,19 @@ import {
   updateWindowState,
   WinDimensionState,
 } from "../Redux/Slices/WindowSlice";
+/*
 import {
   addWindowStateListener,
   removeWindowStateListener,
 } from "../Modules/WindowStateListener";
+*/
 import { connect } from "react-redux";
 import { fetchPosts } from "../Redux/Thunks/WordpressThunk";
 import { RootState } from "../Redux/Store";
 import { Action, Dispatch } from "redux";
-
+import {
+  useDimensions,
+} from 'react-native-web-hooks';
 
 interface Props {
   isMobile: boolean,
@@ -50,7 +54,10 @@ const App = ({ updateWindow, getPosts }: Props) => {
     console.log("Component", Object.getPrototypeOf(Component));
   }, []);
 
+  const dimensions = useDimensions()
   useEffect(() => {
+    handleWindowChange({ height: dimensions.window.height, width: dimensions.window.width })
+    /*
     updateWindow({
       width: window.innerWidth,
       height: window.innerHeight,
@@ -59,7 +66,8 @@ const App = ({ updateWindow, getPosts }: Props) => {
     return () => {
       removeWindowStateListener(handleWindowChange);
     };
-  }, []);
+    */
+  }, [dimensions]);
 
   const handleWindowChange = (windowDimensions: { height: number, width: number }) => {
     updateWindow(windowDimensions);

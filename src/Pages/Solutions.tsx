@@ -137,6 +137,7 @@ const Solutions = ({
           width: "100%",
           flexWrap: "wrap",
           justifyContent: "center",
+          flexDirection: "row",
           backgroundColor: Theme.primary_light,
         }}
       >

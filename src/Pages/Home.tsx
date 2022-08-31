@@ -5,7 +5,7 @@ import SplitView from "../Components/Common/SplitView";
 import Solutions from "./Solutions";
 import Cases from "./Cases";
 import { RootState } from "../Redux/Store";
-import { View, Image, Text, Dimensions } from 'react-native'
+import { View, Image, Text, Dimensions, ScrollView } from 'react-native'
 
 const mapStateToProps = (state: RootState) => {
   const props = {
@@ -250,17 +250,7 @@ const Home = ({
     delay: 0.0,
   };
   return (
-    <View
-      style={{
-        zIndex: 1,
-        width: window.innerWidth,
-        overflowX: "hidden",
-        height: content_height,
-        flexDirection: "row",
-        backgroundColor: Theme.light_green,
-        height: Dimensions.get('window').height
-      }}
-    >
+    <ScrollView style={{ height: "100%" }} >
       <View
         animate={"visible"}
         initial={"hidden"}
@@ -273,7 +263,7 @@ const Home = ({
         {renderSolutions()}
         {renderContact()}
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
