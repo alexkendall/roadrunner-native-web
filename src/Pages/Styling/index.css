@@ -1,0 +1,167 @@
+@font-face {
+  font-family: 'Minion';
+  src: url('MinionPro/MinionPro-Regular.otf')
+}
+
+@font-face {
+  font-family: 'Menlo';
+  src: url('Menlo/Menlo.ttc')
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto/Roboto-Thin.ttf');
+  font-weight: 100
+  
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto/Roboto-Light.ttf');
+  font-weight: 200
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto/Roboto-Regular.ttf');
+  font-weight: 400
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto/Roboto-Bold.ttf');
+  font-weight: 700
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto/Roboto-Black.ttf');
+  font-weight: 900
+}
+
+h1 {
+  font-size: 2.0em;
+  color: white;
+  margin: 0%;
+  margin-bottom: 20px;
+
+}
+
+h2 {
+  font-size: 1.8em;
+  color: white;
+  margin: 0%;
+}
+
+h3 {
+  font-size: 1.6em;
+  color: white;
+  margin: 0%;
+  margin-top: 10px;
+}
+
+h4 {
+  font-size: 1.6em;
+  color: white;
+  margin: 0%;
+  margin: 0%;
+}
+
+h5 {
+  font-size: 1.0em;
+  color: black;
+  margin: 0%;
+  margin: 0%;
+}
+
+p {
+  font-family: "Roboto";
+  font-size: 1.4em;
+  color: black;
+}
+
+.headerBold {
+  font-weight: "700";
+  font-family: "Roboto";
+  font-size: 2.0em;
+  color: white;
+  margin: 0%;
+  margin-bottom: 20px;
+}
+
+.subheaderLight {
+  font-weight: 300;
+  font-family: "Roboto";
+  font-size: 1.2em;
+  color: white;
+  margin: 0%;
+}
+
+.contactImage {
+  height: 150px;
+  margin: 0;
+}
+
+.bioName {
+  font-weight: 200;
+  color: white;
+  font-family: 'Roboto';
+  font-size: 1.7em;
+  margin-bottom: 0;
+}
+
+.bioImage {
+  height: 500;
+  width: 500;
+  color: white;
+}
+
+.bioPosition {
+  color:white;
+  font-family: 'Roboto';
+  font-size: 1.2em;
+  font-weight: 900;
+  margin: 0;
+}
+
+.bioBody {
+  font-family: 'Roboto';
+  font-size: 1.4em;
+  font-weight: 300;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+p {
+  font-family: 'Roboto';
+  font-size: 1.4em;
+  font-weight: 300;
+
+}
+
+.iconStandard {
+  height: 50px;
+  width: 50px;
+  margin: 0px;
+  margin-bottom: 20px;
+}
+
+.jumbotron_header {
+  color: black;
+}
+
+.homepage_jumbotron_button {
+  outline: none !important;
+  outline-offset: none !important;
+  color: black;
+
+}
+
+.homepage_jumbotron {
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
