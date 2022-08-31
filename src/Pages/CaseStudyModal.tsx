@@ -1,9 +1,10 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { connect } from "react-redux";
 import Theme from "../Config/Theme";
-//import Button from "@material-ui/core/Button";
 import { RootState } from "../Redux/Store";
-import { TouchableOpacity, View, Image, Text } from "react-native";
+import { TouchableOpacity, View, Image, Text, ScrollView, Modal, StyleSheet, SafeAreaView, Linking } from "react-native";
+import { useDimensions } from "react-native-web-hooks";
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -41,154 +42,124 @@ const CaseStudyModal = ({
   window_width,
 }: Props) => {
 
+  const dimensions = useDimensions().window
+
+  const styles = useMemo(() => {
+    return StyleSheet.create({
+      button: {
+        backgroundColor: Theme.primary,
+        width: 150,
+        height: 40,
+        alignItems: "center",
+        borderRadius: 10,
+        color: "white",
+        justifyContent: "center",
+        marginTop: 10,
+      }, buttonText: {
+        color: Theme.primary_light
+      },
+      label: {
+        color: Theme.primary, marginTop: isMobile ? 20.0 : 0.0, fontWeight: "600",
+        marginBottom: 10,
+        fontSize: isMobile ? 20 : 24,
+      },
+      content: {
+        fontSize: isMobile ? 14 : 18,
+        color: Theme.primary
+      },
+      thumbnailImage: {
+        height: dimensions.width * 0.2,
+        width: dimensions.width * 0.2
+      },
+      typeLabel: {
+        fontSize: isMobile ? 16 : 20,
+        fontWeight: "800",
+        color: Theme.primary
+      }
+    })
+  }, [dimensions, isMobile])
+
   const renderChallenge = useCallback(() => {
     return (
       <View
-        style={{
-          display: "flex",
-          flexDirection: isMobile ? "column" : "row",
-          paddingBottom: 40,
-          textAlign: isMobile ? "center" : "left",
-        }}
+        style={{ paddingVertical: 40 }}
       >
-        <View style={{ flex: 1 }}>
-          <Text style={{ color: Theme.primary }}>{"THE CHALLENGE"}</Text>
-          <Text className={"B1"} style={{ color: Theme.primary }}>
-            {data.challenge}
-          </Text>
-        </View>
-        <View style={{ flex: 1 }} />
+        <Text style={styles.label}>{"THE CHALLENGE"}</Text>
+        <Text style={styles.content}>
+          {data.challenge}
+        </Text>
       </View>
     );
-  }, [isMobile, data]);
+  }, [isMobile, data, content_width, dimensions]);
 
   const renderInsight = useCallback(() => {
-    let insightUrl = null;
-    let image = null;
-    if (data.insight_image) {
-      if (data.insight_image.url) {
-        insightUrl = data.insight_image.url;
-        image = (
-          <Image
-            alt={"media"}
-            source={{ uri: insightUrl }}
-            style={{
-              width: isMobile ? content_width * 0.8 : 300,
-              border: "1px solid gray",
-            }}
-          />
-        );
-      }
-    }
-
     return (
       <View
         style={{
           display: "flex",
           zIndex: 1,
-          flexDirection: isMobile ? "column" : "row",
-          paddingBottom: 40,
+          marginBottom: 40
         }}
       >
-        <View style={{ flex: 1 }}>{image}</View>
-        <View
-          style={{
-            flex: 1,
-            zIndex: 1,
-            textAlign: isMobile ? "center" : "right",
-          }}
+        <Text
+          style={styles.label}
         >
-          <Text
-            style={{ color: Theme.primary, marginTop: isMobile ? 20.0 : 0.0 }}
-          >
-            {"INSIGHT"}
-          </Text>
-          <Text className={"B1"} style={{ color: Theme.primary }}>
-            {data.insight}
-          </Text>
-        </View>
+          {"INSIGHT"}
+        </Text>
+        <Text style={styles.content}>
+          {data.insight}
+        </Text>
       </View>
     );
-  }, [content_width, isMobile, data]);
+  }, [content_width, isMobile, data, dimensions]);
 
   const renderDelivery = useCallback(() => {
-    let deliveryUrl = null;
-    let image = null;
-    if (data.delivery_image) {
-      if (data.delivery_image.url) {
-        deliveryUrl = data.delivery_image.url;
-        image = (
-          <Image
-            alt={"media"}
-            source={{ uri: deliveryUrl }}
-            style={{
-              width: isMobile ? content_width * 0.8 : 300,
-              zIndex: 1,
-              border: "1px solid gray",
-            }}
-          />
-        );
-      }
-    }
     return (
       <View
         style={{
           display: "flex",
-          flexDirection: isMobile ? "column" : "row",
           paddingBottom: 40,
         }}
       >
-        <View style={{ flex: 1, textAlign: isMobile ? "center" : "left" }}>
-          <Text style={{ color: Theme.primary }}>{"DELIVERY"}</Text>
-          <Text className={"B1"} style={{ color: Theme.primary }}>
+        <View style={{ flex: 1, }}>
+          <Text style={styles.label}>{"DELIVERY"}</Text>
+          <Text style={styles.content}>
             {data.delivery}
           </Text>
         </View>
-        <View
-          style={{
-            flex: 1,
-            zIndex: 1,
-            textAlign: isMobile ? "center" : "right",
-          }}
-        >
-          {image}
-        </View>
       </View>
     );
-  }, [content_width, isMobile, data]);
+  }, [content_width, isMobile, data, dimensions]);
 
   const renderButtons = useCallback(() => {
+    console.log("data secondary link", data.secondary_link_label)
     let button1 = null;
     let button2 = null;
-    if (data.Textrimary_link && data.Textrimary_link_label) {
+    if (data?.primary_link && data?.primary_link_label) {
       button1 = (
         <TouchableOpacity
-          style={{
-            color: Theme.primary_light,
-            backgroundColor: Theme.primary,
-            marginRight: 20,
+          style={styles.button}
+          onPress={() => {
+            Linking.openURL(data.primary_link)
           }}
-          className={"homepage_jumbotron_button"}
-          onClick={() => {
-            window.location = data.primary_link;
-          }}
-          variant="light"
         >
-          {data.primary_link_label}
+          <Text style={styles.buttonText}>
+            {data.primary_link_label}
+          </Text>
         </TouchableOpacity>
       );
     }
-    if (data.secondary_link && data.secondary_link_label) {
+    if (data?.secondary_link && data?.secondary_link_label) {
       button2 = (
         <TouchableOpacity
-          style={{ color: Theme.primary_light, backgroundColor: Theme.primary }}
-          className={"homepage_jumbotron_button"}
-          onClick={() => {
-            window.location = data.secondary_link;
+          style={styles.button}
+          onPress={() => {
+            Linking.openURL(data.secondary_link)
           }}
-          variant="light"
         >
-          {data.secondary_link_label}
+          <Text style={styles.buttonText}>
+            {data.secondary_link_label}
+          </Text>
         </TouchableOpacity>
       );
     }
@@ -202,13 +173,15 @@ const CaseStudyModal = ({
 
   const renderDescription = useCallback(() => {
     return (
-      <View style={{ padding: 40, zIndex: 1, marginTop: isMobile ? 40.0 : 0.0 }}>
+      <View style={{ padding: 40, paddingTop: 0, zIndex: 1, }}>
         <Text
           style={{
             zIndex: 1,
             fontWeight: "800",
             textAlign: "left",
             color: Theme.primary,
+            fontSize: 30,
+            marginBottom: 10
           }}
         >
           {data.label.toUpperCase()}
@@ -219,6 +192,7 @@ const CaseStudyModal = ({
             fontSize: 21,
             color: Theme.primary,
             fontWeight: "600",
+            marginBottom: 10
           }}
         >
           {data.description}
@@ -238,7 +212,7 @@ const CaseStudyModal = ({
         <View>
           {services.map((service, index) => {
             return (
-              <Text className={"B1"} style={{ color: Theme.primary }} key={index}>
+              <Text style={{ color: Theme.primary }} key={index}>
                 {service.item}
               </Text>
             );
@@ -248,8 +222,8 @@ const CaseStudyModal = ({
     }
     return (
       <View style={{ marginRight: 100, padding: 40 }}>
-        <Text style={{ color: Theme.primary, fontWeight: "800" }}>{"CLIENT"}</Text>
-        <Text className={"B1"} style={{ marginBottom: 10, color: Theme.primary }}>
+        <Text style={styles.typeLabel}>{"CLIENT"}</Text>
+        <Text style={{ marginBottom: 10, color: Theme.primary }}>
           {client}
         </Text>
         <View
@@ -261,10 +235,10 @@ const CaseStudyModal = ({
             backgroundColor: Theme.primary,
           }}
         />
-        <Text style={{ color: Theme.primary, fontWeight: "800" }}>
+        <Text style={styles.typeLabel}>
           {"INDUSTRY"}
         </Text>
-        <Text className={"B1"} style={{ marginBottom: 10, color: Theme.primary }}>
+        <Text style={{ marginBottom: 10, color: Theme.primary }}>
           {industry}
         </Text>
         <View
@@ -276,7 +250,7 @@ const CaseStudyModal = ({
             backgroundColor: Theme.primary,
           }}
         />
-        <Text style={{ color: Theme.primary, fontWeight: "800" }}>
+        <Text style={styles.typeLabel}>
           {"SERVICES"}
         </Text>
         {service_elt}
@@ -287,76 +261,37 @@ const CaseStudyModal = ({
   if (!visible ?? !data) {
     return null;
   }
-  let thumbnail = (
-    <View
-      alt={"media"}
-      style={{
-        height: 300,
-        width: "100%",
-        objectFit: "cover",
-        backgroundColor: Theme.primary,
-      }}
-    />
-  );
+  let thumbnail = null
   if (data.banner_image) {
     thumbnail = (
       <Image
-        alt={"media"}
-        style={{ maxHeight: 300, width: "100%", objectFit: "cover" }}
+        style={{ height: dimensions.height * 0.2, width: "100%", objectFit: "cover" }}
         source={{ uri: data.banner_image.url }}
       />
     );
   }
   return (
-    <View
-      onClick={onClose}
-      style={{
-        position: "absolute",
-        zIndex: 100000000,
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
-        backgroundColor: Theme.primary_light,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <View style={{ backgroundColor: Theme.white }}>
-        <Image
-          alt={"media"}
-          source={require("../../assets/Branding/bolt.png")}
-          style={{
-            zIndex: 0,
-            position: "absolute",
-            top: 300,
-            right: 0,
-            maxWidth: content_width * 0.3,
-          }}
-        />
-        {thumbnail}
-        <View
-          style={{
-            flex: 1,
-            display: "flex",
-            flexWrap: isMobile ? "wrap" : "nowrap",
-            flexDirection: "row",
-            width: window_width,
-            backgroundColor: Theme.primary_light,
-          }}
-        >
-          {renderServices()}
-          {renderDescription()}
-        </View>
-        <View style={{ padding: 40, zIndex: 1 }}>
-          {renderChallenge()}
-          {renderInsight()}
-          {renderDelivery()}
-        </View>
-      </View>
-    </View>
+    <Modal style={{ flex: 1, }}>
+      <SafeAreaView>
+        <TouchableOpacity onPress={onClose}>
+          <Ionicons name={"close"} size={30} style={{ left: 10 }} />
+        </TouchableOpacity>
+        <ScrollView>
+          <View style={{ backgroundColor: Theme.white }}>
+            {thumbnail}
+            {renderServices()}
+            {renderDescription()}
+            <View style={{ paddingHorizontal: 40 }}>
+              {renderChallenge()}
+              {renderInsight()}
+              {renderDelivery()}
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </Modal>
   );
 };
+
 
 export default connect(mapStateToProps)(CaseStudyModal);

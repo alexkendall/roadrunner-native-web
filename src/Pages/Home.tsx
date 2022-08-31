@@ -45,16 +45,6 @@ const Home = ({
 
   const navigation = useNavigation()
 
-  useEffect(() => {
-    /*
-    document.body.style.backgroundColor = Theme.light_green;
-    const element = document.getElementById("root");
-    if (element) {
-      element.style.backgroundColor = Theme.light_green;
-    }
-    */
-  }, []);
-
   const renderOptionWeb = useCallback(
     (text: string, color: string, backgroundColor: string, link: string, route: string) => {
       const paddingHorizontal: number = isMobile ? 50.0 : 100.0;
@@ -257,7 +247,7 @@ const Home = ({
     delay: 0.0,
   };
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1, backgroundColor: Theme.primary }}>
       <ScrollView style={{ height: "100%", width: "100%", }} >
         <View
           animate={"visible"}

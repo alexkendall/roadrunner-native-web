@@ -93,11 +93,11 @@ const Studies = ({
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={{ height: "100%", backgroundColor: Theme.light_green, }}>
       <View
         style={{
           display: "flex",
-          paddingTop: paddingTop,
+          paddingTop: 20,
           backgroundColor: Theme.light_green,
           color: Theme.light_green,
           flexDirection: "column",
@@ -110,14 +110,14 @@ const Studies = ({
         <Text
           style={{
             color: Theme.primary,
-            fontSize: isMobile ? "30" : "40",
+            fontSize: isMobile ? 24 : 36,
             textAlign: "center",
             marginBottom: 10
           }}
         >
           {"CASE STUDIES"}
         </Text>
-        <Text style={{ color: Theme.primary, textAlign: "center", marginBottom: 20 }}>
+        <Text style={{ color: Theme.primary, textAlign: "center", marginBottom: 20, fontSize: isMobile ? 16 : 20 }}>
           {
             "We tackle problems across the digital space from ubiquitous and cross-platform solutions to solutions specific to particular devices and platforms."
           }

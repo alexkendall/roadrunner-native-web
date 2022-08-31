@@ -1,9 +1,7 @@
 import { ReactNode, useState } from "react";
-import { Platform, TouchableOpacity } from "react-native";
-import { View } from 'react-native'
 import { connect } from "react-redux";
 import { RootState } from "../../../Redux/Store";
-import { ScreenNavigationRoutes } from "../../../Config/PageRoutes";
+import { View } from 'react-native'
 
 const SPLIT_VIEW_MODES = {
   DEFAULT: "DEFAULT",
@@ -17,7 +15,7 @@ const mapStateToProps = (state: RootState) => {
   const props = {
     content_height: state.window.content_height ?? 0,
     content_width: state.window.content_width ?? 0,
-    paddingTop: state.window.paddingTop,
+    paddingTop: 0,
     isMobile: state.window.isMobile,
     footer_height: state.window.footer_height,
   };
@@ -33,8 +31,6 @@ interface Props {
   paddingTop?: number;
   content_width?: number;
   height: number;
-  content_width: number;
-  navigation: any;
 }
 
 const SplitView = ({
@@ -43,27 +39,30 @@ const SplitView = ({
   leftContent,
   rightContent,
   isMobile,
+  paddingTop = 0,
   content_width,
   height = 0,
-  navigation
 }: Props) => {
-
   const [mode, setMode] = useState(SPLIT_VIEW_MODES.DEFAULT);
   const containerStyle = {
     paddingTop: 0,
+    width: content_width,
     display: "flex",
     flexDirection: isMobile ? "column" : "row",
-    width: content_width
   };
   if (!isMobile) {
     containerStyle.height = height;
   }
 
   const onMouseOverLeft = () => {
-    setMode(SPLIT_VIEW_MODES.HOVER_LEFT);
+    if (!isMobile) {
+      setMode(SPLIT_VIEW_MODES.HOVER_LEFT);
+    }
   };
   const onMouseOverRight = () => {
-    setMode(SPLIT_VIEW_MODES.HOVER_RIGHT);
+    if (!isMobile) {
+      setMode(SPLIT_VIEW_MODES.HOVER_RIGHT);
+    }
   };
   const renderDefaultMode = () => {
     return (
@@ -83,7 +82,6 @@ const SplitView = ({
       flex: 1.25,
       height: height,
       alignSelf: "stretch",
-      backgroundColor: "red",
     };
     const regularStyle = { flex: 1, height: "100%", alignSelf: "stretch" };
     const styleRight =
@@ -97,38 +95,30 @@ const SplitView = ({
             setMode(SPLIT_VIEW_MODES.DEFAULT);
           }
         }}
-        styles={containerStyle}
+        style={containerStyle}
       >
-        <TouchableOpacity
+        <View
           onMouseOver={onMouseOverLeft}
           style={styleLeft}
-          onPress={() => {
-            console.log("onPress...")
+          onClick={() => {
             if (!isMobile) {
               setMode(SPLIT_VIEW_MODES.LEFT);
-            } else {
-              console.log("is mobile should navigate...")
-              navigation.navigate(ScreenNavigationRoutes.SOLUTIONS)
             }
           }}
         >
           {leftComponent}
-        </TouchableOpacity>
-        <TouchableOpacity
+        </View>
+        <View
           onMouseOver={onMouseOverRight}
           style={styleRight}
-          onPress={() => {
-            console.log("onPress...")
-
+          onClick={() => {
             if (!isMobile) {
               setMode(SPLIT_VIEW_MODES.RIGHT);
-            } else {
-              navigation.navigate(ScreenNavigationRoutes.CASES)
             }
           }}
         >
           {rightComponent}
-        </TouchableOpacity>
+        </View>
       </View>
     );
   };

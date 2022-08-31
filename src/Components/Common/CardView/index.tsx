@@ -55,7 +55,7 @@ const ServiceComponent = ({
         style={{
           margin: 0,
           marginTop: 5,
-          fontSize: "20",
+          fontSize: 20,
           color: color,
           fontWeight: "400",
           textAlign: "center",
@@ -67,7 +67,7 @@ const ServiceComponent = ({
         style={{
           margin: 0,
           marginTop: 5,
-          fontSize: "20",
+          fontSize: 20,
           color: color,
           fontWeight: "400",
           textAlign: "center",

@@ -66,7 +66,8 @@ const Solutions = ({
       >
         <Text
           style={{
-            fontSize: isMobile ? "20" : "60",
+            fontSize: isMobile ? 20 : 60,
+            fontWeight: "600",
             color: Theme.primary_light,
             marginBottom: 10,
           }}
@@ -79,13 +80,14 @@ const Solutions = ({
             color: Theme.primary_light,
             textAlign: "left",
             maxWidth: 1000,
+            fontSize: 20
           }}
         >
           {
             "We create solutions in the mobile space using the latest technology and guidelines."
           }
         </Text>
-      </View>
+      </View >
     );
   }, [isMobile]);
 
@@ -121,7 +123,7 @@ const Solutions = ({
 
   const dataArray = solutions_data?.solutions ?? [];
   return (
-    <ScrollView>
+    <ScrollView style={{ height: "100%", backgroundColor: Theme.primary }}>
       <View
         style={{
           display: "flex",

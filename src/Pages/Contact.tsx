@@ -41,7 +41,7 @@ const Contact = ({
           paddingLeft: isMobile ? 20 : 50,
           paddingRight: isMobile ? 20 : 50,
           color: Theme.light_green,
-          fontSize: isMobile ? "30" : "40",
+          fontSize: isMobile ? 20 : 30,
           height: 500,
           textAlign: "center"
         }}
