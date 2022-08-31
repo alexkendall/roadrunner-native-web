@@ -5,7 +5,7 @@ import Theme from "../Config/Theme";
 import CaseStudyModal from "./CaseStudyModal";
 import { RootState } from "../Redux/Store";
 import { WordpressPost } from "../Redux/Slices/WordpressSlice";
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -36,16 +36,6 @@ const Studies = ({
   const [showModal, setDisplayModal] = useState(false);
   const [modalPayload, setModalPayload] = useState({});
 
-  useEffect(() => {
-    /*
-    document.body.style.backgroundColor = Theme.light_green;
-    const element = document.getElementById("root");
-    if (element) {
-      element.style.backgroundColor = Theme.light_green;
-    }
-    */
-  }, []);
-
   const renderPost = (json: WordpressPost, index: number) => {
     const acf = json.acf;
     const header: string = acf.label.toUpperCase();
@@ -59,8 +49,8 @@ const Studies = ({
       delay: index * 1.0,
     };
     return (
-      <View
-        onClick={() => {
+      <TouchableOpacity
+        onPress={() => {
           console.log("click");
           setDisplayModal(true);
           setModalPayload(json.acf);
@@ -81,7 +71,7 @@ const Studies = ({
       >
         <Image
           alt={"media"}
-          style={{ height: 300, width: 300, margin: 10, objectFit: "cover" }}
+          style={{ height: 300, width: 300, margin: 10, objectFit: "cover", marginBottom: 40 }}
           source={{ uri: thumbnail }}
         />
         <View
@@ -98,61 +88,64 @@ const Studies = ({
             {header}
           </Text>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
 
   return (
-    <View
-      style={{
-        display: "flex",
-        paddingTop: paddingTop,
-        backgroundColor: Theme.light_green,
-        color: Theme.light_green,
-        flexDirection: "column",
-        alignItems: "center",
-        paddingLeft: 40,
-        paddingRight: 40,
-        paddingBottom: 20,
-      }}
-    >
-      <Text
-        style={{
-          color: Theme.primary,
-          fontSize: isMobile ? "1.75em" : "4.0em",
-          textAlign: "center",
-        }}
-      >
-        {"CASE STUDIES"}
-      </Text>
-      <Text className={"B1"} style={{ color: Theme.primary, textAlign: "center" }}>
-        {
-          "We tackle problems across the digital space from ubiquitous and cross-platform solutions to solutions specific to particular devices and platforms."
-        }
-      </Text>
+    <ScrollView>
       <View
         style={{
           display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
+          paddingTop: paddingTop,
           backgroundColor: Theme.light_green,
-          flex: 1,
+          color: Theme.light_green,
+          flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
+          paddingLeft: 40,
+          paddingRight: 40,
+          paddingBottom: 20,
         }}
       >
-        {posts.map((post, index) => {
-          return renderPost(post, index);
-        })}
+        <Text
+          style={{
+            color: Theme.primary,
+            fontSize: isMobile ? "30" : "40",
+            textAlign: "center",
+            marginBottom: 10
+          }}
+        >
+          {"CASE STUDIES"}
+        </Text>
+        <Text style={{ color: Theme.primary, textAlign: "center", marginBottom: 20 }}>
+          {
+            "We tackle problems across the digital space from ubiquitous and cross-platform solutions to solutions specific to particular devices and platforms."
+          }
+        </Text>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            backgroundColor: Theme.light_green,
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {posts.map((post, index) => {
+            return renderPost(post, index);
+          })}
+        </View>
+        <CaseStudyModal
+          onClose={() => {
+            setDisplayModal(false);
+          }}
+          data={modalPayload}
+          visible={showModal}
+        />
       </View>
-      <CaseStudyModal
-        onClose={() => {
-          setDisplayModal(false);
-        }}
-        data={modalPayload}
-        visible={showModal}
-      />
-    </View>
+    </ScrollView>
   );
 };
 
