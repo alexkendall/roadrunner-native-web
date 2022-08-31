@@ -70,7 +70,7 @@ const SplitView = ({
         <View style={{ flex: 1 }} onMouseOver={onMouseOverLeft}>
           {leftComponent}
         </View>
-        <View style={{ flex: 1 }} onMouseOver={onMouseOverRight}>
+        <View style={{ flex: 1, }} onMouseOver={onMouseOverRight}>
           {rightComponent}
         </View>
       </View>

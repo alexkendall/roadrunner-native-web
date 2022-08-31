@@ -5,7 +5,7 @@ import Theme from "../Config/Theme";
 import CaseStudyModal from "./CaseStudyModal";
 import { RootState } from "../Redux/Store";
 import { WordpressPost } from "../Redux/Slices/WordpressSlice";
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Text, Image, TouchableOpacity, ScrollView, ImageBackground } from 'react-native'
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -69,25 +69,14 @@ const Studies = ({
           cursor: "pointer",
         }}
       >
-        <Image
-          alt={"media"}
-          style={{ height: 300, width: 300, margin: 10, objectFit: "cover", marginBottom: 40 }}
+        <ImageBackground
+          style={{ height: 300, width: 300, margin: 10, alignItems: "center", justifyContent: "center", marginBottom: 40 }}
           source={{ uri: thumbnail }}
-        />
-        <View
-          style={{
-            height: 300,
-            marginTop: -310,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
         >
           <Text style={{ color: "white", fontWeight: "800", fontSize: 20 }}>
             {header}
           </Text>
-        </View>
+        </ImageBackground>
       </TouchableOpacity>
     );
   };

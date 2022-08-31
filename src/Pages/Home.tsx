@@ -64,6 +64,8 @@ const Home = ({
             borderRightWidth: 0,
             borderLeftWidth: 0,
             borderColor: Theme.primary,
+            alignItems: "center",
+            justifyContent: "center"
           }}
         >
           <Text style={{ color, fontSize: 50 }}>{text}</Text>
