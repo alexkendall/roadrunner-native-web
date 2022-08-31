@@ -1,3 +1,5 @@
+import { Dimensions } from "react-native";
+
 type WindowDimensionTpe = {
   height: number,
   width: number,
@@ -5,13 +7,10 @@ type WindowDimensionTpe = {
 type WindowStateHandler = (state: WindowDimensionTpe) => void;
 
 export function addWindowStateListener(handler: WindowStateHandler) {
-  window.addEventListener("resize", () => {
-    const height: number = window.innerHeight;
-    const width: number = window.innerWidth;
-    handler({ height, width });
-  });
+  const { height, width } = Dimensions.get('window')
+  handler({ height, width });
 }
 
 export function removeWindowStateListener(handler: WindowStateHandler) {
-  window.removeEventListener("resize", handler);
+  //window.removeEventListener("resize", handler);
 }

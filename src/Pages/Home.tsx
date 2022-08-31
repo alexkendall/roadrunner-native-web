@@ -5,7 +5,7 @@ import SplitView from "../Components/Common/SplitView";
 import Solutions from "./Solutions";
 import Cases from "./Cases";
 import { RootState } from "../Redux/Store";
-import { View } from 'react-native'
+import { View, Image, Text, Dimensions } from 'react-native'
 
 const mapStateToProps = (state: RootState) => {
   const props = {
@@ -37,11 +37,13 @@ const Home = ({
   isMobile,
 }: Props) => {
   useEffect(() => {
+    /*
     document.body.style.backgroundColor = Theme.light_green;
     const element = document.getElementById("root");
     if (element) {
       element.style.backgroundColor = Theme.light_green;
     }
+    */
   }, []);
 
   const renderOptionWeb = useCallback(
@@ -49,7 +51,7 @@ const Home = ({
       const paddingHorizontal: number = isMobile ? 50.0 : 100.0;
       const paddingVertical: number = isMobile ? 100.0 : 200.0;
       return (
-        <div
+        <View
           onClick={() => {
             if (isMobile) {
               window.location.href = link;
@@ -68,8 +70,8 @@ const Home = ({
             borderColor: Theme.primary,
           }}
         >
-          <h1 style={{ color, fontSize: 50 }}>{text}</h1>
-        </div>
+          <Text style={{ color, fontSize: 50 }}>{text}</Text>
+        </View>
       );
     },
     [isMobile]
@@ -80,7 +82,7 @@ const Home = ({
       const paddingHorizontal: number = isMobile ? 50.0 : 100.0;
       const paddingVertical: number = isMobile ? 100.0 : 200.0;
       return (
-        <div
+        <View
           onClick={() => {
             if (isMobile) {
               window.location.href = link;
@@ -99,8 +101,8 @@ const Home = ({
             borderColor: Theme.primary,
           }}
         >
-          <h1 style={{ color, fontSize: 50 }}>{text}</h1>
-        </div>
+          <Text style={{ color, fontSize: 50 }}>{text}</Text>
+        </View>
       );
     },
     [isMobile]
@@ -137,7 +139,7 @@ const Home = ({
 
   const renderOverview = useCallback(() => {
     return (
-      <div
+      <View
         style={{
           padding: 50,
           backgroundColor: Theme.light_blue,
@@ -145,30 +147,30 @@ const Home = ({
           justifyContent: "center",
         }}
       >
-        <p className={"B2"} style={{ flex: 1, textAlign: "center" }}>
+        <Text className={"B2"} style={{ flex: 1, textAlign: "center" }}>
           {
             "Hello,  we are RoadRunner Creative. We design and create mobile applications for businesses."
           }
-        </p>
-      </div>
+        </Text>
+      </View>
     );
   }, []);
 
   const renderSingleSolution = (solution: Record<string, any>) => {
     return (
-      <div
+      <View
         key={solution?.label}
         style={{ margin: 20, alignItems: "center", justifyContent: "center" }}
       >
-        <img
+        <Image
           alt={"media"}
           style={{ height: 100, width: 100 }}
-          src={solution?.icon}
+          source={{ uri: solution?.icon }}
         />
-        <p className={"B1"} style={{ textAlign: "center", marginTop: 10 }}>
+        <Text className={"B1"} style={{ textAlign: "center", marginTop: 10 }}>
           {solution?.label}
-        </p>
-      </div>
+        </Text>
+      </View>
     );
   };
 
@@ -176,7 +178,7 @@ const Home = ({
     const solutions: Array<Record<string, any>> = homepage_data?.solutions ?? [];
     const title = homepage_data?.solutions_title;
     return (
-      <div
+      <View
         style={{
           width: content_width,
           backgroundColor: Theme.white,
@@ -187,27 +189,27 @@ const Home = ({
           padding: 40,
         }}
       >
-        <h1 style={{ color: Theme.primary, textAlign: "center" }}>{title}</h1>
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <Text style={{ color: Theme.primary, textAlign: "center" }}>{title}</Text>
+        <View style={{ display: "flex", flexDirection: "row" }}>
           {solutions.map((s) => {
             return renderSingleSolution(s);
           })}
-        </div>
-        <h4
+        </View>
+        <Text
           onClick={() => {
             window.location.href = "solutions";
           }}
           style={{ marginTop: 40, color: Theme.primary, cursor: "pointer" }}
         >
           {"LEARN MORE"}
-        </h4>
-      </div>
+        </Text>
+      </View>
     );
   }, [content_width, homepage_data, renderSingleSolution]);
 
   const renderContact = () => {
     return (
-      <div
+      <View
         onClick={() => {
           window.location.href = "contact";
         }}
@@ -223,10 +225,10 @@ const Home = ({
           paddingBottom: footer_height + 40.0,
         }}
       >
-        <h3 style={{ color: Theme.light_green, textAlign: "center" }}>
+        <Text style={{ color: Theme.light_green, textAlign: "center" }}>
           {"LIKE WHAT YOU SEE?"}
-        </h3>
-        <h4
+        </Text>
+        <Text
           style={{
             color: Theme.light_green,
             textAlign: "center",
@@ -234,8 +236,8 @@ const Home = ({
           }}
         >
           {"CONTACT US"}
-        </h4>
-      </div>
+        </Text>
+      </View>
     );
   };
 
@@ -248,7 +250,7 @@ const Home = ({
     delay: 0.0,
   };
   return (
-    <div
+    <View
       style={{
         zIndex: 1,
         width: window.innerWidth,
@@ -256,6 +258,7 @@ const Home = ({
         height: content_height,
         flexDirection: "row",
         backgroundColor: Theme.light_green,
+        height: Dimensions.get('window').height
       }}
     >
       <View
@@ -270,7 +273,7 @@ const Home = ({
         {renderSolutions()}
         {renderContact()}
       </View>
-    </div>
+    </View>
   );
 };
 

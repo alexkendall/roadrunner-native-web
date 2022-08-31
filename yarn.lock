@@ -8297,7 +8297,7 @@ prompts@^2.3.2, prompts@^2.4.0:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.6.2:
+prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -8646,6 +8646,14 @@ react-router-dom@5.0.1:
     react-router "5.0.1"
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
+
+react-router-native@5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-router-native/-/react-router-native-5.0.1.tgz#4469f83d450bd494d1cc023a574136a6f1869010"
+  integrity sha512-DauJi4SbXwnZaLyUG9zSujwhfb6BwNh8viWiWIEsspvrL25I9JIMEZ1CPj658vlAnzN6uC1PBRnnUMzi6v9k6w==
+  dependencies:
+    prop-types "^15.6.1"
+    react-router "5.0.1"
 
 react-router@5.0.1:
   version "5.0.1"

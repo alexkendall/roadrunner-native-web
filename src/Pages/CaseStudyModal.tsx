@@ -326,7 +326,7 @@ const CaseStudyModal = ({
       <View style={{ backgroundColor: Theme.white }}>
         <Image
           alt={"media"}
-          source={require("assets/Branding/bolt.png")}
+          source={require("../../assets/Branding/bolt.png")}
           style={{
             zIndex: 0,
             position: "absolute",

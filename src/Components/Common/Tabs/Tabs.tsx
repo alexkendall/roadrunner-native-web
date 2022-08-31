@@ -57,9 +57,9 @@ export default ({
   }, [siteLogo]);
 
   return (
-    <div className={"Tabs"} style={containerStyle ?? DefaultStyle}>
+    <View className={"Tabs"} style={containerStyle ?? DefaultStyle}>
       {renderSiteLogo()}
-      <div style={containerStyle ?? DefaultStyle}>
+      <View style={containerStyle ?? DefaultStyle}>
         {tabs.map((tab, index) => {
           return (
             <Tab
@@ -76,7 +76,7 @@ export default ({
             />
           );
         })}
-      </div>
-    </div>
+      </View>
+    </View>
   );
 };

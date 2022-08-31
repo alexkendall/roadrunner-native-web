@@ -57,7 +57,7 @@ export default ({
 
   const renderDefault = useCallback(() => {
     return (
-      <h3
+      <View
         style={{
           fontStyle: "italic",
           fontSize: 18,
@@ -71,7 +71,7 @@ export default ({
         }}
       >
         {label.toUpperCase()}
-      </h3>
+      </View>
     );
   }, [label, color]);
 

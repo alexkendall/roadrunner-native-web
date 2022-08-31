@@ -2,7 +2,7 @@ import Theme from "../Config/Theme";
 import { connect } from "react-redux";
 //import { motion } from "framer-motion";
 import { RootState } from "../Redux/Store";
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -36,7 +36,7 @@ const Contact = ({
       variants={variants}
       style={{ paddingTop }}
     >
-      <h2
+      <Text
         style={{
           paddingLeft: isMobile ? 20 : 50,
           paddingRight: isMobile ? 20 : 50,
@@ -48,7 +48,7 @@ const Contact = ({
         {
           "Contact us at info@roadrunnercreative.com and we will get to you as soon as possible."
         }
-      </h2>
+      </Text>
       <img />
     </View>
   );

@@ -1,6 +1,5 @@
 import { Component, useEffect } from "react";
 import { View } from 'react-native'
-import "../Styling/index.css";
 import Base from "./Base";
 import Footer from "./Common/Footer";
 import {

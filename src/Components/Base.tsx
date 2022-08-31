@@ -1,5 +1,4 @@
 import { useCallback } from "react";
-import "../Styling/index.css";
 import PageRoutes from "../Config/PageRoutes";
 import Tabs from "./Common/Tabs/Tabs";
 //import MenuIcon from "@material-ui/icons/Menu";
@@ -7,12 +6,13 @@ import Tabs from "./Common/Tabs/Tabs";
 import Theme from "../Config/Theme";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { NativeRouter, Route as NativeRoute, Link } from "react-router-native";
 import Menu from "./Common/MobileMenu";
 import { setMenuVisibility } from "../Redux/Slices/WindowSlice";
 import { RootState } from "../Redux/Store";
 import { Action, Dispatch } from "redux";
 import tinycolor from "tinycolor2";
-import { TouchableOpacity, View, Text } from 'react-native'
+import { TouchableOpacity, View, Text, Platform } from 'react-native'
 
 interface Props {
   doRenderTabs: boolean;
@@ -51,12 +51,15 @@ const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisibile }:
     }
     let color: string = Theme.light_green;
     let src = "assets/Branding/RR_WHITE.png";
-    let bodyColor = document.body.style.backgroundColor;
+
+    /* let bodyColor = document.body.style.backgroundColor;
     bodyColor = tinycolor(bodyColor).toHexString().toLocaleUpperCase();
     if (bodyColor === Theme.light_green) {
       color = Theme.primary;
       src = "assets/Branding/RR_GREEN.png";
     }
+    */
+    let bodyColor = Theme.primary
     return (
       <View
         style={{
@@ -96,11 +99,13 @@ const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisibile }:
       return null;
     }
     let color: string = Theme.light_green;
+    /*
     let bodyColor = document.body.style.backgroundColor;
     bodyColor = tinycolor(bodyColor).toHexString().toLocaleUpperCase();
     if (bodyColor === Theme.light_green) {
       color = Theme.primary;
     }
+    */
     return (
       <TouchableOpacity onPress={toggleDrawer}>
         <Text>{"MENU BUTTON PLACEHOLDER"}</Text>
@@ -110,11 +115,27 @@ const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisibile }:
   }, [doRenderTabs, toggleDrawer]);
 
   const renderRoutes = useCallback(() => {
+    if (Platform.OS === "web") {
+      return (
+        <Router>
+          {Object.values(PageRoutes).map((route, index) => {
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                exact
+                component={route.component}
+              />
+            );
+          })}
+        </Router>
+      );
+    }
     return (
-      <Router>
+      <NativeRouter>
         {Object.values(PageRoutes).map((route, index) => {
           return (
-            <Route
+            <NativeRoute
               key={index}
               path={route.path}
               exact
@@ -122,8 +143,8 @@ const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisibile }:
             />
           );
         })}
-      </Router>
-    );
+      </NativeRouter>
+    )
   }, [PageRoutes]);
 
   const renderMenu = useCallback(() => {

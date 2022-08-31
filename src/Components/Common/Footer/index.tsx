@@ -7,8 +7,10 @@ const FOOTER_HEIGHT = 50.0;
 const SocialFooter = () => {
   const renderEmail = useCallback((color: string) => {
     return (
-      <a href="./contact">
-        <h6
+      <TouchableOpacity onPress={() => {
+        //href = "./contact"
+      }}>
+        <Text
           style={{
             fontStyle: "italic",
             fontSize: 14,
@@ -17,8 +19,8 @@ const SocialFooter = () => {
           }}
         >
           {"E-MAIL"}
-        </h6>
-      </a>
+        </Text>
+      </TouchableOpacity>
     );
   }, []);
 
