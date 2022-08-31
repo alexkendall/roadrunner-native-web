@@ -272,11 +272,11 @@ const CaseStudyModal = ({
   }
   return (
     <Modal style={{ flex: 1, }}>
-      <SafeAreaView>
-        <TouchableOpacity onPress={onClose}>
-          <Ionicons name={"close"} size={30} style={{ left: 10 }} />
-        </TouchableOpacity>
+      <SafeAreaView style={{ flex: 1 }}>
         <ScrollView>
+          <TouchableOpacity onPress={onClose}>
+            <Ionicons name={"close"} size={30} style={{ left: 10 }} />
+          </TouchableOpacity>
           <View style={{ backgroundColor: Theme.white }}>
             {thumbnail}
             {renderServices()}
