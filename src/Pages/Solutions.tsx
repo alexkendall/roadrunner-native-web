@@ -5,6 +5,7 @@ import Theme from "../Config/Theme";
 import { RootState } from "../Redux/Store";
 import { WordpressPost } from "../Redux/Slices/WordpressSlice";
 import { View, Text, ScrollView } from 'react-native'
+import { useDimensions } from "react-native-web-hooks";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -36,6 +37,8 @@ const Solutions = ({
   content_width
 }: Props) => {
 
+  const dimensions = useDimensions().window
+
   const renderThumbnail = useCallback((solution: Record<string, any>, index: number) => {
     const header: string = solution?.title;
     const content: string = solution?.description;
@@ -51,7 +54,7 @@ const Solutions = ({
         animationDuration={3.0}
       />
     );
-  }, [content_width]);
+  }, [dimensions]);
 
   const renderTopHeader = useCallback(() => {
     return (
@@ -140,7 +143,6 @@ const Solutions = ({
           style={{
             zIndex: 2,
             display: "flex",
-            width: "100%",
             flexWrap: "wrap",
             justifyContent: "center",
             flexDirection: "row",

@@ -1,4 +1,5 @@
 import { View, Image, Text } from 'react-native'
+import { useDimensions } from 'react-native-web-hooks';
 //import { motion } from "framer-motion";
 
 interface CardViewConfig {
@@ -31,6 +32,9 @@ const ServiceComponent = ({
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
   };
+
+  const dimensions = useDimensions().window
+
   return (
     <View
       initial="hidden"
@@ -43,7 +47,8 @@ const ServiceComponent = ({
       style={{
         maxWidth: 500,
         margin: 20.0,
-        padding: 20.0,
+        width: dimensions.width,
+        paddingHorizontal: 40,
         paddingBottom: 40.0,
         flexDirection: "column",
         textAlign: "center",
