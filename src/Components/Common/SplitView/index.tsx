@@ -1,7 +1,9 @@
 import { ReactNode, useState } from "react";
+import { Platform, TouchableOpacity } from "react-native";
 import { View } from 'react-native'
 import { connect } from "react-redux";
 import { RootState } from "../../../Redux/Store";
+import { ScreenNavigationRoutes } from "../../../Config/PageRoutes";
 
 const SPLIT_VIEW_MODES = {
   DEFAULT: "DEFAULT",
@@ -31,6 +33,8 @@ interface Props {
   paddingTop?: number;
   content_width?: number;
   height: number;
+  content_width: number;
+  navigation: any;
 }
 
 const SplitView = ({
@@ -39,30 +43,27 @@ const SplitView = ({
   leftContent,
   rightContent,
   isMobile,
-  paddingTop = 0,
   content_width,
   height = 0,
+  navigation
 }: Props) => {
+
   const [mode, setMode] = useState(SPLIT_VIEW_MODES.DEFAULT);
   const containerStyle = {
-    paddingTop: isMobile ? 50.0 : paddingTop - 30.0,
-    width: content_width,
+    paddingTop: 0,
     display: "flex",
     flexDirection: isMobile ? "column" : "row",
+    width: content_width
   };
   if (!isMobile) {
     containerStyle.height = height;
   }
 
   const onMouseOverLeft = () => {
-    if (!isMobile) {
-      setMode(SPLIT_VIEW_MODES.HOVER_LEFT);
-    }
+    setMode(SPLIT_VIEW_MODES.HOVER_LEFT);
   };
   const onMouseOverRight = () => {
-    if (!isMobile) {
-      setMode(SPLIT_VIEW_MODES.HOVER_RIGHT);
-    }
+    setMode(SPLIT_VIEW_MODES.HOVER_RIGHT);
   };
   const renderDefaultMode = () => {
     return (
@@ -96,30 +97,38 @@ const SplitView = ({
             setMode(SPLIT_VIEW_MODES.DEFAULT);
           }
         }}
-        style={containerStyle}
+        styles={containerStyle}
       >
-        <View
+        <TouchableOpacity
           onMouseOver={onMouseOverLeft}
           style={styleLeft}
-          onClick={() => {
+          onPress={() => {
+            console.log("onPress...")
             if (!isMobile) {
               setMode(SPLIT_VIEW_MODES.LEFT);
+            } else {
+              console.log("is mobile should navigate...")
+              navigation.navigate(ScreenNavigationRoutes.SOLUTIONS)
             }
           }}
         >
           {leftComponent}
-        </View>
-        <View
+        </TouchableOpacity>
+        <TouchableOpacity
           onMouseOver={onMouseOverRight}
           style={styleRight}
-          onClick={() => {
+          onPress={() => {
+            console.log("onPress...")
+
             if (!isMobile) {
               setMode(SPLIT_VIEW_MODES.RIGHT);
+            } else {
+              navigation.navigate(ScreenNavigationRoutes.CASES)
             }
           }}
         >
           {rightComponent}
-        </View>
+        </TouchableOpacity>
       </View>
     );
   };

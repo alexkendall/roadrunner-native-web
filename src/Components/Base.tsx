@@ -11,8 +11,7 @@ import Menu from "./Common/MobileMenu";
 import { setMenuVisibility } from "../Redux/Slices/WindowSlice";
 import { RootState } from "../Redux/Store";
 import { Action, Dispatch } from "redux";
-import tinycolor from "tinycolor2";
-import { TouchableOpacity, View, Text, Platform } from 'react-native'
+import { TouchableOpacity, View, Text, Platform, SafeAreaView } from 'react-native'
 
 interface Props {
   doRenderTabs: boolean;
@@ -21,7 +20,7 @@ interface Props {
   content_height: number;
   content_width: number;
   menu_visible: boolean;
-  setMenuVisibile: (visible: boolean) => void;
+  setMenuVisible: (visible: boolean) => void;
 }
 
 const mapStateToProps = (state: RootState) => {
@@ -37,13 +36,13 @@ const mapStateToProps = (state: RootState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
   return {
-    setMenuVisibile: (visible: boolean) => {
+    setMenuVisible: (visible: boolean) => {
       dispatch(setMenuVisibility(visible));
     }
   };
 };
 
-const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisibile }: Props) => {
+const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisible }: Props) => {
 
   const renderTabs = useCallback(() => {
     if (!doRenderTabs) {
@@ -91,7 +90,7 @@ const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisibile }:
   }, [PageRoutes, doRenderTabs]);
 
   const toggleDrawer = () => {
-    setMenuVisibile(true);
+    setMenuVisible(true);
   };
 
   const renderMenuButton = useCallback(() => {
@@ -137,7 +136,7 @@ const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisibile }:
           return (
             <NativeRoute
               key={index}
-              path={route.path}
+              path={`roadrunner:/${route.path}`}
               exact
               component={route.component}
             />
@@ -146,6 +145,8 @@ const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisibile }:
       </NativeRouter>
     )
   }, [PageRoutes]);
+
+
 
   const renderMenu = useCallback(() => {
     return (
@@ -156,7 +157,7 @@ const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisibile }:
   }, [PageRoutes]);
 
   return (
-    <View
+    <SafeAreaView
       style={{
         display: "flex",
         flexDirection: "column",
@@ -185,7 +186,7 @@ const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisibile }:
       <View style={{ paddingBottom: footer_height }}>
         {renderRoutes()}
       </View>
-    </View>
+    </SafeAreaView>
   );
 
 };

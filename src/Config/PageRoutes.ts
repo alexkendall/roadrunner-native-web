@@ -47,3 +47,10 @@ export default {
     main: true,
   },
 };
+
+export const ScreenNavigationRoutes = {
+  HOME: "Home",
+  CASES: "Cases",
+  SOLUTIONS: "Solutions",
+  CONTACT: "Contact"
+}

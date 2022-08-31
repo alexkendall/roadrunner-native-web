@@ -93,6 +93,10 @@ const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisibile }:
         setMenuVisibile(true);
     };
 
+    const closeDrawer = useCallback(() => {
+        setMenuVisibility(false)
+    }, [])
+
     const renderMenuButton = useCallback(() => {
         if (doRenderTabs) {
             return null;

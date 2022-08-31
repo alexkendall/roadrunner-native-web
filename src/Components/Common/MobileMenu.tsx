@@ -5,13 +5,15 @@ import Theme from "../../Config/Theme";
 //import CloseIcon from "@material-ui/icons/Close";
 import { RootState } from "../../Redux/Store";
 import { Route } from '../../Config/PageRoutes';
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Image, Linking } from 'react-native'
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 interface Props {
   visible: boolean;
   content_height: number;
   content_width: number;
   routes: Array<Route>;
+  closeDrawer: Function;
 }
 
 const mapStateToProps = (state: RootState) => {
@@ -25,14 +27,13 @@ const mapStateToProps = (state: RootState) => {
 const Menu = ({
   visible,
   routes,
+  closeDrawer
 }: Props) => {
   const renderCloseButton = () => {
     return (
-      <TouchableOpacity onPress={() => {
-        <Text style={{ fontSize: 40 }}>
-          {"X"}
-        </Text>
-      }}></TouchableOpacity>
+      <TouchableOpacity style={{ top: 30, left: 30, position: "absolute" }}>
+        <Ionicons size={30} color={"black"} name={"close"} />
+      </TouchableOpacity>
     );
   };
 
@@ -41,19 +42,19 @@ const Menu = ({
       return null;
     }
     return (
-      <Text
-        onClick={() => {
-          window.location.pathname = item?.path;
-        }}
-        style={{
-          backgroundColor: Theme.light_green,
-          margin: 15,
-          marginLeft: 25,
-          cursor: "pointer",
-        }}
-      >
-        {item?.label.toUpperCase()}
-      </Text>
+      <TouchableOpacity onPress={() => {
+        Linking.openURL(`roadrunner:/${item.path}`)
+      }}>
+        <Text
+          style={{
+            backgroundColor: Theme.light_green,
+            margin: 15,
+            marginLeft: 25,
+          }}
+        >
+          {item?.label.toUpperCase()}
+        </Text>
+      </TouchableOpacity>
     );
   }, []);
 
@@ -79,10 +80,10 @@ const Menu = ({
 
   const renderTopLogo = useCallback(() => {
     return (
-      <img
-        alt={"media"}
-        style={{ position: "absolute", height: 22.5, top: 15 }}
-        src={"./assets/Branding/RR_GREEN.png"}
+      <Image
+        style={{ top: 15, height: 70, width: 70, alignSelf: "center" }}
+        resizeMode={"contain"}
+        source={require("../../../assets/Branding/RR_GREEN.png")}
       />
     );
   }, []);

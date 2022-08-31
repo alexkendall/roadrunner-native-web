@@ -13,6 +13,10 @@ export interface RootState {
   window: WindowState;
 }
 
-export default configureStore({
+const store = configureStore({
   reducer: RootReducer,
 });
+
+export const dispatch = store.dispatch
+
+export default store

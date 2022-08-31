@@ -5,7 +5,10 @@ import SplitView from "../Components/Common/SplitView";
 import Solutions from "./Solutions";
 import Cases from "./Cases";
 import { RootState } from "../Redux/Store";
-import { View, Image, Text, Dimensions, ScrollView } from 'react-native'
+import { View, Image, Text, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
+import { useDimensions } from "react-native-web-hooks";
+import { useNavigation } from '@react-navigation/native';
+import { ScreenNavigationRoutes } from "../Config/PageRoutes";
 
 const mapStateToProps = (state: RootState) => {
   const props = {
@@ -36,6 +39,12 @@ const Home = ({
   homepage_data,
   isMobile,
 }: Props) => {
+
+
+  const dimensions = useDimensions().window
+
+  const navigation = useNavigation()
+
   useEffect(() => {
     /*
     document.body.style.backgroundColor = Theme.light_green;
@@ -47,19 +56,16 @@ const Home = ({
   }, []);
 
   const renderOptionWeb = useCallback(
-    (text: string, color: string, backgroundColor: string, link: string) => {
+    (text: string, color: string, backgroundColor: string, link: string, route: string) => {
       const paddingHorizontal: number = isMobile ? 50.0 : 100.0;
       const paddingVertical: number = isMobile ? 100.0 : 200.0;
       return (
-        <View
-          onClick={() => {
-            if (isMobile) {
-              window.location.href = link;
-            }
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate(route)
           }}
           style={{
             height: SPLIT_VIEW_HEIGHT_WEB,
-            cursor: "pointer",
             padding: paddingHorizontal,
             paddingTop: paddingVertical,
             paddingBottom: paddingVertical,
@@ -71,26 +77,23 @@ const Home = ({
           }}
         >
           <Text style={{ color, fontSize: 50 }}>{text}</Text>
-        </View>
+        </TouchableOpacity>
       );
     },
     [isMobile]
   );
 
   const renderOptionMobile = useCallback(
-    (text: string, color: string, backgroundColor: string, link: string) => {
+    (text: string, color: string, backgroundColor: string, link: string, route: string) => {
       const paddingHorizontal: number = isMobile ? 50.0 : 100.0;
       const paddingVertical: number = isMobile ? 100.0 : 200.0;
       return (
-        <View
-          onClick={() => {
-            if (isMobile) {
-              window.location.href = link;
-            }
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate(route)
           }}
           style={{
-            flex: 1,
-            cursor: "pointer",
+            width: "100%",
             padding: paddingHorizontal,
             paddingTop: paddingVertical,
             paddingBottom: paddingVertical,
@@ -102,7 +105,7 @@ const Home = ({
           }}
         >
           <Text style={{ color, fontSize: 50 }}>{text}</Text>
-        </View>
+        </TouchableOpacity>
       );
     },
     [isMobile]
@@ -115,20 +118,23 @@ const Home = ({
       "MOBILE SOLUTIONS THIS WAY",
       Theme.light_green,
       Theme.primary,
-      "solutions"
+      "solutions",
+      ScreenNavigationRoutes.SOLUTIONS,
     );
   const renderSplitRightComponent = () =>
     renderOption(
       "CASE STUDIES THIS WAY",
       Theme.primary,
       Theme.light_green,
-      "cases"
+      "cases",
+      ScreenNavigationRoutes.CASES
     );
   const renderSolutionsContent = () => <Solutions />;
   const renderCasesContent = () => <Cases />;
 
   const renderTopOptions = () => (
     <SplitView
+      navigation={navigation}
       height={SPLIT_VIEW_HEIGHT_WEB}
       leftComponent={renderSplitLeftComponent()}
       rightComponent={renderSplitRightComponent()}
@@ -147,7 +153,7 @@ const Home = ({
           justifyContent: "center",
         }}
       >
-        <Text className={"B2"} style={{ flex: 1, textAlign: "center" }}>
+        <Text style={{ flex: 1, textAlign: "center" }}>
           {
             "Hello,  we are RoadRunner Creative. We design and create mobile applications for businesses."
           }
@@ -163,11 +169,11 @@ const Home = ({
         style={{ margin: 20, alignItems: "center", justifyContent: "center" }}
       >
         <Image
-          alt={"media"}
-          style={{ height: 100, width: 100 }}
+          style={{ width: dimensions.width * 0.2, height: dimensions.width * 0.2, maxHeight: 100, maxWidth: 100 }}
           source={{ uri: solution?.icon }}
+          resizeMode={"contain"}
         />
-        <Text className={"B1"} style={{ textAlign: "center", marginTop: 10 }}>
+        <Text style={{ textAlign: "center", marginTop: 10 }}>
           {solution?.label}
         </Text>
       </View>
@@ -178,9 +184,12 @@ const Home = ({
     const solutions: Array<Record<string, any>> = homepage_data?.solutions ?? [];
     const title = homepage_data?.solutions_title;
     return (
-      <View
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate(ScreenNavigationRoutes.SOLUTIONS)
+        }}
         style={{
-          width: content_width,
+          width: "100%",
           backgroundColor: Theme.white,
           display: "flex",
           flexDirection: "column",
@@ -192,30 +201,27 @@ const Home = ({
         <Text style={{ color: Theme.primary, textAlign: "center" }}>{title}</Text>
         <View style={{ display: "flex", flexDirection: "row" }}>
           {solutions.map((s) => {
+            console.log("render single solution", s)
             return renderSingleSolution(s);
           })}
         </View>
         <Text
-          onClick={() => {
-            window.location.href = "solutions";
-          }}
-          style={{ marginTop: 40, color: Theme.primary, cursor: "pointer" }}
+          style={{ marginTop: 40, color: Theme.primary, fontSize: 25, fontWeight: "600", fontStyle: "italic" }}
         >
           {"LEARN MORE"}
         </Text>
-      </View>
+      </TouchableOpacity>
     );
   }, [content_width, homepage_data, renderSingleSolution]);
 
   const renderContact = () => {
     return (
-      <View
-        onClick={() => {
-          window.location.href = "contact";
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate(ScreenNavigationRoutes.CONTACT)
         }}
         style={{
-          cursor: "pointer",
-          width: content_width,
+          width: "100%",
           backgroundColor: Theme.primary,
           display: "flex",
           flexDirection: "column",
@@ -225,7 +231,7 @@ const Home = ({
           paddingBottom: footer_height + 40.0,
         }}
       >
-        <Text style={{ color: Theme.light_green, textAlign: "center" }}>
+        <Text style={{ color: Theme.light_green, textAlign: "center", fontSize: 40 }}>
           {"LIKE WHAT YOU SEE?"}
         </Text>
         <Text
@@ -233,11 +239,12 @@ const Home = ({
             color: Theme.light_green,
             textAlign: "center",
             marginTop: 40,
+            fontSize: 25, fontWeight: "600", fontStyle: "italic"
           }}
         >
           {"CONTACT US"}
         </Text>
-      </View>
+      </TouchableOpacity>
     );
   };
 
@@ -250,20 +257,22 @@ const Home = ({
     delay: 0.0,
   };
   return (
-    <ScrollView style={{ height: "100%" }} >
-      <View
-        animate={"visible"}
-        initial={"hidden"}
-        variants={variants}
-        transition={transition}
-        style={{ display: "flex", flexDirection: "column" }}
-      >
-        {renderTopOptions()}
-        {renderOverview()}
-        {renderSolutions()}
-        {renderContact()}
-      </View>
-    </ScrollView>
+    <SafeAreaView>
+      <ScrollView style={{ height: "100%", width: "100%", }} >
+        <View
+          animate={"visible"}
+          initial={"hidden"}
+          variants={variants}
+          transition={transition}
+          style={{ display: "flex", flex: 1, flexDirection: "column", }}
+        >
+          {renderTopOptions()}
+          {renderOverview()}
+          {renderSolutions()}
+          {renderContact()}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

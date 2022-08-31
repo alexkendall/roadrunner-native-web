@@ -1,4 +1,4 @@
-import { Component, useEffect } from "react";
+import { useEffect } from "react";
 import { View } from 'react-native'
 import Base from "./Base";
 import Footer from "./Common/Footer";
@@ -6,12 +6,6 @@ import {
   updateWindowState,
   WinDimensionState,
 } from "../Redux/Slices/WindowSlice";
-/*
-import {
-  addWindowStateListener,
-  removeWindowStateListener,
-} from "../Modules/WindowStateListener";
-*/
 import { connect } from "react-redux";
 import { fetchPosts } from "../Redux/Thunks/WordpressThunk";
 import { RootState } from "../Redux/Store";
@@ -49,24 +43,11 @@ const App = ({ updateWindow, getPosts }: Props) => {
 
   useEffect(() => {
     getPosts();
-
-    console.log("String javascript", Object.getPrototypeOf(String("test")));
-    console.log("Component", Object.getPrototypeOf(Component));
   }, []);
 
   const dimensions = useDimensions()
   useEffect(() => {
     handleWindowChange({ height: dimensions.window.height, width: dimensions.window.width })
-    /*
-    updateWindow({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-    addWindowStateListener(handleWindowChange);
-    return () => {
-      removeWindowStateListener(handleWindowChange);
-    };
-    */
   }, [dimensions]);
 
   const handleWindowChange = (windowDimensions: { height: number, width: number }) => {

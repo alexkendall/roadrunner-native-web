@@ -4,7 +4,7 @@ import RRCardView from "../Components/Common/CardView";
 import Theme from "../Config/Theme";
 import { RootState } from "../Redux/Store";
 import { WordpressPost } from "../Redux/Slices/WordpressSlice";
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -14,6 +14,7 @@ const mapStateToProps = (state: RootState) => {
     paddingRight: state.window.paddingRight,
     paddingTop: state.window.paddingTop,
     isMobile: state.window.isMobile,
+    content_width: state.window.content_width,
   };
 };
 
@@ -24,13 +25,15 @@ interface Props {
   paddingRight?: number;
   paddingTop?: number;
   isMobile?: boolean;
+  content_width: number;
 }
 
 const Solutions = ({
   solutions_data,
   paddingRight,
   paddingTop,
-  isMobile
+  isMobile,
+  content_width
 }: Props) => {
 
   const renderThumbnail = useCallback((solution: Record<string, any>, index: number) => {
@@ -63,15 +66,14 @@ const Solutions = ({
       >
         <Text
           style={{
-            zIndex: 1,
-            fontSize: isMobile ? "1.75em" : "4.0em",
+            fontSize: isMobile ? "20" : "60",
             color: Theme.primary_light,
+            marginBottom: 10,
           }}
         >
           {"OUR SOLUTIONS"}
         </Text>
         <Text
-          className={"B1"}
           style={{
             zIndex: 1,
             color: Theme.primary_light,
@@ -92,20 +94,21 @@ const Solutions = ({
       <View style={{ padding: 40, zIndex: 1 }}>
         <View
           style={{
-            width: "90%",
+            width: content_width,
             marginLeft: "5%",
             height: 3,
             backgroundColor: Theme.primary,
           }}
         />
         <Text
-          className={"B2"}
           style={{
             color: Theme.primary,
-            padding: "5%",
+            paddingHorizontal: 30,
+            width: content_width,
             textAlign: "center",
             fontWeight: "700",
-            fontSize: 19,
+            fontSize: 20,
+            paddingTop: 20
           }}
         >
           {
@@ -114,39 +117,41 @@ const Solutions = ({
         </Text>
       </View>
     );
-  }, []);
+  }, [content_width]);
 
   const dataArray = solutions_data?.solutions ?? [];
   return (
-    <View
-      style={{
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-        paddingTop: paddingTop,
-        paddingRight: paddingRight,
-        justifyContent: "center",
-        backgroundColor: Theme.primary,
-      }}
-    >
-      {renderTopHeader()}
+    <ScrollView>
       <View
         style={{
-          zIndex: 2,
           display: "flex",
-          width: "100%",
-          flexWrap: "wrap",
+          alignItems: "center",
+          flexDirection: "column",
+          paddingTop: paddingTop,
+          paddingRight: paddingRight,
           justifyContent: "center",
-          flexDirection: "row",
-          backgroundColor: Theme.primary_light,
+          backgroundColor: Theme.primary,
         }}
       >
-        {dataArray.map((item: Record<string, any>, index: number) => {
-          return renderThumbnail(item, index);
-        })}
-        {renderFocus()}
+        {renderTopHeader()}
+        <View
+          style={{
+            zIndex: 2,
+            display: "flex",
+            width: "100%",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            flexDirection: "row",
+            backgroundColor: Theme.primary_light,
+          }}
+        >
+          {dataArray.map((item: Record<string, any>, index: number) => {
+            return renderThumbnail(item, index);
+          })}
+          {renderFocus()}
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

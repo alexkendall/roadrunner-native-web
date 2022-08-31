@@ -50,14 +50,13 @@ const ServiceComponent = ({
         backgroundColor: backgroundColor,
       }}
     >
-      <Image source={{ uri: config.asset }} style={{ height: imageSize }} />
+      <Image resizeMode='contain' source={{ uri: config.asset }} style={{ height: imageSize, }} />
       <Text
         style={{
           margin: 0,
           marginTop: 5,
-          fontSize: "1.2em",
+          fontSize: "20",
           color: color,
-          fontFamily: "Roboto",
           fontWeight: "400",
           textAlign: "center",
         }}
@@ -68,9 +67,8 @@ const ServiceComponent = ({
         style={{
           margin: 0,
           marginTop: 5,
-          fontSize: "1.4em",
+          fontSize: "20",
           color: color,
-          fontFamily: "Roboto",
           fontWeight: "400",
           textAlign: "center",
         }}

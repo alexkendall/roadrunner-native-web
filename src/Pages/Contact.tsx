@@ -34,22 +34,22 @@ const Contact = ({
       transition={transition}
       animate={"visible"}
       variants={variants}
-      style={{ paddingTop }}
+      style={{ paddingTop, height: "100%", backgroundColor: Theme.primary }}
     >
       <Text
         style={{
           paddingLeft: isMobile ? 20 : 50,
           paddingRight: isMobile ? 20 : 50,
           color: Theme.light_green,
-          fontSize: isMobile ? "1.0em" : "2.0em",
+          fontSize: isMobile ? "30" : "40",
           height: 500,
+          textAlign: "center"
         }}
       >
         {
           "Contact us at info@roadrunnercreative.com and we will get to you as soon as possible."
         }
       </Text>
-      <img />
     </View>
   );
 };
