@@ -1,6 +1,5 @@
 import Theme from "../Config/Theme";
 import { connect } from "react-redux";
-//import { motion } from "framer-motion";
 import { RootState } from "../Redux/Store";
 import { View, Text } from 'react-native'
 

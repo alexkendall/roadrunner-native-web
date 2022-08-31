@@ -1,4 +1,3 @@
-import App from "./src/Components/App";
 import { Provider } from "react-redux";
 import store from "./src/Redux/Store";
 import { NavigationContainer } from '@react-navigation/native';
@@ -15,6 +14,7 @@ import {
   updateWindowState,
 } from "./src/Redux/Slices/WindowSlice"
 import { useDimensions } from "react-native-web-hooks";
+import Theme from "./src/Config/Theme";
 const Stack = createNativeStackNavigator();
 
 export default () => {
@@ -30,14 +30,18 @@ export default () => {
     dispatch(updateWindowState({ height: dimensions.height, width: dimensions.width }))
   }, [dimensions])
 
+  const navigationOptions = {
+    headerTintColor: Theme.primary
+  }
+
   return (
     <Provider store={store} >
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name={ScreenNavigationRoutes.HOME} component={Home} />
-          <Stack.Screen name={ScreenNavigationRoutes.CASES} component={Cases} />
-          <Stack.Screen name={ScreenNavigationRoutes.SOLUTIONS} component={Solutions} />
-          <Stack.Screen name={ScreenNavigationRoutes.CONTACT} component={Contact} />
+          <Stack.Screen options={navigationOptions} name={ScreenNavigationRoutes.HOME} component={Home} />
+          <Stack.Screen options={navigationOptions} name={ScreenNavigationRoutes.CASES} component={Cases} />
+          <Stack.Screen options={navigationOptions} name={ScreenNavigationRoutes.SOLUTIONS} component={Solutions} />
+          <Stack.Screen options={navigationOptions} name={ScreenNavigationRoutes.CONTACT} component={Contact} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

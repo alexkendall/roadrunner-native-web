@@ -2,12 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "../roadrunner-website"
-		},
-		{
-			"path": "../ally-native-web"
 		}
 	],
 	"settings": {}
