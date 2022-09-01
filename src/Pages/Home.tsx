@@ -10,6 +10,7 @@ import { useDimensions } from "react-native-web-hooks";
 import { useNavigation } from '@react-navigation/native';
 import { ScreenNavigationRoutes } from "../Config/PageRoutes";
 import { RRFonts } from "../Config/Fonts";
+import withFooter from "../Hoc/withFooter";
 
 const mapStateToProps = (state: RootState) => {
   const props = {
@@ -193,7 +194,6 @@ const Home = ({
         <Text style={{ color: Theme.primary, textAlign: "center" }}>{title}</Text>
         <View style={{ display: "flex", flexDirection: "row" }}>
           {solutions.map((s) => {
-            console.log("render single solution", s)
             return renderSingleSolution(s);
           })}
         </View>
@@ -220,7 +220,7 @@ const Home = ({
           alignItems: "center",
           justifyContent: "center",
           padding: 40,
-          paddingBottom: footer_height + 40.0,
+          marginBottom: 40,
         }}
       >
         <Text style={{ color: Theme.light_green, textAlign: "center", fontSize: 40, fontFamily: RRFonts.RobotoMedium }}>
@@ -268,4 +268,4 @@ const Home = ({
   );
 };
 
-export default connect(mapStateToProps)(Home);
+export default withFooter(connect(mapStateToProps)(Home));

@@ -8,7 +8,7 @@ module.exports = async function (env, argv) {
     alias: {
       "react-native": "react-native-web",
     },
-    extensions: [".web.ts", ".web.tsx", ".web.js", ".js", ".ts", ".tsx"],
+    extensions: [".web.ts", ".web.tsx", ".web.js", ".js", ".ts", ".tsx", ".ttc", ".otf"],
   };
   return config;
 };

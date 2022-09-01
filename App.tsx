@@ -10,6 +10,7 @@ import { dispatch } from "./src/Redux/Store";
 import { fetchPosts } from "./src/Redux/Thunks/WordpressThunk";
 import { useEffect } from "react";
 import { ScreenNavigationRoutes } from "./src/Config/PageRoutes";
+import * as Font from 'expo-font';
 import {
   updateWindowState,
 } from "./src/Redux/Slices/WindowSlice"
@@ -17,6 +18,7 @@ import { useDimensions } from "react-native-web-hooks";
 import Theme from "./src/Config/Theme";
 import { useFonts } from 'expo-font';
 import { RRFonts } from "./src/Config/Fonts";
+import { navigate, navigationRef } from './src/Navigation'
 const Stack = createNativeStackNavigator();
 
 export default () => {
@@ -45,14 +47,14 @@ export default () => {
   }
 
   const fontsLoaded = useFonts({
-    "Menlo": require('./assets/Fonts/Menlo.ttc'),
-    "Graphik": require('./assets/Fonts/Graphik-MediumItalic.otf'),
-    "RobotoBlack": require('./assets/Fonts/Roboto/Roboto-Black.ttf'),
-    "RobotoMediumIttalic": require('./assets/Fonts/Roboto/Roboto-MediumItalic.ttf'),
-    "RobotoBoldIttalic": require('./assets/Fonts/Roboto/Roboto-BoldItalic.ttf'),
-    "RobotoMedium": require('./assets/Fonts/Roboto/Roboto-Medium.ttf'),
-    "RobotoThin": require('./assets/Fonts/Roboto/Roboto-Thin.ttf'),
-    "MenionPro": require('./assets/Fonts/MinionPro-Regular.otf')
+    "Menlo": require('./assets/fonts/Menlo-Regular.ttf'),
+    "Graphik": require('./assets/fonts/Graphik-MediumItalic.otf'),
+    "RobotoBlack": require('./assets/fonts/Roboto/Roboto-Black.ttf'),
+    "RobotoMediumIttalic": require('./assets/fonts/Roboto/Roboto-MediumItalic.ttf'),
+    "RobotoBoldIttalic": require('./assets/fonts/Roboto/Roboto-BoldItalic.ttf'),
+    "RobotoMedium": require('./assets/fonts/Roboto/Roboto-Medium.ttf'),
+    "RobotoThin": require('./assets/fonts/Roboto/Roboto-Thin.ttf'),
+    "MenionPro": require('./assets/fonts/MinionPro-Regular.otf')
   })
 
   if (!fontsLoaded) {
@@ -61,7 +63,7 @@ export default () => {
 
   return (
     <Provider store={store} >
-      <NavigationContainer>
+      <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
           <Stack.Screen options={navigationOptions} name={ScreenNavigationRoutes.HOME} component={Home} />
           <Stack.Screen options={navigationOptions} name={ScreenNavigationRoutes.CASES} component={Cases} />

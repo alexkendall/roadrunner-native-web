@@ -7,6 +7,7 @@ import { RootState } from "../Redux/Store";
 import { WordpressPost } from "../Redux/Slices/WordpressSlice";
 import { View, Text, Image, TouchableOpacity, ScrollView, ImageBackground } from 'react-native'
 import { RRFonts } from "../Config/Fonts";
+import withFooter from "../Hoc/withFooter";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -140,4 +141,4 @@ const Studies = ({
   );
 };
 
-export default connect(mapStateToProps)(Studies);
+export default withFooter(connect(mapStateToProps)(Studies));

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { RootState } from "../Redux/Store";
 import { View, Text } from 'react-native'
 import { RRFonts } from "../Config/Fonts";
+import withFooter from "../Hoc/withFooter";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -55,4 +56,4 @@ const Contact = ({
   );
 };
 
-export default connect(mapStateToProps)(Contact);
+export default withFooter(connect(mapStateToProps)(Contact));
