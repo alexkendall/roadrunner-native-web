@@ -9,6 +9,7 @@ import { View, Image, Text, ScrollView, SafeAreaView, TouchableOpacity } from 'r
 import { useDimensions } from "react-native-web-hooks";
 import { useNavigation } from '@react-navigation/native';
 import { ScreenNavigationRoutes } from "../Config/PageRoutes";
+import { RRFonts } from "../Config/Fonts";
 
 const mapStateToProps = (state: RootState) => {
   const props = {
@@ -68,7 +69,7 @@ const Home = ({
             justifyContent: "center"
           }}
         >
-          <Text style={{ color, fontSize: 50 }}>{text}</Text>
+          <Text style={{ color, fontSize: 50, fontFamily: RRFonts.RobotoBoldIttalic }}>{text}</Text>
         </TouchableOpacity>
       );
     },
@@ -90,13 +91,12 @@ const Home = ({
             paddingTop: paddingVertical,
             paddingBottom: paddingVertical,
             backgroundColor,
-            border: "1px solid black",
             borderRightWidth: 0,
             borderLeftWidth: 0,
             borderColor: Theme.primary,
           }}
         >
-          <Text style={{ color, fontSize: 50 }}>{text}</Text>
+          <Text style={{ color, fontSize: 50, fontFamily: RRFonts.RobotoBoldIttalic }}>{text}</Text>
         </TouchableOpacity>
       );
     },
@@ -145,7 +145,7 @@ const Home = ({
           justifyContent: "center",
         }}
       >
-        <Text style={{ flex: 1, textAlign: "center" }}>
+        <Text style={{ flex: 1, textAlign: "center", fontFamily: RRFonts.Menlo }}>
           {
             "Hello,  we are RoadRunner Creative. We design and create mobile applications for businesses."
           }
@@ -165,7 +165,7 @@ const Home = ({
           source={{ uri: solution?.icon }}
           resizeMode={"contain"}
         />
-        <Text style={{ textAlign: "center", marginTop: 10 }}>
+        <Text style={{ textAlign: "center", marginTop: 10, fontFamily: RRFonts.Menlo }}>
           {solution?.label}
         </Text>
       </View>
@@ -223,7 +223,7 @@ const Home = ({
           paddingBottom: footer_height + 40.0,
         }}
       >
-        <Text style={{ color: Theme.light_green, textAlign: "center", fontSize: 40 }}>
+        <Text style={{ color: Theme.light_green, textAlign: "center", fontSize: 40, fontFamily: RRFonts.RobotoMedium }}>
           {"LIKE WHAT YOU SEE?"}
         </Text>
         <Text
@@ -231,7 +231,7 @@ const Home = ({
             color: Theme.light_green,
             textAlign: "center",
             marginTop: 40,
-            fontSize: 25, fontWeight: "600", fontStyle: "italic"
+            fontSize: 25, fontFamily: RRFonts.RobotoBoldIttalic
           }}
         >
           {"CONTACT US"}
