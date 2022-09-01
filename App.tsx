@@ -15,6 +15,8 @@ import {
 } from "./src/Redux/Slices/WindowSlice"
 import { useDimensions } from "react-native-web-hooks";
 import Theme from "./src/Config/Theme";
+import { useFonts } from 'expo-font';
+import { RRFonts } from "./src/Config/Fonts";
 const Stack = createNativeStackNavigator();
 
 export default () => {
@@ -31,7 +33,30 @@ export default () => {
   }, [dimensions])
 
   const navigationOptions = {
-    headerTintColor: Theme.primary
+    headerTintColor: Theme.primary,
+     headerTitleStyle: {
+      fontFamily: RRFonts.RobotoMediumIttalic
+    },
+    headerStyle: {
+      backgroundColor: Theme.light_green,
+      borderBottomWidth: 1,
+      borderBottomColor: Theme.primary
+    },
+  }
+
+  const fontsLoaded = useFonts({
+    "Menlo": require('./assets/Fonts/Menlo.ttc'),
+    "Graphik": require('./assets/Fonts/Graphik-MediumItalic.otf'),
+    "RobotoBlack": require('./assets/Fonts/Roboto/Roboto-Black.ttf'),
+    "RobotoMediumIttalic": require('./assets/Fonts/Roboto/Roboto-MediumItalic.ttf'),
+    "RobotoBoldIttalic": require('./assets/Fonts/Roboto/Roboto-BoldItalic.ttf'),
+    "RobotoMedium": require('./assets/Fonts/Roboto/Roboto-Medium.ttf'),
+    "RobotoThin": require('./assets/Fonts/Roboto/Roboto-Thin.ttf'),
+    "MenionPro": require('./assets/Fonts/MinionPro-Regular.otf')
+  })
+
+  if (!fontsLoaded) {
+    return null
   }
 
   return (

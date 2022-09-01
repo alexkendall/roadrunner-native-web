@@ -6,6 +6,7 @@ import { RootState } from "../Redux/Store";
 import { WordpressPost } from "../Redux/Slices/WordpressSlice";
 import { View, Text, ScrollView } from 'react-native'
 import { useDimensions } from "react-native-web-hooks";
+import { RRFonts } from "../Config/Fonts";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -70,8 +71,8 @@ const Solutions = ({
         <Text
           style={{
             fontSize: isMobile ? 20 : 60,
-            fontWeight: "600",
             color: Theme.primary_light,
+            fontFamily: RRFonts.RobotoBoldIttalic,
             marginBottom: 10,
           }}
         >
@@ -83,7 +84,8 @@ const Solutions = ({
             color: Theme.primary_light,
             textAlign: "left",
             maxWidth: 1000,
-            fontSize: 20
+            fontSize: 20,
+            fontFamily: RRFonts.Menlo
           }}
         >
           {
@@ -111,9 +113,9 @@ const Solutions = ({
             paddingHorizontal: 30,
             width: content_width,
             textAlign: "center",
-            fontWeight: "700",
-            fontSize: 20,
-            paddingTop: 20
+            fontSize: 18,
+            paddingTop: 20,
+            fontFamily: RRFonts.Menlo
           }}
         >
           {

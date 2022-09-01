@@ -1,5 +1,6 @@
 import { View, Image, Text } from 'react-native'
 import { useDimensions } from 'react-native-web-hooks';
+import { RRFonts } from '../../../Config/Fonts';
 //import { motion } from "framer-motion";
 
 interface CardViewConfig {
@@ -62,7 +63,6 @@ const ServiceComponent = ({
           marginTop: 5,
           fontSize: 20,
           color: color,
-          fontWeight: "400",
           textAlign: "center",
         }}
       >

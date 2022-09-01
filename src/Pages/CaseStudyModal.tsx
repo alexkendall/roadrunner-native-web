@@ -2,9 +2,10 @@ import { useCallback, useMemo } from "react";
 import { connect } from "react-redux";
 import Theme from "../Config/Theme";
 import { RootState } from "../Redux/Store";
-import { TouchableOpacity, View, Image, Text, ScrollView, Modal, StyleSheet, SafeAreaView, Linking } from "react-native";
+import { TouchableOpacity, View, Image, Text, ScrollView, Modal, StyleSheet, SafeAreaView, Linking, Platform } from "react-native";
 import { useDimensions } from "react-native-web-hooks";
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { RRFonts } from "../Config/Fonts";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -62,19 +63,21 @@ const CaseStudyModal = ({
         color: Theme.primary, marginTop: isMobile ? 20.0 : 0.0, fontWeight: "600",
         marginBottom: 10,
         fontSize: isMobile ? 20 : 24,
+        fontFamily: RRFonts.RobotoMediumIttalic,
       },
       content: {
-        fontSize: isMobile ? 14 : 18,
-        color: Theme.primary
+        fontSize: isMobile ? 13 : 16,
+        color: Theme.primary,
+        fontFamily: RRFonts.Menlo,
       },
       thumbnailImage: {
         height: dimensions.width * 0.2,
         width: dimensions.width * 0.2
       },
       typeLabel: {
-        fontSize: isMobile ? 16 : 20,
-        fontWeight: "800",
-        color: Theme.primary
+        fontSize: isMobile ? 20 : 24,
+        color: Theme.primary,
+        fontFamily: RRFonts.RobotoMediumIttalic,
       }
     })
   }, [dimensions, isMobile])
@@ -177,10 +180,10 @@ const CaseStudyModal = ({
         <Text
           style={{
             zIndex: 1,
-            fontWeight: "800",
             textAlign: "left",
+            fontFamily: RRFonts.RobotoBoldIttalic,
             color: Theme.primary,
-            fontSize: 30,
+            fontSize: isMobile ? 30 : 70,
             marginBottom: 10
           }}
         >
@@ -191,7 +194,7 @@ const CaseStudyModal = ({
             zIndex: 1,
             fontSize: 21,
             color: Theme.primary,
-            fontWeight: "600",
+            fontFamily: RRFonts.Menlo,
             marginBottom: 10
           }}
         >
@@ -212,7 +215,7 @@ const CaseStudyModal = ({
         <View>
           {services.map((service, index) => {
             return (
-              <Text style={{ color: Theme.primary }} key={index}>
+              <Text style={styles.content} key={index}>
                 {service.item}
               </Text>
             );
@@ -223,7 +226,7 @@ const CaseStudyModal = ({
     return (
       <View style={{ marginRight: 100, padding: 40 }}>
         <Text style={styles.typeLabel}>{"CLIENT"}</Text>
-        <Text style={{ marginBottom: 10, color: Theme.primary }}>
+        <Text style={styles.content}>
           {client}
         </Text>
         <View
@@ -238,7 +241,7 @@ const CaseStudyModal = ({
         <Text style={styles.typeLabel}>
           {"INDUSTRY"}
         </Text>
-        <Text style={{ marginBottom: 10, color: Theme.primary }}>
+        <Text style={styles.content}>
           {industry}
         </Text>
         <View
@@ -275,7 +278,7 @@ const CaseStudyModal = ({
       <SafeAreaView style={{ flex: 1 }}>
         <ScrollView>
           <TouchableOpacity onPress={onClose}>
-            <Ionicons name={"close"} size={30} style={{ left: 10 }} />
+            <Ionicons name={"close"} size={50} style={{ left: 10 }} />
           </TouchableOpacity>
           <View style={{ backgroundColor: Theme.white }}>
             {thumbnail}
