@@ -49,14 +49,14 @@ export default () => {
   }
 
   const fontsLoaded = useFonts({
-    "Menlo": require('./assets/Fonts/Menlo-Regular.ttf'),
-    "Graphik": require('./assets/Fonts/Graphik-MediumItalic.otf'),
-    "RobotoBlack": require('./assets/Fonts/Roboto/Roboto-Black.ttf'),
-    "RobotoMediumIttalic": require('./assets/Fonts/Roboto/Roboto-MediumItalic.ttf'),
-    "RobotoBoldIttalic": require('./assets/Fonts/Roboto/Roboto-BoldItalic.ttf'),
-    "RobotoMedium": require('./assets/Fonts/Roboto/Roboto-Medium.ttf'),
-    "RobotoThin": require('./assets/Fonts/Roboto/Roboto-Thin.ttf'),
-    "MenionPro": require('./assets/Fonts/MinionPro-Regular.otf')
+    "Menlo": require('./assets/FontFiles/Menlo-Regular.ttf'),
+    "Graphik": require('./assets/FontFiles/Graphik-MediumItalic.otf'),
+    "RobotoBlack": require('./assets/FontFiles/Roboto/Roboto-Black.ttf'),
+    "RobotoMediumIttalic": require('./assets/FontFiles/Roboto/Roboto-MediumItalic.ttf'),
+    "RobotoBoldIttalic": require('./assets/FontFiles/Roboto/Roboto-BoldItalic.ttf'),
+    "RobotoMedium": require('./assets/FontFiles/Roboto/Roboto-Medium.ttf'),
+    "RobotoThin": require('./assets/FontFiles/Roboto/Roboto-Thin.ttf'),
+    "MenionPro": require('./assets/FontFiles/MinionPro-Regular.otf')
   })
 
   if (fontsLoaded) {
