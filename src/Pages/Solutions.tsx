@@ -4,10 +4,11 @@ import RRCardView from "../Components/Common/CardView";
 import Theme from "../Config/Theme";
 import { RootState } from "../Redux/Store";
 import { WordpressPost } from "../Redux/Slices/WordpressSlice";
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, Platform } from 'react-native'
 import { useDimensions } from "react-native-web-hooks";
 import { RRFonts } from "../Config/Fonts";
 import withFooter from "../Hoc/withFooter";
+import { FOOTER_HEIGHT, WEB_TAB_HEIGHT } from "../Redux/Slices/WindowSlice";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -129,7 +130,7 @@ const Solutions = ({
 
   const dataArray = solutions_data?.solutions ?? [];
   return (
-    <ScrollView style={{ height: "100%", backgroundColor: Theme.primary }}>
+    <ScrollView style={{ flex: 1, backgroundColor: Theme.primary, }}>
       <View
         style={{
           display: "flex",
@@ -137,8 +138,10 @@ const Solutions = ({
           flexDirection: "column",
           paddingTop: paddingTop,
           paddingRight: paddingRight,
+          paddingBottom: Platform.OS === "web" ? FOOTER_HEIGHT : 0,
           justifyContent: "center",
           backgroundColor: Theme.primary,
+          flex: 1,
         }}
       >
         {renderTopHeader()}

@@ -39,7 +39,6 @@ const SplitView = ({
   leftContent,
   rightContent,
   isMobile,
-  paddingTop = 0,
   content_width,
   height = 0,
 }: Props) => {
