@@ -10,10 +10,10 @@ export default (Component: ReactNode) => {
         const windowDimensions = useSelector(windowSelector)
         return (
             <View style={{ flex: 1, alignItems: "center", backgroundColor: Theme.primary }}>
-                <View style={{paddingBottom: windowDimensions.footer_height, flex: 1, width: windowDimensions.content_width, display: "flex", flexDirection: "column" }}>
+                <View style={{ flex: 1, width: windowDimensions.content_width, display: "flex", flexDirection: "column" }}>
                     <Component />
                 </View>
-                <SocialFooter/>
+                <SocialFooter />
             </View>
         )
     }
