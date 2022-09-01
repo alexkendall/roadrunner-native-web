@@ -6,6 +6,7 @@ import CaseStudyModal from "./CaseStudyModal";
 import { RootState } from "../Redux/Store";
 import { WordpressPost } from "../Redux/Slices/WordpressSlice";
 import { View, Text, Image, TouchableOpacity, ScrollView, ImageBackground } from 'react-native'
+import { RRFonts } from "../Config/Fonts";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -73,7 +74,7 @@ const Studies = ({
           style={{ height: 300, width: 300, margin: 10, alignItems: "center", justifyContent: "center", marginBottom: 40 }}
           source={{ uri: thumbnail }}
         >
-          <Text style={{ color: "white", fontWeight: "800", fontSize: 20 }}>
+          <Text style={{ color: "white", fontSize: 20, fontFamily: RRFonts.Menlo }}>
             {header}
           </Text>
         </ImageBackground>
@@ -99,14 +100,15 @@ const Studies = ({
         <Text
           style={{
             color: Theme.primary,
-            fontSize: isMobile ? 24 : 36,
+            fontSize: isMobile ? 24 : 70,
             textAlign: "center",
-            marginBottom: 10
+            marginBottom: 10,
+            fontFamily: RRFonts.RobotoBoldIttalic
           }}
         >
           {"CASE STUDIES"}
         </Text>
-        <Text style={{ color: Theme.primary, textAlign: "center", marginBottom: 20, fontSize: isMobile ? 16 : 20 }}>
+        <Text style={{ color: Theme.primary, textAlign: "center", marginBottom: 20, fontFamily: RRFonts.Menlo, fontSize: isMobile ? 16 : 20 }}>
           {
             "We tackle problems across the digital space from ubiquitous and cross-platform solutions to solutions specific to particular devices and platforms."
           }

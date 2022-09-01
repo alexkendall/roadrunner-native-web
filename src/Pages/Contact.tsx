@@ -2,6 +2,7 @@ import Theme from "../Config/Theme";
 import { connect } from "react-redux";
 import { RootState } from "../Redux/Store";
 import { View, Text } from 'react-native'
+import { RRFonts } from "../Config/Fonts";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -42,7 +43,8 @@ const Contact = ({
           color: Theme.light_green,
           fontSize: isMobile ? 20 : 30,
           height: 500,
-          textAlign: "center"
+          textAlign: "center",
+          fontFamily: RRFonts.Menlo
         }}
       >
         {

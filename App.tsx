@@ -16,6 +16,7 @@ import {
 import { useDimensions } from "react-native-web-hooks";
 import Theme from "./src/Config/Theme";
 import { useFonts } from 'expo-font';
+import { RRFonts } from "./src/Config/Fonts";
 const Stack = createNativeStackNavigator();
 
 export default () => {
@@ -32,7 +33,15 @@ export default () => {
   }, [dimensions])
 
   const navigationOptions = {
-    headerTintColor: Theme.primary
+    headerTintColor: Theme.primary,
+     headerTitleStyle: {
+      fontFamily: RRFonts.RobotoMediumIttalic
+    },
+    headerStyle: {
+      backgroundColor: Theme.light_green,
+      borderBottomWidth: 1,
+      borderBottomColor: Theme.primary
+    },
   }
 
   const fontsLoaded = useFonts({
