@@ -8,9 +8,8 @@ import Contact from "./src/Pages/Contact";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { dispatch } from "./src/Redux/Store";
 import { fetchPosts } from "./src/Redux/Thunks/WordpressThunk";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ScreenNavigationRoutes } from "./src/Config/PageRoutes";
-import * as Font from 'expo-font';
 import {
   updateWindowState,
 } from "./src/Redux/Slices/WindowSlice"
@@ -18,12 +17,15 @@ import { useDimensions } from "react-native-web-hooks";
 import Theme from "./src/Config/Theme";
 import { useFonts } from 'expo-font';
 import { RRFonts } from "./src/Config/Fonts";
-import { navigate, navigationRef } from './src/Navigation'
+import { navigationRef } from './src/Navigation'
+import { ActivityIndicator, View } from 'react-native'
 const Stack = createNativeStackNavigator();
+const FONT_LOAD_DELAY_MS = 240
 
 export default () => {
 
   const dimensions = useDimensions().window
+  const [fontDelay, setfontDelay] = useState(true)
 
   useEffect(() => {
     dispatch(fetchPosts())
@@ -36,7 +38,7 @@ export default () => {
 
   const navigationOptions = {
     headerTintColor: Theme.primary,
-     headerTitleStyle: {
+    headerTitleStyle: {
       fontFamily: RRFonts.RobotoMediumIttalic
     },
     headerStyle: {
@@ -57,8 +59,18 @@ export default () => {
     "MenionPro": require('./assets/fonts/MinionPro-Regular.otf')
   })
 
-  if (!fontsLoaded) {
-    return null
+  if (fontsLoaded) {
+    setTimeout(() => {
+      setfontDelay(false)
+    }, FONT_LOAD_DELAY_MS);
+  }
+
+  if (fontDelay) {
+    return (
+      <View style={{ flex: 1, backgroundColor: Theme.primary, alignItems: "center", justifyContent: "center" }} >
+        <ActivityIndicator size={"large"} color={Theme.primary_light} />
+      </View>
+    )
   }
 
   return (
