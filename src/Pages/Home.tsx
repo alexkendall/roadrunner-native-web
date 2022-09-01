@@ -194,7 +194,6 @@ const Home = ({
         <Text style={{ color: Theme.primary, textAlign: "center" }}>{title}</Text>
         <View style={{ display: "flex", flexDirection: "row" }}>
           {solutions.map((s) => {
-            console.log("render single solution", s)
             return renderSingleSolution(s);
           })}
         </View>
