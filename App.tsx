@@ -17,6 +17,7 @@ import { useDimensions } from "react-native-web-hooks";
 import Theme from "./src/Config/Theme";
 import { useFonts } from 'expo-font';
 import { RRFonts } from "./src/Config/Fonts";
+import { navigate, navigationRef } from './src/Navigation'
 const Stack = createNativeStackNavigator();
 
 export default () => {
@@ -61,7 +62,7 @@ export default () => {
 
   return (
     <Provider store={store} >
-      <NavigationContainer>
+      <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
           <Stack.Screen options={navigationOptions} name={ScreenNavigationRoutes.HOME} component={Home} />
           <Stack.Screen options={navigationOptions} name={ScreenNavigationRoutes.CASES} component={Cases} />

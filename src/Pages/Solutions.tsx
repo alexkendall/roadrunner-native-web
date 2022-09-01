@@ -7,6 +7,7 @@ import { WordpressPost } from "../Redux/Slices/WordpressSlice";
 import { View, Text, ScrollView } from 'react-native'
 import { useDimensions } from "react-native-web-hooks";
 import { RRFonts } from "../Config/Fonts";
+import withFooter from "../Hoc/withFooter";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -161,4 +162,4 @@ const Solutions = ({
   );
 };
 
-export default connect(mapStateToProps)(Solutions);
+export default withFooter(connect(mapStateToProps)(Solutions));
