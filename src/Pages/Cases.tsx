@@ -39,6 +39,7 @@ const Studies = ({
   const [modalPayload, setModalPayload] = useState({});
 
   const renderPost = (json: WordpressPost, index: number) => {
+
     const acf = json.acf;
     const header: string = acf.label.toUpperCase();
     const thumbnail: string = acf.preview_image.url;
@@ -83,6 +84,7 @@ const Studies = ({
     );
   };
 
+  const images = ["assets/2020.gencon.logo.black.png"]
   return (
     <ScrollView style={{ height: "100%", backgroundColor: Theme.light_green, }}>
       <View
@@ -125,9 +127,6 @@ const Studies = ({
             justifyContent: "center",
           }}
         >
-          {posts.map((post, index) => {
-            return renderPost(post, index);
-          })}
         </View>
         <CaseStudyModal
           onClose={() => {
