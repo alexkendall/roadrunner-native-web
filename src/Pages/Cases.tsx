@@ -84,7 +84,7 @@ const Studies = ({
     );
   };
 
-  const images = ["assets/2020.gencon.logo.black.png"]
+  const images = ["assets/swoogo.png", "assets/2020.gencon.logo.black.png"]
   return (
     <ScrollView style={{ height: "100%", backgroundColor: Theme.light_green, }}>
       <View
@@ -127,6 +127,11 @@ const Studies = ({
             justifyContent: "center",
           }}
         >
+          {images.map((src) => {
+            return (
+              <img src={src} style={{height: 60, width: "auto", margin: 20}}/>
+            )
+          })}
         </View>
         <CaseStudyModal
           onClose={() => {
