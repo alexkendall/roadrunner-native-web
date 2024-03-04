@@ -84,7 +84,7 @@ const Studies = ({
     );
   };
 
-  const images = ["assets/swoogo.png", "assets/2020.gencon.logo.black.png"]
+  const images = ["assets/branding/swoogo.png", "assets/branding/2020.gencon.logo.black.png"]
   return (
     <ScrollView style={{ height: "100%", backgroundColor: Theme.light_green, }}>
       <View
