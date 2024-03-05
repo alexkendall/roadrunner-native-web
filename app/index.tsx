@@ -1,24 +1,24 @@
 import { Provider } from "react-redux";
-import store from "./src/Redux/Store";
+import store from "../src/Redux/Store";
 import { NavigationContainer } from '@react-navigation/native';
-import Home from './src/Pages/Home'
-import Cases from "./src/Pages/Cases";
-import Solutions from "./src/Pages/Solutions";
-import Contact from "./src/Pages/Contact";
+import Home from '../src/Pages/Home'
+import Cases from "../src/Pages/Cases";
+import Solutions from "../src/Pages/Solutions";
+import Contact from "../src/Pages/Contact";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { dispatch } from "./src/Redux/Store";
+import { dispatch } from "../src/Redux/Store";
 import { useEffect, useState } from "react";
-import { ScreenNavigationRoutes } from "./src/Config/PageRoutes";
+import { ScreenNavigationRoutes } from "../src/Config/PageRoutes";
 import {
   updateWindowState,
-} from "./src/Redux/Slices/WindowSlice"
+} from "../src/Redux/Slices/WindowSlice"
 import { useDimensions } from "react-native-web-hooks";
-import Theme from "./src/Config/Theme";
+import Theme from "../src/Config/Theme";
 import { useFonts } from 'expo-font';
-import { RRFonts } from "./src/Config/Fonts";
-import { navigationRef } from './src/Navigation'
+import { RRFonts } from "../src/Config/Fonts";
+import { navigationRef } from '../src/Navigation'
 import { ActivityIndicator, View, Image } from 'react-native'
-import { BackButton } from "./src/Components/Common/BackButton";
+import { BackButton } from "../src/Components/Common/BackButton";
 const Stack = createNativeStackNavigator();
 const FONT_LOAD_DELAY_MS = 240
 
@@ -43,7 +43,7 @@ export default () => {
       borderBottomColor: Theme.primary
     },
     headerRight: () => (
-      <Image resizeMode={"contain"} style={{ height: 50, width: 50, marginRight: 20 }} source={require('./assets/Branding/RR_GREEN.png')} />
+      <Image resizeMode={"contain"} style={{ height: 50, width: 50, marginRight: 20 }} source={require('../assets/Branding/RR_GREEN.png')} />
     ),
     headerLeft: () => {
       return (
@@ -53,14 +53,14 @@ export default () => {
   }
 
   const fontsLoaded = useFonts({
-    "Menlo": require('./assets/FontFiles/Menlo-Regular.ttf'),
-    "Graphik": require('./assets/FontFiles/Graphik-MediumItalic.otf'),
-    "RobotoBlack": require('./assets/FontFiles/Roboto/Roboto-Black.ttf'),
-    "RobotoMediumIttalic": require('./assets/FontFiles/Roboto/Roboto-MediumItalic.ttf'),
-    "RobotoBoldIttalic": require('./assets/FontFiles/Roboto/Roboto-BoldItalic.ttf'),
-    "RobotoMedium": require('./assets/FontFiles/Roboto/Roboto-Medium.ttf'),
-    "RobotoThin": require('./assets/FontFiles/Roboto/Roboto-Thin.ttf'),
-    "MenionPro": require('./assets/FontFiles/MinionPro-Regular.otf')
+    "Menlo": require('../assets/FontFiles/Menlo-Regular.ttf'),
+    "Graphik": require('../assets/FontFiles/Graphik-MediumItalic.otf'),
+    "RobotoBlack": require('../assets/FontFiles/Roboto/Roboto-Black.ttf'),
+    "RobotoMediumIttalic": require('../assets/FontFiles/Roboto/Roboto-MediumItalic.ttf'),
+    "RobotoBoldIttalic": require('../assets/FontFiles/Roboto/Roboto-BoldItalic.ttf'),
+    "RobotoMedium": require('../assets/FontFiles/Roboto/Roboto-Medium.ttf'),
+    "RobotoThin": require('../assets/FontFiles/Roboto/Roboto-Thin.ttf'),
+    "MenionPro": require('../assets/FontFiles/MinionPro-Regular.otf')
   })
 
   if (fontsLoaded) {
