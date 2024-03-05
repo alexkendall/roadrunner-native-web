@@ -9,10 +9,11 @@ import { useDimensions } from "react-native-web-hooks";
 import { RRFonts } from "../Config/Fonts";
 import withFooter from "../Hoc/withFooter";
 import { FOOTER_HEIGHT, WEB_TAB_HEIGHT } from "../Redux/Slices/WindowSlice";
+import SolutionsData from "../Data/Solutions";
 
 const mapStateToProps = (state: RootState) => {
   return {
-    solutions_data: state.wordpress.solutions_data,
+    solutions_data: Object.values(SolutionsData),
     width: state.window.content_width,
     tab_height: state.window.tab_height,
     paddingRight: state.window.paddingRight,
@@ -23,7 +24,7 @@ const mapStateToProps = (state: RootState) => {
 };
 
 interface Props {
-  solutions_data?: Record<string, any>;
+  solutions_data?: Array<Record<string, any>>;
   posts?: Array<WordpressPost>;
   tab_height?: number;
   paddingRight?: number;
@@ -44,8 +45,8 @@ const Solutions = ({
 
   const renderThumbnail = useCallback((solution: Record<string, any>, index: number) => {
     const header: string = solution?.title;
-    const content: string = solution?.description;
-    const thumbnail: string = solution?.icon.url;
+    const content: string = solution?.body
+    const thumbnail: string = solution?.asset
     return (
       <RRCardView
         key={index}
@@ -128,7 +129,6 @@ const Solutions = ({
     );
   }, [content_width]);
 
-  const dataArray = solutions_data?.solutions ?? [];
   return (
     <ScrollView style={{ flex: 1, backgroundColor: Theme.primary, }}>
       <View
@@ -155,7 +155,7 @@ const Solutions = ({
             backgroundColor: Theme.primary_light,
           }}
         >
-          {dataArray.map((item: Record<string, any>, index: number) => {
+          {solutions_data.map((item: Record<string, any>, index: number) => {
             return renderThumbnail(item, index);
           })}
           {renderFocus()}
