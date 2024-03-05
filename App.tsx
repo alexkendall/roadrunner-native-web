@@ -17,7 +17,7 @@ import Theme from "./src/Config/Theme";
 import { useFonts } from 'expo-font';
 import { RRFonts } from "./src/Config/Fonts";
 import { navigationRef } from './src/Navigation'
-import { ActivityIndicator, View, Image, Text } from 'react-native'
+import { ActivityIndicator, View, Image } from 'react-native'
 import { BackButton } from "./src/Components/Common/BackButton";
 const Stack = createNativeStackNavigator();
 const FONT_LOAD_DELAY_MS = 240
@@ -42,21 +42,13 @@ export default () => {
       borderBottomWidth: 1,
       borderBottomColor: Theme.primary
     },
-    headerTitle:() => {
-      return (
-        <View>
-          <BackButton/>
-          <Text>
-            {}
-          </Text>
-        </View>
-      )
-    },
     headerRight: () => (
       <Image resizeMode={"contain"} style={{ height: 50, width: 50, marginRight: 20 }} source={require('./assets/Branding/RR_GREEN.png')} />
     ),
     headerLeft: () => {
-      return null
+      return (
+       <BackButton/> 
+      )
     }
   }
 
