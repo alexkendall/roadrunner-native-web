@@ -8,6 +8,7 @@ import { WordpressPost } from "../Redux/Slices/WordpressSlice";
 import { View, Text, Image, TouchableOpacity, ScrollView, ImageBackground } from 'react-native'
 import { RRFonts } from "../Config/Fonts";
 import withFooter from "../Hoc/withFooter";
+import { CasesData } from "../Config/Cases";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -84,7 +85,7 @@ const Studies = ({
     );
   };
 
-  const images = ["https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fswoogo.png?alt=media&token=3d425f8f-f60f-490e-9bdb-eb4016f53eb3", "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2F2020.gencon.logo.black.png?alt=media&token=9c87bc5c-0afa-4bcc-90d4-0a300278d02d"]
+  const images = CasesData
   return (
     <ScrollView style={{ height: "100%", backgroundColor: Theme.light_green, }}>
       <View
@@ -129,7 +130,7 @@ const Studies = ({
         >
           {images.map((src) => {
             return (
-              <Image resizeMode="contain" source={{uri: src}} style={{height: 80, width: 200, margin: 20}}/>
+              <Image resizeMode="contain" source={{uri: src}} style={{height: 100, width: 250, margin: 20}}/>
             )
           })}
         </View>
