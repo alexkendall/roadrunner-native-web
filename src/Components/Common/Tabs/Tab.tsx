@@ -70,7 +70,7 @@ export default ({
           marginRight: 20,
         }}
       >
-        {label.toLocaleLowerCase()}
+        {label.toLocaleUpperCase()}
       </View>
     );
   }, [label, color]);

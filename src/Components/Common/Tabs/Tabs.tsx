@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import Tab from "./Tab";
-import { View } from 'react-native'
+import { View, Image } from 'react-native'
 
 interface TabModel {
   index: number;
@@ -49,9 +49,9 @@ export default ({
 
   const renderSiteLogo = useCallback(() => {
     return (
-      <img
+      <Image
         alt={""}
-        src={siteLogo}
+        source={{uri: siteLogo}}
         style={{ height: 40, position: "absolute", left: 17, top: 17 }}
       />
     );

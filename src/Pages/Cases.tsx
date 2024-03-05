@@ -129,7 +129,7 @@ const Studies = ({
         >
           {images.map((src) => {
             return (
-              <img src={src} style={{height: 80, width: "auto", margin: 20}}/>
+              <Image resizeMode="contain" source={{uri: src}} style={{height: 80, width: 200, margin: 20}}/>
             )
           })}
         </View>

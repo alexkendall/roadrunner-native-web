@@ -37,7 +37,7 @@ export default () => {
       color:  Theme.primary
     },
     headerStyle: {
-      backgroundColor: Theme.light_green,
+      backgroundColor: Theme.white,
       borderBottomWidth: 1,
       borderBottomColor: Theme.primary
     },
@@ -75,10 +75,10 @@ export default () => {
     <Provider store={store} >
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
-          <Stack.Screen  name={ScreenNavigationRoutes.HOME} component={Home} />
-          <Stack.Screen name={ScreenNavigationRoutes.CASES} component={Cases} />
-          <Stack.Screen name={ScreenNavigationRoutes.SOLUTIONS} component={Solutions} />
-          <Stack.Screen  name={ScreenNavigationRoutes.CONTACT} component={Contact} />
+          <Stack.Screen options={navigationOptions} name={ScreenNavigationRoutes.HOME} component={Home} />
+          <Stack.Screen options={navigationOptions} name={ScreenNavigationRoutes.CASES} component={Cases} />
+          <Stack.Screen options={navigationOptions}  name={ScreenNavigationRoutes.SOLUTIONS} component={Solutions} />
+          <Stack.Screen options={navigationOptions}  name={ScreenNavigationRoutes.CONTACT} component={Contact} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
