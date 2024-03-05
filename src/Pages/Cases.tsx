@@ -31,8 +31,6 @@ interface Props {
 }
 
 const Studies = ({
-  posts,
-  paddingTop,
   isMobile
 }: Props) => {
 

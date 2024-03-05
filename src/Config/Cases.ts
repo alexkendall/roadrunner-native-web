@@ -8,4 +8,4 @@ const ServicersWeb = "https://firebasestorage.googleapis.com/v0/b/roadrunner-nat
 const Swoogo = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fswoogo.png?alt=media&token=3d425f8f-f60f-490e-9bdb-eb4016f53eb3"
 const CareExchange = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fcare-exchange.png?alt=media&token=4fe45485-f5f4-4006-9fcc-6935525c5402"
 const Muze = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fmuze_frame.png?alt=media&token=525f2edf-d76d-49c5-b019-4941b28070f5"
-export const CasesData = [Ally, GenCon, HereNow, Kabinet, ServicersWeb, Swoogo, Muze, CareExchange, ]
+export const CasesData = [Ally, GenCon, HereNow, Kabinet, ServicersWeb, Swoogo, Muze, CareExchange]
