@@ -11,6 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 import { ScreenNavigationRoutes } from "../Config/PageRoutes";
 import { RRFonts } from "../Config/Fonts";
 import withFooter from "../Hoc/withFooter";
+import { SolutionsPreviewLinks } from "../Data/Solutions";
 
 const mapStateToProps = (state: RootState) => {
   const props = {
@@ -162,7 +163,7 @@ const Home = ({
         style={{ margin: 20, alignItems: "center", justifyContent: "center" }}
       >
         <Image
-          style={{ width: dimensions.width * 0.2, height: dimensions.width * 0.2, maxHeight: 100, maxWidth: 100 }}
+          style={{ width: dimensions.width * 0.3, height: dimensions.width * 0.3, maxHeight: 280, maxWidth: 280 }}
           source={{ uri: solution?.icon }}
           resizeMode={"contain"}
         />
@@ -188,19 +189,26 @@ const Home = ({
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          padding: 40,
+          paddingBottom: 40,
         }}
       >
         <Text style={{ color: Theme.primary, textAlign: "center" }}>{title}</Text>
         <View style={{ display: "flex", flexDirection: "row" }}>
-          {solutions.map((s) => {
-            return renderSingleSolution(s);
-          })}
+          <Image />
         </View>
         <Text
-          style={{ marginTop: 40, color: Theme.primary, fontSize: 25, fontWeight: "600", fontStyle: "italic" }}
+          style={{ marginTop: 40, color: Theme.primary, fontSize: 25, fontWeight: "600", fontStyle: "italic",  }}
         >
+          <View style={{flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+          <View style={{flexDirection: "row", justifyContent: "center", alignItems: "center",}}>
+          {SolutionsPreviewLinks.map((uri) => {
+            return (
+              <Image source={{uri}} resizeMode="contain" style={{height: 100, width: 100}}/>
+            )
+          })}
+          </View>
           {"LEARN MORE"}
+          </View>
         </Text>
       </TouchableOpacity>
     );

@@ -29,3 +29,7 @@ export default {
   },
 };
 
+
+export const SolutionsPreviewLinks = [
+    "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Solutions%2Fsolutions_mobile.png?alt=media&token=9debdd77-2e80-421c-8eb5-5520b2642b59",
+]
