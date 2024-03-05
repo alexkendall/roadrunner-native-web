@@ -34,7 +34,8 @@ export default () => {
   const navigationOptions = {
     headerTintColor: Theme.primary,
     headerTitleStyle: {
-      fontFamily: RRFonts.RobotoMediumIttalic
+      fontFamily: RRFonts.RobotoMediumIttalic,
+      color:  Theme.primary
     },
     headerStyle: {
       backgroundColor: Theme.light_green,
