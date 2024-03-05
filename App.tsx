@@ -7,7 +7,6 @@ import Solutions from "./src/Pages/Solutions";
 import Contact from "./src/Pages/Contact";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { dispatch } from "./src/Redux/Store";
-import { fetchPosts } from "./src/Redux/Thunks/WordpressThunk";
 import { useEffect, useState } from "react";
 import { ScreenNavigationRoutes } from "./src/Config/PageRoutes";
 import {
@@ -76,10 +75,10 @@ export default () => {
     <Provider store={store} >
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
-          <Stack.Screen options={navigationOptions} name={ScreenNavigationRoutes.HOME} component={Home} />
-          <Stack.Screen options={navigationOptions} name={ScreenNavigationRoutes.CASES} component={Cases} />
-          <Stack.Screen options={navigationOptions} name={ScreenNavigationRoutes.SOLUTIONS} component={Solutions} />
-          <Stack.Screen options={navigationOptions} name={ScreenNavigationRoutes.CONTACT} component={Contact} />
+          <Stack.Screen  name={ScreenNavigationRoutes.HOME} component={Home} />
+          <Stack.Screen name={ScreenNavigationRoutes.CASES} component={Cases} />
+          <Stack.Screen name={ScreenNavigationRoutes.SOLUTIONS} component={Solutions} />
+          <Stack.Screen  name={ScreenNavigationRoutes.CONTACT} component={Contact} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
