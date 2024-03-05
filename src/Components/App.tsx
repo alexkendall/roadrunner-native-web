@@ -17,7 +17,6 @@ import {
 interface Props {
   isMobile: boolean,
   updateWindow: (window: { height: number, width: number }) => void,
-  getPosts: () => void,
 }
 
 const mapStateToProps = (state: RootState) => {
@@ -33,17 +32,10 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
     updateWindow: (windowDimensions: WinDimensionState) => {
       dispatch(updateWindowState(windowDimensions));
     },
-    getPosts: () => {
-      dispatch(fetchPosts());
-    }
   };
 };
 
-const App = ({ updateWindow, getPosts }: Props) => {
-
-  useEffect(() => {
-    getPosts();
-  }, []);
+const App = ({ updateWindow }: Props) => {
 
   const dimensions = useDimensions()
   useEffect(() => {

@@ -28,11 +28,6 @@ export default () => {
   const [fontDelay, setfontDelay] = useState(true)
 
   useEffect(() => {
-    dispatch(fetchPosts())
-  }, [])
-
-
-  useEffect(() => {
     dispatch(updateWindowState({ height: dimensions.height, width: dimensions.width }))
   }, [dimensions])
 

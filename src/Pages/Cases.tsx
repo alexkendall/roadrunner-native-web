@@ -84,7 +84,7 @@ const Studies = ({
     );
   };
 
-  const images = ["assets/branding/swoogo.png", "assets/branding/2020.gencon.logo.black.png"]
+  const images = ["https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fswoogo.png?alt=media&token=3d425f8f-f60f-490e-9bdb-eb4016f53eb3", "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2F2020.gencon.logo.black.png?alt=media&token=9c87bc5c-0afa-4bcc-90d4-0a300278d02d"]
   return (
     <ScrollView style={{ height: "100%", backgroundColor: Theme.light_green, }}>
       <View
@@ -129,7 +129,7 @@ const Studies = ({
         >
           {images.map((src) => {
             return (
-              <img src={src} style={{height: 60, width: "auto", margin: 20}}/>
+              <img src={src} style={{height: 80, width: "auto", margin: 20}}/>
             )
           })}
         </View>
