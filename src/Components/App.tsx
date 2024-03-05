@@ -7,7 +7,6 @@ import {
   WinDimensionState,
 } from "../Redux/Slices/WindowSlice";
 import { connect } from "react-redux";
-import { fetchPosts } from "../Redux/Thunks/WordpressThunk";
 import { RootState } from "../Redux/Store";
 import { Action, Dispatch } from "redux";
 import {
