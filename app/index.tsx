@@ -48,9 +48,6 @@ export default () => {
         source={require("../assets/Branding/RR_GREEN.png")}
       />
     ),
-    headerLeft: () => {
-      return <BackButton />;
-    },
   };
 
   const fontsLoaded = useFonts({

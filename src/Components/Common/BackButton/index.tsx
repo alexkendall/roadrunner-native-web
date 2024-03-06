@@ -1,6 +1,6 @@
 import Icon from "@expo/vector-icons/Ionicons";
 import Theme from "../../../Config/Theme";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { navigationRef } from "../../../Navigation";
 
 export const BackButton = () => {
