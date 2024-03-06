@@ -20,7 +20,7 @@ export const BackButton = () => {
 
   return (
     <TouchableOpacity onPress={navigationRef.goBack}>
-      <Icon color={Theme.primary} size={30} name="chevron-left" />
+      <Icon color={Theme.primary} size={30} name="chevron-back-sharp" />
     </TouchableOpacity>
   );
 };
