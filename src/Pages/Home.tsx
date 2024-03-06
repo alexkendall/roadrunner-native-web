@@ -5,9 +5,16 @@ import SplitView from "../Components/Common/SplitView";
 import Solutions from "./Solutions";
 import Cases from "./Cases";
 import { RootState } from "../Redux/Store";
-import { View, Image, Text, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
+import {
+  View,
+  Image,
+  Text,
+  ScrollView,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 import { useDimensions } from "react-native-web-hooks";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 import { ScreenNavigationRoutes } from "../Config/PageRoutes";
 import { RRFonts } from "../Config/Fonts";
 import withFooter from "../Hoc/withFooter";
@@ -42,20 +49,24 @@ const Home = ({
   homepage_data,
   isMobile,
 }: Props) => {
+  const dimensions = useDimensions().window;
 
-
-  const dimensions = useDimensions().window
-
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   const renderOptionWeb = useCallback(
-    (text: string, color: string, backgroundColor: string, link: string, route: string) => {
+    (
+      text: string,
+      color: string,
+      backgroundColor: string,
+      link: string,
+      route: string
+    ) => {
       const paddingHorizontal: number = isMobile ? 50.0 : 100.0;
       const paddingVertical: number = isMobile ? 100.0 : 200.0;
       return (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate(route)
+            navigation.navigate(route);
           }}
           style={{
             height: SPLIT_VIEW_HEIGHT_WEB,
@@ -68,10 +79,18 @@ const Home = ({
             borderLeftWidth: 0,
             borderColor: Theme.primary,
             alignItems: "center",
-            justifyContent: "center"
+            justifyContent: "center",
           }}
         >
-          <Text style={{ color, fontSize: 50, fontFamily: RRFonts.RobotoBoldIttalic }}>{text}</Text>
+          <Text
+            style={{
+              color,
+              fontSize: 50,
+              fontFamily: RRFonts.RobotoBoldIttalic,
+            }}
+          >
+            {text}
+          </Text>
         </TouchableOpacity>
       );
     },
@@ -79,13 +98,19 @@ const Home = ({
   );
 
   const renderOptionMobile = useCallback(
-    (text: string, color: string, backgroundColor: string, link: string, route: string) => {
+    (
+      text: string,
+      color: string,
+      backgroundColor: string,
+      link: string,
+      route: string
+    ) => {
       const paddingHorizontal: number = isMobile ? 50.0 : 100.0;
       const paddingVertical: number = isMobile ? 100.0 : 200.0;
       return (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate(route)
+            navigation.navigate(route);
           }}
           style={{
             width: "100%",
@@ -98,7 +123,15 @@ const Home = ({
             borderColor: Theme.primary,
           }}
         >
-          <Text style={{ color, fontSize: 50, fontFamily: RRFonts.RobotoBoldIttalic }}>{text}</Text>
+          <Text
+            style={{
+              color,
+              fontSize: 50,
+              fontFamily: RRFonts.RobotoBoldIttalic,
+            }}
+          >
+            {text}
+          </Text>
         </TouchableOpacity>
       );
     },
@@ -113,7 +146,7 @@ const Home = ({
       Theme.light_green,
       Theme.primary,
       "solutions",
-      ScreenNavigationRoutes.SOLUTIONS,
+      ScreenNavigationRoutes.SOLUTIONS
     );
   const renderSplitRightComponent = () =>
     renderOption(
@@ -147,7 +180,9 @@ const Home = ({
           justifyContent: "center",
         }}
       >
-        <Text style={{ flex: 1, textAlign: "center", fontFamily: RRFonts.Menlo }}>
+        <Text
+          style={{ flex: 1, textAlign: "center", fontFamily: RRFonts.Menlo }}
+        >
           {
             "Hello,  we are RoadRunner Creative. We design and create mobile applications for businesses."
           }
@@ -163,11 +198,22 @@ const Home = ({
         style={{ margin: 20, alignItems: "center", justifyContent: "center" }}
       >
         <Image
-          style={{ width: dimensions.width * 0.3, height: dimensions.width * 0.3, maxHeight: 280, maxWidth: 280 }}
+          style={{
+            width: dimensions.width * 0.3,
+            height: dimensions.width * 0.3,
+            maxHeight: 280,
+            maxWidth: 280,
+          }}
           source={{ uri: solution?.icon }}
           resizeMode={"contain"}
         />
-        <Text style={{ textAlign: "center", marginTop: 10, fontFamily: RRFonts.Menlo }}>
+        <Text
+          style={{
+            textAlign: "center",
+            marginTop: 10,
+            fontFamily: RRFonts.Menlo,
+          }}
+        >
           {solution?.label}
         </Text>
       </View>
@@ -175,12 +221,13 @@ const Home = ({
   };
 
   const renderSolutions = useCallback(() => {
-    const solutions: Array<Record<string, any>> = homepage_data?.solutions ?? [];
+    const solutions: Array<Record<string, any>> =
+      homepage_data?.solutions ?? [];
     const title = homepage_data?.solutions_title;
     return (
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate(ScreenNavigationRoutes.SOLUTIONS)
+          navigation.navigate(ScreenNavigationRoutes.SOLUTIONS);
         }}
         style={{
           width: "100%",
@@ -192,22 +239,47 @@ const Home = ({
           paddingBottom: 40,
         }}
       >
-        <Text style={{ color: Theme.primary, textAlign: "center" }}>{title}</Text>
+        <Text style={{ color: Theme.primary, textAlign: "center" }}>
+          {title}
+        </Text>
         <View style={{ display: "flex", flexDirection: "row" }}>
           <Image />
         </View>
         <Text
-          style={{ marginTop: 40, color: Theme.primary, fontSize: 25, fontWeight: "600", fontStyle: "italic",  }}
+          style={{
+            marginTop: 40,
+            color: Theme.primary,
+            fontSize: 25,
+            fontWeight: "600",
+            fontStyle: "italic",
+          }}
         >
-          <View style={{flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
-          <View style={{flexDirection: "row", justifyContent: "center", alignItems: "center",}}>
-          {SolutionsPreviewLinks.map((uri) => {
-            return (
-              <Image source={{uri}} resizeMode="contain" style={{height: 100, width: 100}}/>
-            )
-          })}
-          </View>
-          {"LEARN MORE"}
+          <View
+            style={{
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {SolutionsPreviewLinks.map((uri) => {
+                return (
+                  <Image
+                    key={uri}
+                    source={{ uri }}
+                    resizeMode="contain"
+                    style={{ height: 100, width: 100 }}
+                  />
+                );
+              })}
+            </View>
+            {"LEARN MORE"}
           </View>
         </Text>
       </TouchableOpacity>
@@ -218,7 +290,7 @@ const Home = ({
     return (
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate(ScreenNavigationRoutes.CONTACT)
+          navigation.navigate(ScreenNavigationRoutes.CONTACT);
         }}
         style={{
           width: "100%",
@@ -231,7 +303,14 @@ const Home = ({
           marginBottom: 40,
         }}
       >
-        <Text style={{ color: Theme.light_green, textAlign: "center", fontSize: 40, fontFamily: RRFonts.RobotoMedium }}>
+        <Text
+          style={{
+            color: Theme.light_green,
+            textAlign: "center",
+            fontSize: 40,
+            fontFamily: RRFonts.RobotoMedium,
+          }}
+        >
           {"LIKE WHAT YOU SEE?"}
         </Text>
         <Text
@@ -239,7 +318,8 @@ const Home = ({
             color: Theme.light_green,
             textAlign: "center",
             marginTop: 40,
-            fontSize: 25, fontFamily: RRFonts.RobotoBoldIttalic
+            fontSize: 25,
+            fontFamily: RRFonts.RobotoBoldIttalic,
           }}
         >
           {"CONTACT US"}
@@ -258,13 +338,13 @@ const Home = ({
   };
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Theme.primary }}>
-      <ScrollView style={{ height: "100%", width: "100%", }} >
+      <ScrollView style={{ height: "100%", width: "100%" }}>
         <View
           animate={"visible"}
           initial={"hidden"}
           variants={variants}
           transition={transition}
-          style={{ display: "flex", flex: 1, flexDirection: "column", }}
+          style={{ display: "flex", flex: 1, flexDirection: "column" }}
         >
           {renderTopOptions()}
           {renderOverview()}
