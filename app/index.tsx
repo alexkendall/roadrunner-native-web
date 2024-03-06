@@ -48,6 +48,7 @@ export default () => {
         source={require("../assets/Branding/RR_GREEN.png")}
       />
     ),
+    headerLeft: () => <BackButton />,
   };
 
   const fontsLoaded = useFonts({
@@ -86,24 +87,14 @@ export default () => {
   return (
     <Provider store={store}>
       <NavigationContainer ref={navigationRef}>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{ ...navigationOptions }}>
+          <Stack.Screen name={ScreenNavigationRoutes.HOME} component={Home} />
+          <Stack.Screen name={ScreenNavigationRoutes.CASES} component={Cases} />
           <Stack.Screen
-            options={navigationOptions}
-            name={ScreenNavigationRoutes.HOME}
-            component={Home}
-          />
-          <Stack.Screen
-            options={navigationOptions}
-            name={ScreenNavigationRoutes.CASES}
-            component={Cases}
-          />
-          <Stack.Screen
-            options={navigationOptions}
             name={ScreenNavigationRoutes.SOLUTIONS}
             component={Solutions}
           />
           <Stack.Screen
-            options={navigationOptions}
             name={ScreenNavigationRoutes.CONTACT}
             component={Contact}
           />
