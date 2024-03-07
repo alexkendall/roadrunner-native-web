@@ -7,7 +7,6 @@ import {
   WinDimensionState,
 } from "../Redux/Slices/WindowSlice";
 import { connect } from "react-redux";
-import { fetchPosts } from "../Redux/Thunks/WordpressThunk";
 import { RootState } from "../Redux/Store";
 import { Action, Dispatch } from "redux";
 import {
@@ -37,6 +36,7 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
 
 const App = ({ updateWindow }: Props) => {
 
+  
   const dimensions = useDimensions()
   useEffect(() => {
     handleWindowChange({ height: dimensions.window.height, width: dimensions.window.width })
@@ -53,6 +53,7 @@ const App = ({ updateWindow }: Props) => {
     </View>
   );
 };
+
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

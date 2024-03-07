@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 //import { motion } from "framer-motion";
-import Theme from "../Config/Theme";
+import Theme from "../src/Config/Theme";
 import CaseStudyModal from "./CaseStudyModal";
-import { RootState } from "../Redux/Store";
-import { WordpressPost } from "../Redux/Slices/WordpressSlice";
+import { RootState } from "../src/Redux/Store";
+import { WordpressPost } from "../src/Redux/Slices/WordpressSlice";
 import { View, Text, Image, TouchableOpacity, ScrollView, ImageBackground } from 'react-native'
-import { RRFonts } from "../Config/Fonts";
-import withFooter from "../Hoc/withFooter";
-import { CasesData } from "../Config/Cases";
+import { RRFonts } from "../src/Config/Fonts";
+import withFooter from "../src/Hoc/withFooter";
+import { CasesData } from "../src/Config/Cases";
+import { Provider } from "react-redux";
+import store from "../src/Redux/Store";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -128,7 +130,7 @@ const Studies = ({
         >
           {images.map((src) => {
             return (
-              <Image resizeMode="contain" source={{uri: src}} style={{height: 100, width: 250, margin: 20}}/>
+              <Image key={src} resizeMode="contain" source={{uri: src}} style={{height: 100, width: 250, margin: 20}}/>
             )
           })}
         </View>

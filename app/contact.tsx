@@ -1,9 +1,9 @@
-import Theme from "../Config/Theme";
+import Theme from "../src/Config/Theme";
 import { connect } from "react-redux";
-import { RootState } from "../Redux/Store";
+import { RootState } from "../src/Redux/Store";
 import { View, Text } from 'react-native'
-import { RRFonts } from "../Config/Fonts";
-import withFooter from "../Hoc/withFooter";
+import { RRFonts } from "../src/Config/Fonts";
+import withFooter from "../src/Hoc/withFooter";
 
 const mapStateToProps = (state: RootState) => {
   return {

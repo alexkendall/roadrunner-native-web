@@ -1,11 +1,11 @@
 import { useCallback, useMemo } from "react";
 import { connect } from "react-redux";
-import Theme from "../Config/Theme";
-import { RootState } from "../Redux/Store";
+import Theme from "../src/Config/Theme";
+import { RootState } from "../src/Redux/Store";
 import { TouchableOpacity, View, Image, Text, ScrollView, Modal, StyleSheet, SafeAreaView, Linking, Platform } from "react-native";
 import { useDimensions } from "react-native-web-hooks";
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { RRFonts } from "../Config/Fonts";
+import { RRFonts } from "../src/Config/Fonts";
 
 const mapStateToProps = (state: RootState) => {
   return {

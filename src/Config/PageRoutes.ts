@@ -1,7 +1,7 @@
-import Solutions from "../Pages/Solutions";
-import Contact from "../Pages/Contact";
-import Cases from "../Pages/Cases";
-import Home from "../Pages/Home";
+import Solutions from "../../app/solutions";
+import Contact from "../../app/contact";
+import Cases from "../../app/cases";
+import Home from "../../app/home";
 import { ReactNode } from "react";
 
 export interface Route {

@@ -1,10 +1,10 @@
 import { Provider } from "react-redux";
 import store from "../src/Redux/Store";
 import { NavigationContainer } from '@react-navigation/native';
-import Home from '../src/Pages/Home'
-import Cases from "../src/Pages/Cases";
-import Solutions from "../src/Pages/Solutions";
-import Contact from "../src/Pages/Contact";
+import Home from './home'
+import Cases from "./cases";
+import Solutions from "./solutions";
+import Contact from "./contact";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { dispatch } from "../src/Redux/Store";
 import { useEffect, useState } from "react";
@@ -31,6 +31,14 @@ export default () => {
     dispatch(updateWindowState({ height: dimensions.height, width: dimensions.width }))
   }, [dimensions])
 
+  useEffect(() => {
+    window.addEventListener('popstate', handleNavigation)
+  }, [])
+
+  const handleNavigation = (urlDestination) =>
+  { 
+      console.log("url destination", urlDestination)
+  }
   const navigationOptions = {
     headerTintColor: Theme.primary,
     headerTitleStyle: {

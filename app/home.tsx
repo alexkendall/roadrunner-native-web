@@ -1,17 +1,17 @@
 import { useEffect, useCallback } from "react";
 import { connect } from "react-redux";
-import Theme from "../Config/Theme";
-import SplitView from "../Components/Common/SplitView";
-import Solutions from "./Solutions";
-import Cases from "./Cases";
-import { RootState } from "../Redux/Store";
+import Theme from "../src/Config/Theme";
+import SplitView from "../src/Components/Common/SplitView";
+import Solutions from "./solutions";
+import Cases from "./cases";
+import { RootState } from "../src/Redux/Store";
 import { View, Image, Text, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
 import { useDimensions } from "react-native-web-hooks";
 import { useNavigation } from '@react-navigation/native';
-import { ScreenNavigationRoutes } from "../Config/PageRoutes";
-import { RRFonts } from "../Config/Fonts";
-import withFooter from "../Hoc/withFooter";
-import { SolutionsPreviewLinks } from "../Data/Solutions";
+import { ScreenNavigationRoutes } from "../src/Config/PageRoutes";
+import { RRFonts } from "../src/Config/Fonts";
+import withFooter from "../src/Hoc/withFooter";
+import { SolutionsPreviewLinks } from "../src/Data/Solutions";
 
 const mapStateToProps = (state: RootState) => {
   const props = {
@@ -54,6 +54,7 @@ const Home = ({
       const paddingVertical: number = isMobile ? 100.0 : 200.0;
       return (
         <TouchableOpacity
+        key={route}
           onPress={() => {
             navigation.navigate(route)
           }}
@@ -203,7 +204,7 @@ const Home = ({
           <View style={{flexDirection: "row", justifyContent: "center", alignItems: "center",}}>
           {SolutionsPreviewLinks.map((uri) => {
             return (
-              <Image source={{uri}} resizeMode="contain" style={{height: 100, width: 100}}/>
+              <Image key={uri} source={{uri}} resizeMode="contain" style={{height: 100, width: 100}}/>
             )
           })}
           </View>
