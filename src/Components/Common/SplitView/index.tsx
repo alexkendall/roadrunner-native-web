@@ -1,14 +1,14 @@
-import { ReactNode, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { connect } from "react-redux";
-import { RootState } from "../../../Redux/Store";
-import { View } from 'react-native'
+import { type RootState } from "../../../Redux/Store";
+import { View } from "react-native";
 
 const SPLIT_VIEW_MODES = {
   DEFAULT: "DEFAULT",
   HOVER_LEFT: "HOVER_LEFT",
   HOVER_RIGHT: "HOVER_RIGHT",
   LEFT: "LEFT",
-  RIGHT: "RIGHT",
+  RIGHT: "RIGHT"
 };
 
 const mapStateToProps = (state: RootState) => {
@@ -17,7 +17,7 @@ const mapStateToProps = (state: RootState) => {
     content_width: state.window.content_width ?? 0,
     paddingTop: 0,
     isMobile: state.window.isMobile,
-    footer_height: state.window.footer_height,
+    footer_height: state.window.footer_height
   };
   return props;
 };
@@ -40,14 +40,14 @@ const SplitView = ({
   rightContent,
   isMobile,
   content_width,
-  height = 0,
+  height = 0
 }: Props) => {
   const [mode, setMode] = useState(SPLIT_VIEW_MODES.DEFAULT);
   const containerStyle = {
     paddingTop: 0,
     width: content_width,
     display: "flex",
-    flexDirection: isMobile ? "column" : "row",
+    flexDirection: isMobile ? "column" : "row"
   };
   if (!isMobile) {
     containerStyle.height = height;
@@ -69,7 +69,7 @@ const SplitView = ({
         <View style={{ flex: 1 }} onMouseOver={onMouseOverLeft}>
           {leftComponent}
         </View>
-        <View style={{ flex: 1, }} onMouseOver={onMouseOverRight}>
+        <View style={{ flex: 1 }} onMouseOver={onMouseOverRight}>
           {rightComponent}
         </View>
       </View>
@@ -79,8 +79,8 @@ const SplitView = ({
   const renderHoverPreview = () => {
     const hoverStyle = {
       flex: 1.25,
-      height: height,
-      alignSelf: "stretch",
+      height,
+      alignSelf: "stretch"
     };
     const regularStyle = { flex: 1, height: "100%", alignSelf: "stretch" };
     const styleRight =
@@ -130,8 +130,7 @@ const SplitView = ({
   ) {
     return renderHoverPreview();
   }
-  const content =
-    mode === SPLIT_VIEW_MODES.LEFT ? leftContent : rightContent;
+  const content = mode === SPLIT_VIEW_MODES.LEFT ? leftContent : rightContent;
   return <View>{content}</View>;
 };
 

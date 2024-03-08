@@ -1,10 +1,9 @@
 export interface BreakpointData {
-  cols: number,
-  min_width: number,
+  cols: number;
+  min_width: number;
 }
 
 export class Breakpoint {
-
   cols: number;
   min_width: number;
 
@@ -14,9 +13,9 @@ export class Breakpoint {
   }
 }
 
-export type BreakpointList = Array<Breakpoint>;
+export type BreakpointList = Breakpoint[];
 
-export type ViewModel = Array<Array<any>>;
+export type ViewModel = any[][];
 
 export const getColumns = (
   breakpointList: BreakpointList,
@@ -37,12 +36,12 @@ export const getColumns = (
 export const constructViewModel = (
   breakpointList: BreakpointList,
   width: number,
-  children: Array<any>
+  children: any[]
 ): ViewModel => {
   const n: number = getColumns(breakpointList, width);
   const result: ViewModel = [];
   for (let i = 0; i < children.length; i += n) {
-    const group: Array<any> = [];
+    const group: any[] = [];
     for (let j = 0; j < n && j + i < children.length; ++j) {
       if (i < children.length) {
         group.push({ element: children[j + i], index: j + i });

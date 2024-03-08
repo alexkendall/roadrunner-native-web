@@ -1,13 +1,13 @@
-import { View, Image, Text } from 'react-native'
-import { useDimensions } from 'react-native-web-hooks';
-import { RRFonts } from '../../../Config/Fonts';
-//import { motion } from "framer-motion";
+import { View, Image, Text } from "react-native";
+import { useDimensions } from "react-native-web-hooks";
+import { RRFonts } from "../../../Config/Fonts";
+// import { motion } from "framer-motion";
 
 interface CardViewConfig {
-  title: string,
-  description: string,
-  asset: string,
-  body: string,
+  title: string;
+  description: string;
+  asset: string;
+  body: string;
 }
 
 interface Props {
@@ -27,14 +27,14 @@ const ServiceComponent = ({
   imageSize,
   config,
   animationDelay,
-  animationDuration,
+  animationDuration
 }: Props) => {
   const variants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1 },
+    visible: { opacity: 1 }
   };
 
-  const dimensions = useDimensions().window
+  const dimensions = useDimensions().window;
 
   return (
     <View
@@ -42,7 +42,7 @@ const ServiceComponent = ({
       animate="visible"
       transition={{
         duration: animationDuration,
-        delay: animationDelay,
+        delay: animationDelay
       }}
       variants={variants}
       style={{
@@ -53,17 +53,21 @@ const ServiceComponent = ({
         paddingBottom: 40.0,
         flexDirection: "column",
         textAlign: "center",
-        backgroundColor: backgroundColor,
+        backgroundColor
       }}
     >
-      <Image resizeMode='contain' source={{ uri: config.asset }} style={{ height: imageSize, }} />
+      <Image
+        resizeMode="contain"
+        source={{ uri: config.asset }}
+        style={{ height: imageSize }}
+      />
       <Text
         style={{
           margin: 0,
           marginTop: 5,
           fontSize: 20,
-          color: color,
-          textAlign: "center",
+          color,
+          textAlign: "center"
         }}
       >
         {config.description}
@@ -73,9 +77,9 @@ const ServiceComponent = ({
           margin: 0,
           marginTop: 5,
           fontSize: 20,
-          color: color,
+          color,
           fontWeight: "400",
-          textAlign: "center",
+          textAlign: "center"
         }}
       >
         {config.body}

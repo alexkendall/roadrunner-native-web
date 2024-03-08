@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
-import { View } from 'react-native'
+import React, { type ReactNode } from "react";
+import { View } from "react-native";
 import {
   type BreakpointList,
   constructViewModel,
-  ViewModel,
+  type ViewModel
 } from "./Breakpoint";
 
 interface Props {
@@ -27,8 +27,8 @@ const Grid = ({ children, breakpointList, width, height }: Props) => {
         backgroundColor: "grey",
         display: "flex",
         flexDirection: "column",
-        height: height,
-        width: width,
+        height,
+        width
       }}
     >
       {viewModel.map((group, index) => {

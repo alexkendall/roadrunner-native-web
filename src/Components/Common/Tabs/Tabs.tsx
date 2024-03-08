@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import Tab from "./Tab";
-import { View, Image } from 'react-native'
+import { View, Image } from "react-native";
 
 interface TabModel {
   index: number;
@@ -17,7 +17,7 @@ const DefaultStyle: Record<string, any> = {
   alignItems: "center",
   justifyContent: "center",
   paddingLeft: 20,
-  paddingRight: 20,
+  paddingRight: 20
 };
 
 interface Props {
@@ -25,7 +25,7 @@ interface Props {
   color: string;
   backgroundColor: string;
   containerStyle: string;
-  tabs: Array<TabModel>;
+  tabs: TabModel[];
   onTabSelect?: (tab: TabModel) => void;
   siteLogo: string;
 }
@@ -37,7 +37,7 @@ export default ({
   containerStyle,
   tabs,
   onTabSelect,
-  siteLogo,
+  siteLogo
 }: Props) => {
   const onUserTabSelect = (tab: TabModel) => {
     if (onTabSelect) {
@@ -51,7 +51,7 @@ export default ({
     return (
       <Image
         alt={""}
-        source={{uri: siteLogo}}
+        source={{ uri: siteLogo }}
         style={{ height: 40, position: "absolute", left: 17, top: 17 }}
       />
     );

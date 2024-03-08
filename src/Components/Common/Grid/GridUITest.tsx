@@ -1,15 +1,12 @@
 import Grid from "./index";
-import {
-  Breakpoint,
-  type BreakpointList,
-} from "./Breakpoint";
+import { Breakpoint, type BreakpointList } from "./Breakpoint";
 import { connect } from "react-redux";
-import { RootState } from "../../../Redux/Store";
+import { type RootState } from "../../../Redux/Store";
 
 const mapStateToProps = (state: RootState) => {
   return {
     content_width: state.window.content_width,
-    content_height: state.window.content_height,
+    content_height: state.window.content_height
   };
 };
 
@@ -23,7 +20,7 @@ const GridUITest = ({ content_height, content_width }: Props) => {
     backgroundColor: "black",
     display: "flex",
     flex: 1,
-    margin: 5,
+    margin: 5
   };
   const gridComponent = <div style={gridStyle} />;
   const b1 = new Breakpoint({ cols: 1, min_width: 0 });

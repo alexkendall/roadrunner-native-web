@@ -2,7 +2,7 @@ import {
   Breakpoint,
   getColumns,
   type BreakpointList,
-  constructViewModel,
+  constructViewModel
 } from "./Breakpoint";
 
 const b1 = new Breakpoint({ cols: 1, min_width: 0 });
@@ -59,7 +59,7 @@ const VM = constructViewModel(breakpoints, 3000, [
   "c6",
   "c7",
   "c8",
-  "c9",
+  "c9"
 ]);
 
 console.log("VM", VM);

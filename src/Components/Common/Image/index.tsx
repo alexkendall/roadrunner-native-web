@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image } from "react-native";
 
 interface Props {
   alt: string;
@@ -21,7 +21,7 @@ export default ({
   greyscaleOpacity,
   hoverImage,
   overlayTitle,
-  overlayLabel,
+  overlayLabel
 }: Props) => {
   const [hovering, setHovering] = useState(false);
 
@@ -46,7 +46,7 @@ export default ({
           height: "100%",
           width: "100%",
           margin: 0,
-          backgroundColor: "black",
+          backgroundColor: "black"
         }}
         alt={alt}
       />
@@ -77,7 +77,7 @@ export default ({
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "center"
           }}
         >
           {renderTitleLabel()}
@@ -91,12 +91,12 @@ export default ({
         style={{
           ...style,
           position: "absolute",
-          backgroundColor: backgroundColor,
+          backgroundColor,
           margin: 0,
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "center"
         }}
       >
         {renderTitleLabel()}
@@ -112,7 +112,7 @@ export default ({
         cursor: "pointer",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "center"
       }}
       onMouseEnter={onMouseOver}
       onMouseLeave={onMouseLeave}

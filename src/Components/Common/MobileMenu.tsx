@@ -1,18 +1,18 @@
 import { useCallback } from "react";
 import { connect } from "react-redux";
 import Theme from "../../Config/Theme";
-//import IconButton from "@material-ui/core/IconButton";
-//import CloseIcon from "@material-ui/icons/Close";
-import { RootState } from "../../Redux/Store";
-import { Route } from '../../Config/PageRoutes';
-import { View, Text, TouchableOpacity, Image, Linking } from 'react-native'
-import Ionicons from '@expo/vector-icons/Ionicons';
+// import IconButton from "@material-ui/core/IconButton";
+// import CloseIcon from "@material-ui/icons/Close";
+import { type RootState } from "../../Redux/Store";
+import { type Route } from "../../Config/PageRoutes";
+import { View, Text, TouchableOpacity, Image, Linking } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 interface Props {
   visible: boolean;
   content_height: number;
   content_width: number;
-  routes: Array<Route>;
+  routes: Route[];
   closeDrawer: Function;
 }
 
@@ -20,15 +20,11 @@ const mapStateToProps = (state: RootState) => {
   return {
     content_height: state.window.content_height,
     content_width: state.window.content_width,
-    visible: state.window.menu_visible,
+    visible: state.window.menu_visible
   };
 };
 
-const Menu = ({
-  visible,
-  routes,
-  closeDrawer
-}: Props) => {
+const Menu = ({ visible, routes, closeDrawer }: Props) => {
   const renderCloseButton = () => {
     return (
       <TouchableOpacity style={{ top: 30, left: 30, position: "absolute" }}>
@@ -42,14 +38,16 @@ const Menu = ({
       return null;
     }
     return (
-      <TouchableOpacity onPress={() => {
-        Linking.openURL(`roadrunner:/${item.path}`)
-      }}>
+      <TouchableOpacity
+        onPress={() => {
+          Linking.openURL(`roadrunner:/${item.path}`);
+        }}
+      >
         <Text
           style={{
             backgroundColor: Theme.light_green,
             margin: 15,
-            marginLeft: 25,
+            marginLeft: 25
           }}
         >
           {item?.label.toUpperCase()}
@@ -68,7 +66,7 @@ const Menu = ({
           display: "flex",
           flexDirection: "column",
           fontSize: 12,
-          backgroundColor: Theme.light_green,
+          backgroundColor: Theme.light_green
         }}
       >
         {routes.map((item) => {
@@ -100,7 +98,7 @@ const Menu = ({
         bottom: 0,
         left: 0,
         right: 0,
-        backgroundColor: Theme.light_green,
+        backgroundColor: Theme.light_green
       }}
     >
       <View
@@ -108,7 +106,7 @@ const Menu = ({
           backgroundColor: Theme.light_green,
           display: "flex",
           flex: 1,
-          justifyContent: "center",
+          justifyContent: "center"
         }}
       >
         {renderCloseButton()}

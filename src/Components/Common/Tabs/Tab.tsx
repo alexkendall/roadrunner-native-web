@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { View, Text } from 'react-native'
+import { View, Text } from "react-native";
 
 interface Props {
   hoverColor: string;
@@ -11,13 +11,7 @@ interface Props {
   isSelected: boolean;
 }
 
-export default ({
-  hoverColor,
-  color,
-  label,
-  onClick,
-  isSelected,
-}: Props) => {
+export default ({ hoverColor, color, label, onClick, isSelected }: Props) => {
   const [hovering, setHovering] = useState(false);
 
   const onUserClick = () => {
@@ -47,7 +41,7 @@ export default ({
           fontWeight: "800",
           margin: 0,
           marginLeft: 20,
-          marginRight: 20,
+          marginRight: 20
         }}
       >
         {label.toUpperCase()}
@@ -62,12 +56,12 @@ export default ({
           fontStyle: "italic",
           fontSize: 18,
           fontFamily: "Menlo",
-          color: color,
+          color,
           cursor: "pointer",
           fontWeight: "800",
           margin: 0,
           marginLeft: 20,
-          marginRight: 20,
+          marginRight: 20
         }}
       >
         {label.toLocaleUpperCase()}
@@ -81,7 +75,7 @@ export default ({
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "center"
       }}
       onClick={onUserClick}
       onMouseEnter={onMouseOver}

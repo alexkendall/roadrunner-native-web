@@ -13,12 +13,12 @@ const StudyThumbnail = ({ src, width, title, text, route }: Props) => {
   return (
     <View
       style={{
-        width: width,
+        width,
         backgroundColor: Theme.primary_light,
         padding: 20,
         display: "flex",
         flexDirection: "row",
-        marginBottom: 10,
+        marginBottom: 10
       }}
     >
       <Text
@@ -27,7 +27,7 @@ const StudyThumbnail = ({ src, width, title, text, route }: Props) => {
           objectFit: "contain",
           width: 150,
           height: 150,
-          marginRight: 20,
+          marginRight: 20
         }}
         src={src}
       />
@@ -36,11 +36,11 @@ const StudyThumbnail = ({ src, width, title, text, route }: Props) => {
         <Text>{text}</Text>
         <TouchableOpacity
           onPress={() => {
-            //window.location.pathname = route;
+            // window.location.pathname = route;
           }}
           style={{
             backgroundColor: Theme.primary,
-            color: Theme.primary_light,
+            color: Theme.primary_light
           }}
         >
           {"View"}
