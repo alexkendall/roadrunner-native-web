@@ -217,7 +217,7 @@ const CaseStudyModal = ({
         <View>
           {services.map((service, index) => {
             return (
-              <Text style={styles.content} key={index}>
+              <Text key={index.toString()} style={styles.content} key={index}>
                 {service}
               </Text>
             );
