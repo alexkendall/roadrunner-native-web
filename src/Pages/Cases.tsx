@@ -93,7 +93,7 @@ const Studies = ({ isMobile }: Props) => {
         >
           {CasesData.map((payload, index) => {
             return (
-              <TouchableOpacity onPress={() => {
+              <TouchableOpacity key={index.toString()} onPress={() => {
                 setDisplayModal(true)
                 setModalPayload(payload)
               }}>
