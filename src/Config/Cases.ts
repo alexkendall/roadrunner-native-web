@@ -6,6 +6,6 @@ const HereNow = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-w
 const Kabinet = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2FKabinetLogo.png?alt=media&token=fa95f654-7fed-4e58-84fa-7d9c61fb58be"
 const ServicersWeb = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fservicers_web.png?alt=media&token=c2258855-6889-4128-8308-b11aabbb8fc7"
 const Swoogo = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fswoogo.png?alt=media&token=3d425f8f-f60f-490e-9bdb-eb4016f53eb3"
-const CareExchange = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fcare-exchange.png?alt=media&token=4fe45485-f5f4-4006-9fcc-6935525c5402"
+const CareExchange = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fcareexchange.png?alt=media&token=014fe254-2d0c-42fa-938f-96e6c8c3ebef"
 const Muze = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2FMuzeFrameAlpha.png?alt=media&token=e3216182-a132-4d3e-bc25-822e2ef3a1bd"
 export const CasesData = [Ally, GenCon, HereNow, Kabinet, ServicersWeb, Swoogo, Muze, CareExchange]
