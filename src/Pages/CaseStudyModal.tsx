@@ -6,6 +6,7 @@ import { TouchableOpacity, View, Image, Text, ScrollView, Modal, StyleSheet, Saf
 import { useDimensions } from "react-native-web-hooks";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { RRFonts } from "../Config/Fonts";
+import { CasesData, CasesDetailsDataType } from "../Config/Cases";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -21,7 +22,7 @@ const mapStateToProps = (state: RootState) => {
 };
 
 interface Props {
-  data: Record<string, any>;
+  data: CasesData;
   visible: boolean;
   onClose: () => void;
   tab_height: number;
@@ -89,7 +90,7 @@ const CaseStudyModal = ({
       >
         <Text style={styles.label}>{"THE CHALLENGE"}</Text>
         <Text style={styles.content}>
-          {data.challenge}
+          {data.data.challenge}
         </Text>
       </View>
     );
@@ -110,7 +111,7 @@ const CaseStudyModal = ({
           {"INSIGHT"}
         </Text>
         <Text style={styles.content}>
-          {data.insight}
+          {data.data.solutions}
         </Text>
       </View>
     );
@@ -127,7 +128,7 @@ const CaseStudyModal = ({
         <View style={{ flex: 1, }}>
           <Text style={styles.label}>{"DELIVERY"}</Text>
           <Text style={styles.content}>
-            {data.delivery}
+            {data.data.delivery}
           </Text>
         </View>
       </View>
@@ -135,6 +136,7 @@ const CaseStudyModal = ({
   }, [content_width, isMobile, data, dimensions]);
 
   const renderButtons = useCallback(() => {
+    return null
     console.log("data secondary link", data.secondary_link_label)
     let button1 = null;
     let button2 = null;
@@ -143,11 +145,11 @@ const CaseStudyModal = ({
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            Linking.openURL(data.primary_link)
+            Linking.openURL(data?.primary_link)
           }}
         >
           <Text style={styles.buttonText}>
-            {data.primary_link_label}
+            {data?.primary_link_label}
           </Text>
         </TouchableOpacity>
       );
@@ -157,11 +159,11 @@ const CaseStudyModal = ({
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            Linking.openURL(data.secondary_link)
+            Linking.openURL(data?.secondary_link)
           }}
         >
           <Text style={styles.buttonText}>
-            {data.secondary_link_label}
+            {data?.secondary_link_label}
           </Text>
         </TouchableOpacity>
       );
@@ -187,7 +189,7 @@ const CaseStudyModal = ({
             marginBottom: 10
           }}
         >
-          {data.label.toUpperCase()}
+          {""}
         </Text>
         <Text
           style={{
@@ -198,7 +200,7 @@ const CaseStudyModal = ({
             marginBottom: 10
           }}
         >
-          {data.description}
+          {""}
         </Text>
         {renderButtons()}
       </View>
@@ -206,9 +208,9 @@ const CaseStudyModal = ({
   }, [renderButtons, isMobile, data]);
 
   const renderServices = useCallback(() => {
-    const client: string = data.client;
-    const industry: string = data.industry;
-    const services: Array<any> = data.services;
+    const client: string = data?.data.client;
+    const industry: string = data?.data.industry;
+    const services: Array<string> = data?.data.services;
     let service_elt = null;
     if (services) {
       service_elt = (
@@ -216,7 +218,7 @@ const CaseStudyModal = ({
           {services.map((service, index) => {
             return (
               <Text style={styles.content} key={index}>
-                {service.item}
+                {service}
               </Text>
             );
           })}
@@ -265,11 +267,11 @@ const CaseStudyModal = ({
     return null;
   }
   let thumbnail = null
-  if (data.banner_image) {
+  if (data.data.featured_graphic) {
     thumbnail = (
       <Image
         style={{ height: dimensions.height * 0.2, width: "100%", objectFit: "cover" }}
-        source={{ uri: data.banner_image.url }}
+        source={{ uri: data.data.featured_graphic }}
       />
     );
   }

@@ -15,7 +15,7 @@ import {
 } from "react-native";
 import { RRFonts } from "../Config/Fonts";
 import withFooter from "../Hoc/withFooter";
-import { CasesData } from "../Config/Cases";
+import { CaseDetailsData, CasesData } from "../Config/Cases";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -41,61 +41,6 @@ const Studies = ({ isMobile }: Props) => {
   const [showModal, setDisplayModal] = useState(false);
   const [modalPayload, setModalPayload] = useState({});
 
-  const renderPost = (json: WordpressPost, index: number) => {
-    const acf = json.acf;
-    const header: string = acf.label.toUpperCase();
-    const thumbnail: string = acf.preview_image.url;
-    const variants = {
-      hidden: { opacity: 0 },
-      visible: { opacity: 1 },
-    };
-    const transition = {
-      duration: 2.0,
-      delay: index * 1.0,
-    };
-    return (
-      <TouchableOpacity
-        onPress={() => {
-          console.log("click");
-          setDisplayModal(true);
-          setModalPayload(json.acf);
-        }}
-        initial={"hidden"}
-        transition={transition}
-        animate={"visible"}
-        variants={variants}
-        key={json?.id}
-        style={{
-          maxWidth: 1200,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "pointer",
-        }}
-      >
-        <ImageBackground
-          style={{
-            height: 300,
-            width: 300,
-            margin: 10,
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: 40,
-          }}
-          source={{ uri: thumbnail }}
-        >
-          <Text
-            style={{ color: "white", fontSize: 20, fontFamily: RRFonts.Menlo }}
-          >
-            {header}
-          </Text>
-        </ImageBackground>
-      </TouchableOpacity>
-    );
-  };
-
-  const images = CasesData;
   return (
     <ScrollView style={{ height: "100%", backgroundColor: Theme.light_green }}>
       <View
@@ -146,14 +91,19 @@ const Studies = ({ isMobile }: Props) => {
             justifyContent: "center",
           }}
         >
-          {images.map((src) => {
+          {CasesData.map((payload, index) => {
             return (
+              <TouchableOpacity onPress={() => {
+                setDisplayModal(true)
+                setModalPayload(payload)
+              }}>
               <Image
-                key={src}
+                key={index.toString()}
                 resizeMode="contain"
-                source={{ uri: src }}
+                source={{ uri: payload.featured_graphic }}
                 style={{ height: 100, width: 250, margin: 20 }}
               />
+              </TouchableOpacity>
             );
           })}
         </View>

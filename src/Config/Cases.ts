@@ -8,4 +8,130 @@ const ServicersWeb = "https://firebasestorage.googleapis.com/v0/b/roadrunner-nat
 const Swoogo = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fswoogo.png?alt=media&token=3d425f8f-f60f-490e-9bdb-eb4016f53eb3"
 const CareExchange = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fcareexchange.png?alt=media&token=014fe254-2d0c-42fa-938f-96e6c8c3ebef"
 const Muze = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2FMuzeFrameAlpha.png?alt=media&token=e3216182-a132-4d3e-bc25-822e2ef3a1bd"
-export const CasesData = [Ally, GenCon, HereNow, Kabinet, ServicersWeb, Swoogo, Muze, CareExchange]
+
+export interface CasesData {
+    featured_graphic: string
+    data: CasesDetailsDataType
+}
+
+
+export const CasesData: Array<CasesData> = [
+    {
+        featured_graphic: Ally,
+        data: {
+            client: "Ally",
+            featured_graphic: "https://flim-1-0-2.s3.eu-central-1.amazonaws.com/full/f88c8638f7c111eca01710ddb1aba44f.png",
+            industry: "Healthcare",
+            services: ["Mobile App Development"],
+            challenge: "Ally, a healthcare services provider, faced challenges with stability and functionality in their mobile applications. Critical bugs needed immediate attention, and caregivers required offline functionality for clocking in and out of shifts and entering timesheets.",
+            solutions: "As the lead developer, I addressed these challenges head-on. I implemented critical bug fixes swiftly and efficiently, ensuring a stable experience for users. To enable caregivers to work offline, I integrated offline sync functionality, allowing them to clock in and out of shifts seamlessly. Furthermore, I added a feature to enter timesheets directly through the caregiver application, streamlining the process.",
+            delivery: "The improvements significantly enhanced the stability and functionality of Ally's healthcare mobile applications. Caregivers could now work more efficiently, even without an internet connection, improving overall productivity. Additionally, the implementation of code-push support for both staging and production environments ensured quick and reliable updates.",
+        },
+    },
+    {
+        featured_graphic: GenCon,
+        data: {
+            client: "GenCon",
+            featured_graphic: "https://flim-1-0-2.s3.eu-central-1.amazonaws.com/full/f88c8638f7c111eca01710ddb1aba44f.png",
+            industry: "Healthcare",
+            services: ["Mobile App Development"],
+            challenge: "Ally, a healthcare services provider, faced challenges with stability and functionality in their mobile applications. Critical bugs needed immediate attention, and caregivers required offline functionality for clocking in and out of shifts and entering timesheets.",
+            solutions: "As the lead developer, I addressed these challenges head-on. I implemented critical bug fixes swiftly and efficiently, ensuring a stable experience for users. To enable caregivers to work offline, I integrated offline sync functionality, allowing them to clock in and out of shifts seamlessly. Furthermore, I added a feature to enter timesheets directly through the caregiver application, streamlining the process.",
+            delivery: "The improvements significantly enhanced the stability and functionality of Ally's healthcare mobile applications. Caregivers could now work more efficiently, even without an internet connection, improving overall productivity. Additionally, the implementation of code-push support for both staging and production environments ensured quick and reliable updates.",
+        }
+    },
+    {
+        featured_graphic: Ally,
+        data: {
+            client: "HereNow",
+            featured_graphic: "https://flim-1-0-2.s3.eu-central-1.amazonaws.com/full/f88c8638f7c111eca01710ddb1aba44f.png",
+            industry: "Healthcare",
+            services: ["Mobile App Development"],
+            challenge: "Ally, a healthcare services provider, faced challenges with stability and functionality in their mobile applications. Critical bugs needed immediate attention, and caregivers required offline functionality for clocking in and out of shifts and entering timesheets.",
+            solutions: "As the lead developer, I addressed these challenges head-on. I implemented critical bug fixes swiftly and efficiently, ensuring a stable experience for users. To enable caregivers to work offline, I integrated offline sync functionality, allowing them to clock in and out of shifts seamlessly. Furthermore, I added a feature to enter timesheets directly through the caregiver application, streamlining the process.",
+            delivery: "The improvements significantly enhanced the stability and functionality of Ally's healthcare mobile applications. Caregivers could now work more efficiently, even without an internet connection, improving overall productivity. Additionally, the implementation of code-push support for both staging and production environments ensured quick and reliable updates.",
+        },
+    },
+    {
+        featured_graphic: Kabinet,
+        data: {
+            client: "Ally",
+            featured_graphic: "https://flim-1-0-2.s3.eu-central-1.amazonaws.com/full/f88c8638f7c111eca01710ddb1aba44f.png",
+            industry: "Healthcare",
+            services: ["Mobile App Development"],
+            challenge: "Ally, a healthcare services provider, faced challenges with stability and functionality in their mobile applications. Critical bugs needed immediate attention, and caregivers required offline functionality for clocking in and out of shifts and entering timesheets.",
+            solutions: "As the lead developer, I addressed these challenges head-on. I implemented critical bug fixes swiftly and efficiently, ensuring a stable experience for users. To enable caregivers to work offline, I integrated offline sync functionality, allowing them to clock in and out of shifts seamlessly. Furthermore, I added a feature to enter timesheets directly through the caregiver application, streamlining the process.",
+            delivery: "The improvements significantly enhanced the stability and functionality of Ally's healthcare mobile applications. Caregivers could now work more efficiently, even without an internet connection, improving overall productivity. Additionally, the implementation of code-push support for both staging and production environments ensured quick and reliable updates.",
+        }
+    },
+    {
+        featured_graphic: HereNow,
+        data: {
+            client: "Ally",
+            featured_graphic: "https://flim-1-0-2.s3.eu-central-1.amazonaws.com/full/f88c8638f7c111eca01710ddb1aba44f.png",
+            industry: "Healthcare",
+            services: ["Mobile App Development"],
+            challenge: "Ally, a healthcare services provider, faced challenges with stability and functionality in their mobile applications. Critical bugs needed immediate attention, and caregivers required offline functionality for clocking in and out of shifts and entering timesheets.",
+            solutions: "As the lead developer, I addressed these challenges head-on. I implemented critical bug fixes swiftly and efficiently, ensuring a stable experience for users. To enable caregivers to work offline, I integrated offline sync functionality, allowing them to clock in and out of shifts seamlessly. Furthermore, I added a feature to enter timesheets directly through the caregiver application, streamlining the process.",
+            delivery: "The improvements significantly enhanced the stability and functionality of Ally's healthcare mobile applications. Caregivers could now work more efficiently, even without an internet connection, improving overall productivity. Additionally, the implementation of code-push support for both staging and production environments ensured quick and reliable updates.",
+        },
+    },
+    {
+        featured_graphic: ServicersWeb,
+        data: {
+            client: "Ally",
+            featured_graphic: "https://flim-1-0-2.s3.eu-central-1.amazonaws.com/full/f88c8638f7c111eca01710ddb1aba44f.png",
+            industry: "Healthcare",
+            services: ["Mobile App Development"],
+            challenge: "Ally, a healthcare services provider, faced challenges with stability and functionality in their mobile applications. Critical bugs needed immediate attention, and caregivers required offline functionality for clocking in and out of shifts and entering timesheets.",
+            solutions: "As the lead developer, I addressed these challenges head-on. I implemented critical bug fixes swiftly and efficiently, ensuring a stable experience for users. To enable caregivers to work offline, I integrated offline sync functionality, allowing them to clock in and out of shifts seamlessly. Furthermore, I added a feature to enter timesheets directly through the caregiver application, streamlining the process.",
+            delivery: "The improvements significantly enhanced the stability and functionality of Ally's healthcare mobile applications. Caregivers could now work more efficiently, even without an internet connection, improving overall productivity. Additionally, the implementation of code-push support for both staging and production environments ensured quick and reliable updates.",
+        }
+    },
+    {
+        featured_graphic: Swoogo,
+        data: {
+            client: "Ally",
+            featured_graphic: "https://flim-1-0-2.s3.eu-central-1.amazonaws.com/full/f88c8638f7c111eca01710ddb1aba44f.png",
+            industry: "Healthcare",
+            services: ["Mobile App Development"],
+            challenge: "Ally, a healthcare services provider, faced challenges with stability and functionality in their mobile applications. Critical bugs needed immediate attention, and caregivers required offline functionality for clocking in and out of shifts and entering timesheets.",
+            solutions: "As the lead developer, I addressed these challenges head-on. I implemented critical bug fixes swiftly and efficiently, ensuring a stable experience for users. To enable caregivers to work offline, I integrated offline sync functionality, allowing them to clock in and out of shifts seamlessly. Furthermore, I added a feature to enter timesheets directly through the caregiver application, streamlining the process.",
+            delivery: "The improvements significantly enhanced the stability and functionality of Ally's healthcare mobile applications. Caregivers could now work more efficiently, even without an internet connection, improving overall productivity. Additionally, the implementation of code-push support for both staging and production environments ensured quick and reliable updates.",
+        }
+    },
+    {
+        featured_graphic: CareExchange,
+        data: {
+            client: "CareExchange",
+            featured_graphic: "https://flim-1-0-2.s3.eu-central-1.amazonaws.com/full/f88c8638f7c111eca01710ddb1aba44f.png",
+            industry: "Healthcare",
+            services: ["Mobile App Development"],
+            challenge: "Ally, a healthcare services provider, faced challenges with stability and functionality in their mobile applications. Critical bugs needed immediate attention, and caregivers required offline functionality for clocking in and out of shifts and entering timesheets.",
+            solutions: "As the lead developer, I addressed these challenges head-on. I implemented critical bug fixes swiftly and efficiently, ensuring a stable experience for users. To enable caregivers to work offline, I integrated offline sync functionality, allowing them to clock in and out of shifts seamlessly. Furthermore, I added a feature to enter timesheets directly through the caregiver application, streamlining the process.",
+            delivery: "The improvements significantly enhanced the stability and functionality of Ally's healthcare mobile applications. Caregivers could now work more efficiently, even without an internet connection, improving overall productivity. Additionally, the implementation of code-push support for both staging and production environments ensured quick and reliable updates.",
+        }
+    },
+    {
+        featured_graphic: Muze,
+        data: {
+            client: "Muze",
+            featured_graphic: "https://flim-1-0-2.s3.eu-central-1.amazonaws.com/full/f88c8638f7c111eca01710ddb1aba44f.png",
+            industry: "Healthcare",
+            services: ["Mobile App Development"],
+            challenge: "Ally, a healthcare services provider, faced challenges with stability and functionality in their mobile applications. Critical bugs needed immediate attention, and caregivers required offline functionality for clocking in and out of shifts and entering timesheets.",
+            solutions: "As the lead developer, I addressed these challenges head-on. I implemented critical bug fixes swiftly and efficiently, ensuring a stable experience for users. To enable caregivers to work offline, I integrated offline sync functionality, allowing them to clock in and out of shifts seamlessly. Furthermore, I added a feature to enter timesheets directly through the caregiver application, streamlining the process.",
+            delivery: "The improvements significantly enhanced the stability and functionality of Ally's healthcare mobile applications. Caregivers could now work more efficiently, even without an internet connection, improving overall productivity. Additionally, the implementation of code-push support for both staging and production environments ensured quick and reliable updates.",
+        }
+    }
+]
+
+export interface CasesDetailsDataType {
+    client: string
+    industry: string
+    featured_graphic: string
+    services: Array<string>
+    challenge: string
+    solutions: string
+    delivery: string
+}
