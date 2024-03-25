@@ -283,9 +283,13 @@ const CaseStudyModal = ({
             <Ionicons name={"close"} size={50} style={{ left: 10 }} />
           </TouchableOpacity>
           <View style={{ backgroundColor: Theme.white }}>
-            {thumbnail}
+            <Image
+              resizeMode="contain"
+              style={{ height: 100, width: 200, marginTop: 20, marginLeft: 10 }}
+              source={{ uri: data.featured_graphic }}
+            />
             {renderServices()}
-            {renderDescription()}
+            {thumbnail}
             <View style={{ paddingHorizontal: 40 }}>
               {renderChallenge()}
               {renderInsight()}

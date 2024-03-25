@@ -15,7 +15,7 @@ import {
 } from "react-native";
 import { RRFonts } from "../Config/Fonts";
 import withFooter from "../Hoc/withFooter";
-import { CaseDetailsData, CasesData } from "../Config/Cases";
+import { CasesData } from "../Config/Cases";
 
 const mapStateToProps = (state: RootState) => {
   return {
