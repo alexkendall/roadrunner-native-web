@@ -4,9 +4,9 @@ import Theme from "../Config/Theme";
 import { RootState } from "../Redux/Store";
 import { TouchableOpacity, View, Image, Text, ScrollView, Modal, StyleSheet, SafeAreaView, Linking, Platform } from "react-native";
 import { useDimensions } from "react-native-web-hooks";
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { RRFonts } from "../Config/Fonts";
-import { CasesData, CasesDetailsDataType } from "../Config/Cases";
+import { CasesData } from "../Config/Cases";
+import { BackButton } from "../Components/Common/BackButton";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -279,8 +279,8 @@ const CaseStudyModal = ({
     <Modal style={{ flex: 1, }}>
       <SafeAreaView style={{ flex: 1 }}>
         <ScrollView>
-          <TouchableOpacity onPress={onClose}>
-            <Ionicons name={"close"} size={50} style={{ left: 10 }} />
+          <TouchableOpacity style={{marginTop: 10, marginLeft: 10}} onPress={onClose}>
+            <BackButton onPress={onClose}/>
           </TouchableOpacity>
           <View style={{ backgroundColor: Theme.white }}>
             <Image
