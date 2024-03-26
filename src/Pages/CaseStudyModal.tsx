@@ -285,9 +285,10 @@ const CaseStudyModal = ({
           <View style={{ backgroundColor: Theme.white }}>
             <Image
               resizeMode="contain"
-              style={{ height: 100, width: 200, marginTop: 20, marginLeft: 10 }}
+              style={{ height: 50, width: "auto", marginTop: 20, marginLeft: 40 }}
               source={{ uri: data.featured_graphic }}
             />
+            <View style={{flex: 1, borderBottomWidth: 1, marginTop: 20}}/>
             {renderServices()}
             {thumbnail}
             <View style={{ paddingHorizontal: 40 }}>
