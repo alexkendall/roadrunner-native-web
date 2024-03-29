@@ -86,7 +86,6 @@ export default () => {
 
   return (
     <Provider store={store}>
-      <NavigationContainer ref={navigationRef}>
         <Stack.Navigator screenOptions={{ ...navigationOptions }}>
           <Stack.Screen name={ScreenNavigationRoutes.HOME} component={Home} />
           <Stack.Screen name={ScreenNavigationRoutes.CASES} component={Cases} />
@@ -99,7 +98,6 @@ export default () => {
             component={Contact}
           />
         </Stack.Navigator>
-      </NavigationContainer>
     </Provider>
   );
 };

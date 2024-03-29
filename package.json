@@ -10,7 +10,9 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@babel/runtime": "^7.24.1",
     "@expo/metro-runtime": "~3.1.1",
+    "@react-native/assets-registry": "0.75.0-main",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.17",
     "@reduxjs/toolkit": "^2.1.0",
