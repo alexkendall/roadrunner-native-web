@@ -64,7 +64,7 @@ const CaseStudyModal = ({
         color: Theme.primary, marginTop: isMobile ? 20.0 : 0.0, fontWeight: "600",
         marginBottom: 10,
         fontSize: isMobile ? 20 : 24,
-        fontFamily: RRFonts.RobotoMediumIttalic,
+        fontFamily: RRFonts.Menlo,
       },
       content: {
         fontSize: isMobile ? 13 : 16,
@@ -77,8 +77,10 @@ const CaseStudyModal = ({
       },
       typeLabel: {
         fontSize: isMobile ? 20 : 24,
+        fontWeight: "600",
+        marginBottom: 10,
         color: Theme.primary,
-        fontFamily: RRFonts.RobotoMediumIttalic,
+        fontFamily: RRFonts.Menlo,
       }
     })
   }, [dimensions, isMobile])
@@ -183,7 +185,7 @@ const CaseStudyModal = ({
           style={{
             zIndex: 1,
             textAlign: "left",
-            fontFamily: RRFonts.RobotoBoldIttalic,
+            fontFamily: RRFonts.Menlo,
             color: Theme.primary,
             fontSize: isMobile ? 30 : 70,
             marginBottom: 10

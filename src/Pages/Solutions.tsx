@@ -75,7 +75,7 @@ const Solutions = ({
           style={{
             fontSize: isMobile ? 20 : 60,
             color: Theme.primary_light,
-            fontFamily: RRFonts.RobotoBoldIttalic,
+            fontFamily: "Menlo",
             marginBottom: 10,
           }}
         >

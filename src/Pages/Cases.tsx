@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { connect } from "react-redux";
-//import { motion } from "framer-motion";
 import Theme from "../Config/Theme";
 import CaseStudyModal from "./CaseStudyModal";
 import { RootState } from "../Redux/Store";
@@ -11,7 +10,6 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
-  ImageBackground,
 } from "react-native";
 import { RRFonts } from "../Config/Fonts";
 import withFooter from "../Hoc/withFooter";
@@ -62,7 +60,7 @@ const Studies = ({ isMobile }: Props) => {
             fontSize: isMobile ? 24 : 70,
             textAlign: "center",
             marginBottom: 10,
-            fontFamily: RRFonts.RobotoBoldIttalic,
+            fontFamily: RRFonts.Menlo,
           }}
         >
           {"CASE STUDIES"}

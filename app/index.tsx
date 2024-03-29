@@ -33,7 +33,7 @@ export default () => {
   const navigationOptions = {
     headerTintColor: Theme.primary,
     headerTitleStyle: {
-      fontFamily: RRFonts.RobotoMediumIttalic,
+      fontFamily: RRFonts.Menlo,
       color: Theme.primary,
     },
     headerStyle: {
@@ -54,11 +54,12 @@ export default () => {
   const fontsLoaded = useFonts({
     Menlo: require("../assets/FontFiles/Menlo-Regular.ttf"),
     Graphik: require("../assets/FontFiles/Graphik-MediumItalic.otf"),
-    RobotoBlack: require("../assets/FontFiles/Roboto/Roboto-Black.ttf"),
-    RobotoMediumIttalic: require("../assets/FontFiles/Roboto/Roboto-MediumItalic.ttf"),
-    RobotoBoldIttalic: require("../assets/FontFiles/Roboto/Roboto-BoldItalic.ttf"),
-    RobotoMedium: require("../assets/FontFiles/Roboto/Roboto-Medium.ttf"),
-    RobotoThin: require("../assets/FontFiles/Roboto/Roboto-Thin.ttf"),
+    LatoBlack: require("../assets/FontFiles/Lato-Black.ttf"),
+    RobotoBlack: require("../assets/FontFiles/Roboto-Black.ttf"),
+    RobotoMediumIttalic: require("../assets/FontFiles/Roboto-MediumItalic.ttf"),
+    RobotoBoldIttalic: require("../assets/FontFiles/Roboto-BoldItalic.ttf"),
+    RobotoMedium: require("../assets/FontFiles/Roboto-Medium.ttf"),
+    RobotoThin: require("../assets/FontFiles/Roboto-Thin.ttf"),
     MenionPro: require("../assets/FontFiles/MinionPro-Regular.otf"),
     Ionicons: require("../assets/FontFiles/ionicons.ttf"),
   });

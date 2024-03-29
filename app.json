@@ -29,7 +29,11 @@
       "bundler": "metro"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-font",
+      {
+        "fonts": ["./assets/Roboto-Black.ttf", "./assets/Roboto-BlackItalic.ttf", "./assets/Roboto-Bold.ttf", "./assets/Roboto-BoldItalic.ttf", "./assets/Roboto-Italic.ttf", "./assets/Roboto-Light.ttf", "./assets/Roboto-LightItalic.ttf", "./assets/Roboto-Medium.ttf", "./assets/Roboto-MediumItalic.ttf", "./assets/Roboto-Regular.ttf", "./assets/Roboto-RegularItalic.ttf", "./assets/Roboto-Thin.ttf", "./assets/Roboto-ThinItalic.tstf"]
+      }
     ]
   }
 }

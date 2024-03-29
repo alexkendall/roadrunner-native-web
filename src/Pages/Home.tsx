@@ -86,7 +86,7 @@ const Home = ({
             style={{
               color,
               fontSize: 50,
-              fontFamily: RRFonts.RobotoBoldIttalic,
+              fontFamily: "Menlo",
             }}
           >
             {text}
@@ -127,7 +127,7 @@ const Home = ({
             style={{
               color,
               fontSize: 50,
-              fontFamily: RRFonts.RobotoBoldIttalic,
+              fontFamily: "Menlo",
             }}
           >
             {text}
@@ -161,7 +161,6 @@ const Home = ({
 
   const renderTopOptions = () => (
     <SplitView
-      navigation={navigation}
       height={SPLIT_VIEW_HEIGHT_WEB}
       leftComponent={renderSplitLeftComponent()}
       rightComponent={renderSplitRightComponent()}
@@ -211,7 +210,7 @@ const Home = ({
           style={{
             textAlign: "center",
             marginTop: 10,
-            fontFamily: RRFonts.Menlo,
+            fontFamily: "Menlo",
           }}
         >
           {solution?.label}
