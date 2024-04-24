@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import RRCardView from "../Components/Common/CardView";
 import Theme from "../Config/Theme";
@@ -8,7 +9,7 @@ import { View, Text, ScrollView, Platform } from 'react-native'
 import { useDimensions } from "react-native-web-hooks";
 import { RRFonts } from "../Config/Fonts";
 import withFooter from "../Hoc/withFooter";
-import { FOOTER_HEIGHT, WEB_TAB_HEIGHT } from "../Redux/Slices/WindowSlice";
+import { FOOTER_HEIGHT } from "../Redux/Slices/WindowSlice";
 import SolutionsData from "../Data/Solutions";
 
 const mapStateToProps = (state: RootState) => {
@@ -66,8 +67,6 @@ const Solutions = ({
         style={{
           backgroundColor: Theme.primary,
           width: "100%",
-          paddingLeft: "10%",
-          paddingRight: "10%",
           paddingBottom: "5%",
         }}
       >
@@ -134,7 +133,7 @@ const Solutions = ({
       <View
         style={{
           display: "flex",
-          alignItems: "center",
+          alignItems: "flex-start",
           flexDirection: "column",
           paddingTop: paddingTop,
           paddingRight: paddingRight,
@@ -142,27 +141,40 @@ const Solutions = ({
           justifyContent: "center",
           backgroundColor: Theme.primary,
           flex: 1,
+          paddingHorizontal: 40
         }}
       >
         {renderTopHeader()}
-        <View
-          style={{
-            zIndex: 2,
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            flexDirection: "row",
-            backgroundColor: Theme.primary_light,
-          }}
-        >
-          {solutions_data.map((item: Record<string, any>, index: number) => {
-            return renderThumbnail(item, index);
-          })}
+      
+        <Text style={styles.header}>
+          Mobile Solutions
+        </Text>
+          <Text style={styles.body}>
+          As a seasoned Senior React Native Developer and Software Engineer, I specialize in delivering innovative and robust mobile applications across various industries. With a solid foundation in Computer Science from the University of Michigan and expertise in a multitude of programming languages including TypeScript, Swift, Objective-C, Java, and Go, I've consistently spearheaded projects that push boundaries and exceed expectations.
+        </Text>
+        <Text style={styles.header}>
+          Mobile Development Expertise:
+        </Text>
+          <Text style={styles.body}>
+            Throughout my tenure at esteemed companies like Swoogo, Ally, and Gen Con, I've showcased my proficiency in React-Native, shaping dynamic mobile experiences that resonate with users. From enhancing stability and implementing critical bug fixes to integrating offline sync functionality and expanding electronic ticketing capabilities, I've consistently elevated the performance and usability of mobile applications.
+          </Text>
           {renderFocus()}
         </View>
-      </View>
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  header: {
+    fontSize: 20,
+    fontWeight: "600",
+    textAlign: "left",
+    marginTop: 30,
+  },
+  body: {
+    fontSize: 20,
+    textAlign: "left"
+  }
+})
 
 export default withFooter(connect(mapStateToProps)(Solutions));
