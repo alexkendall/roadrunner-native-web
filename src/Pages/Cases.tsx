@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { connect } from "react-redux";
-//import { motion } from "framer-motion";
 import Theme from "../Config/Theme";
 import CaseStudyModal from "./CaseStudyModal";
 import { RootState } from "../Redux/Store";
@@ -11,7 +10,6 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
-  ImageBackground,
 } from "react-native";
 import { RRFonts } from "../Config/Fonts";
 import withFooter from "../Hoc/withFooter";
@@ -42,13 +40,12 @@ const Studies = ({ isMobile }: Props) => {
   const [modalPayload, setModalPayload] = useState({});
 
   return (
-    <ScrollView style={{ height: "100%", backgroundColor: Theme.light_green }}>
+    <ScrollView style={{ height: "100%", backgroundColor: Theme.white }}>
       <View
         style={{
           display: "flex",
           paddingTop: 20,
-          backgroundColor: Theme.light_green,
-          color: Theme.light_green,
+          backgroundColor: Theme.white,
           flexDirection: "column",
           alignItems: "center",
           paddingLeft: 40,
@@ -58,7 +55,7 @@ const Studies = ({ isMobile }: Props) => {
       >
         <Text
           style={{
-            color: Theme.primary,
+            color: Theme.blue,
             fontSize: isMobile ? 24 : 70,
             textAlign: "center",
             marginBottom: 10,
@@ -69,7 +66,7 @@ const Studies = ({ isMobile }: Props) => {
         </Text>
         <Text
           style={{
-            color: Theme.primary,
+            color: Theme.blue,
             textAlign: "center",
             marginBottom: 20,
             fontFamily: RRFonts.Menlo,
@@ -77,7 +74,7 @@ const Studies = ({ isMobile }: Props) => {
           }}
         >
           {
-            "We tackle problems across the digital space from ubiquitous and cross-platform solutions to solutions specific to particular devices and platforms."
+            "I tackle problems across the digital space from ubiquitous and cross-platform solutions to solutions specific to particular devices and platforms."
           }
         </Text>
         <View
@@ -85,7 +82,7 @@ const Studies = ({ isMobile }: Props) => {
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
-            backgroundColor: Theme.light_green,
+            backgroundColor: Theme.white,
             flex: 1,
             alignItems: "center",
             justifyContent: "center",

@@ -47,7 +47,7 @@ const Menu = ({
       }}>
         <Text
           style={{
-            backgroundColor: Theme.light_green,
+            backgroundColor: Theme.maize,
             margin: 15,
             marginLeft: 25,
           }}
@@ -68,7 +68,7 @@ const Menu = ({
           display: "flex",
           flexDirection: "column",
           fontSize: 12,
-          backgroundColor: Theme.light_green,
+          backgroundColor: Theme.maize,
         }}
       >
         {routes.map((item) => {
@@ -100,12 +100,12 @@ const Menu = ({
         bottom: 0,
         left: 0,
         right: 0,
-        backgroundColor: Theme.light_green,
+        backgroundColor: Theme.maize,
       }}
     >
       <View
         style={{
-          backgroundColor: Theme.light_green,
+          backgroundColor: Theme.maize,
           display: "flex",
           flex: 1,
           justifyContent: "center",

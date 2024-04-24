@@ -143,7 +143,7 @@ const Home = ({
   const renderSplitLeftComponent = () =>
     renderOption(
       "MOBILE SOLUTIONS THIS WAY",
-      Theme.light_green,
+      Theme.maize,
       Theme.primary,
       "solutions",
       ScreenNavigationRoutes.SOLUTIONS
@@ -152,7 +152,7 @@ const Home = ({
     renderOption(
       "CASE STUDIES THIS WAY",
       Theme.primary,
-      Theme.light_green,
+      Theme.white,
       "cases",
       ScreenNavigationRoutes.CASES
     );
@@ -169,27 +169,6 @@ const Home = ({
       rightContent={renderCasesContent()}
     />
   );
-
-  const renderOverview = useCallback(() => {
-    return (
-      <View
-        style={{
-          padding: 50,
-          backgroundColor: Theme.light_blue,
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Text
-          style={{ flex: 1, textAlign: "center", fontFamily: RRFonts.Menlo }}
-        >
-          {
-            "Hello,  we are RoadRunner Creative. We design and create mobile applications for businesses."
-          }
-        </Text>
-      </View>
-    );
-  }, []);
 
   const renderSingleSolution = (solution: Record<string, any>) => {
     return (
@@ -254,33 +233,6 @@ const Home = ({
             fontStyle: "italic",
           }}
         >
-          <View
-            style={{
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              {SolutionsPreviewLinks.map((uri) => {
-                return (
-                  <Image
-                    key={uri}
-                    source={{ uri }}
-                    resizeMode="contain"
-                    style={{ height: 100, width: 100 }}
-                  />
-                );
-              })}
-            </View>
-            {"LEARN MORE"}
-          </View>
         </Text>
       </TouchableOpacity>
     );
@@ -294,7 +246,7 @@ const Home = ({
         }}
         style={{
           width: "100%",
-          backgroundColor: Theme.primary,
+          backgroundColor: Theme.white,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -305,7 +257,7 @@ const Home = ({
       >
         <Text
           style={{
-            color: Theme.light_green,
+            color: Theme.blue,
             textAlign: "center",
             fontSize: 40,
             fontFamily: RRFonts.RobotoMedium,
@@ -315,7 +267,7 @@ const Home = ({
         </Text>
         <Text
           style={{
-            color: Theme.light_green,
+            color: Theme.blue,
             textAlign: "center",
             marginTop: 40,
             fontSize: 25,
@@ -347,8 +299,6 @@ const Home = ({
           style={{ display: "flex", flex: 1, flexDirection: "column" }}
         >
           {renderTopOptions()}
-          {renderOverview()}
-          {renderSolutions()}
           {renderContact()}
         </View>
       </ScrollView>
