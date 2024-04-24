@@ -14,7 +14,6 @@ export interface CasesData {
     data: CasesDetailsDataType
 }
 
-
 export const CasesData: Array<CasesData> = [
     {
         featured_graphic: Ally,

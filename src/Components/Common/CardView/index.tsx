@@ -1,7 +1,5 @@
 import { View, Image, Text } from 'react-native'
 import { useDimensions } from 'react-native-web-hooks';
-import { RRFonts } from '../../../Config/Fonts';
-//import { motion } from "framer-motion";
 
 interface CardViewConfig {
   title: string,
@@ -35,6 +33,8 @@ const ServiceComponent = ({
   };
 
   const dimensions = useDimensions().window
+  //   <Image resizeMode='contain' source={{ uri: config.asset }} style={{ height: imageSize, }} />
+
 
   return (
     <View
@@ -52,18 +52,17 @@ const ServiceComponent = ({
         paddingHorizontal: 40,
         paddingBottom: 40.0,
         flexDirection: "column",
-        textAlign: "center",
+        textAlign: "left",
         backgroundColor: backgroundColor,
       }}
     >
-      <Image resizeMode='contain' source={{ uri: config.asset }} style={{ height: imageSize, }} />
       <Text
         style={{
           margin: 0,
           marginTop: 5,
           fontSize: 20,
           color: color,
-          textAlign: "center",
+          textAlign: "left",
         }}
       >
         {config.description}

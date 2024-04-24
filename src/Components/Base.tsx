@@ -48,12 +48,12 @@ const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisible }: 
     if (!doRenderTabs) {
       return null;
     }
-    let color: string = Theme.light_green;
+    let color: string = Theme.maize;
     let src = "assets/Branding/RR_WHITE.png";
 
     /* let bodyColor = document.body.style.backgroundColor;
     bodyColor = tinycolor(bodyColor).toHexString().toLocaleUpperCase();
-    if (bodyColor === Theme.light_green) {
+    if (bodyColor === Theme.maize) {
       color = Theme.primary;
       src = "assets/Branding/RR_GREEN.png";
     }
@@ -97,11 +97,11 @@ const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisible }: 
     if (doRenderTabs) {
       return null;
     }
-    let color: string = Theme.light_green;
+    let color: string = Theme.maize;
     /*
     let bodyColor = document.body.style.backgroundColor;
     bodyColor = tinycolor(bodyColor).toHexString().toLocaleUpperCase();
-    if (bodyColor === Theme.light_green) {
+    if (bodyColor === Theme.maize) {
       color = Theme.primary;
     }
     */

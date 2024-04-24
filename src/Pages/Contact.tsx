@@ -35,13 +35,13 @@ const Contact = ({
       transition={transition}
       animate={"visible"}
       variants={variants}
-      style={{ paddingTop, height: "100%", backgroundColor: Theme.primary }}
+      style={{ paddingTop, height: "100%", backgroundColor: Theme.white }}
     >
       <Text
         style={{
           paddingLeft: isMobile ? 20 : 50,
           paddingRight: isMobile ? 20 : 50,
-          color: Theme.light_green,
+          color: Theme.blue,
           fontSize: isMobile ? 20 : 30,
           height: 500,
           textAlign: "center",

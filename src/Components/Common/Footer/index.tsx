@@ -51,11 +51,11 @@ const SocialFooter = () => {
         bottom: 0,
         height: FOOTER_HEIGHT,
         width: "100%",
-        backgroundColor: Theme.light_blue,
+        backgroundColor: Theme.blue,
       }}
     >
-      {renderEmail(Theme.primary)}
-      {renderInstagram(Theme.primary)}
+      {renderEmail(Theme.maize)}
+      {renderInstagram(Theme.maize)}
     </View>
   );
 };

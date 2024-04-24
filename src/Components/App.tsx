@@ -46,12 +46,7 @@ const App = ({ updateWindow }: Props) => {
     updateWindow(windowDimensions);
   };
 
-  return (
-    <View>
-      <Base />
-      < Footer />
-    </View>
-  );
+
 };
 
 
