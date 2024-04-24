@@ -6,7 +6,7 @@ import * as RootNavigation from '../../../Navigation'
 const FOOTER_HEIGHT = 50.0;
 
 const SocialFooter = () => {
-  const renderEmail = useCallback((color: string) => {
+  const rendermaize = useCallback((color: string) => {
     return (
       <TouchableOpacity onPress={() => {
         RootNavigation.navigate("Contact")
@@ -33,7 +33,7 @@ const SocialFooter = () => {
       }
       >
         <Text style={{ color: color, fontStyle: "italic", fontSize: 14 }}>
-          {"@ROADRUNNER.CREATIVE"}
+          {"ALEX.H@ROADRUNNER.CREATIVE"}
         </Text>
       </TouchableOpacity>
     );

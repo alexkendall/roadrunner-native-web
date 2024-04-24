@@ -27,7 +27,6 @@ const mapStateToProps = (state: RootState) => {
 const Menu = ({
   visible,
   routes,
-  closeDrawer
 }: Props) => {
   const renderCloseButton = () => {
     return (
