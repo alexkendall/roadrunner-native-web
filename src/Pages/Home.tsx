@@ -288,9 +288,12 @@ const Home = ({
     duration: 4.0,
     delay: 0.0,
   };
+
+  const uri = isMobile ? "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/bio%2Falex_harrison_mobile%202.jpg?alt=media&token=419f66d6-c94d-4c64-8721-a8abc6572aef" : "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/bio%2Falex_harrison_profile.jpg?alt=media&token=96542dd8-21e7-49bb-91f0-5d8c723273b4"
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Theme.primary }}>
       <ScrollView style={{ height: "100%", width: "100%" }}>
+        <Image style={{width: "100%", height: 450}} source={{uri}}/>
         <View
           animate={"visible"}
           initial={"hidden"}

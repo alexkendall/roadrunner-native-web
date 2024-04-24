@@ -1,7 +1,7 @@
 import Theme from "../Config/Theme";
 import { connect } from "react-redux";
 import { RootState } from "../Redux/Store";
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { RRFonts } from "../Config/Fonts";
 import withFooter from "../Hoc/withFooter";
 
@@ -49,8 +49,14 @@ const Contact = ({
         }}
       >
         {
-          "Feel free to contact me at alex.h@roadrunnercreative.com and I will get to you as soon as possible."
+          "Feel free to contact me at"
         }
+      </Text>
+      <TouchableOpacity>
+        <Text>{"alex.h@roadrunnercreative.com"}</Text>
+      </TouchableOpacity>
+      <Text>
+        {"and I will get back to you as soon as possible."}
       </Text>
     </View>
   );
