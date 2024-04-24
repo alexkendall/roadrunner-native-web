@@ -48,8 +48,6 @@ const Solutions = ({
         style={{
           backgroundColor: Theme.white,
           width: "100%",
-          paddingLeft: isMobile ? 20 : 60,
-          paddingRight: isMobile ? 20 : 60,
           paddingBottom: "5%",
         }}
       >
@@ -130,19 +128,16 @@ const Solutions = ({
         <Text style={styles.header}>
           Mobile Solutions
         </Text>
-        <Text style={{paddingRight: isMobile ? 60 : 100, paddingLeft: isMobile ? 60 : 100,
-          fontSize: 20, marginTop: 20, marginLeft: 20}}>
+        <Text style={styles.body}>
           As a seasoned Senior React Native Developer and Software Engineer, I specialize in delivering innovative and robust mobile applications across various industries. With a solid foundation in Computer Science from the University of Michigan and expertise in a multitude of programming languages including TypeScript, Swift, Objective-C, Java, and Go, I've consistently spearheaded projects that push boundaries and exceed expectations.
         </Text>
         <Text style={styles.header}>
           Mobile Development Expertise:
         </Text>
-        <Text style={{paddingRight: isMobile ? 60 : 100, paddingLeft: isMobile ? 60 : 100,
-          fontSize: 20, marginTop: 20, marginLeft: 20}}>
+        <Text style={styles.body}>
           Throughout my tenure at esteemed companies like Swoogo, Ally, and Gen Con, I've showcased my proficiency in React-Native, shaping dynamic mobile experiences that resonate with users. From enhancing stability and implementing critical bug fixes to integrating offline sync functionality and expanding electronic ticketing capabilities, I've consistently elevated the performance and usability of mobile applications.
         </Text>
         <Text>
-        Innovative Solutions: Whether it's refactoring legacy applications, integrating new functionalities, or deploying updates with precision, I thrive on tackling complex challenges head-on. At Icon Interactive, I pioneered the development of cross-platform applications like ReacTube and crafted unified survey and analytics frameworks that streamlined operations and delivered actionable insights for clients like Autozone and Meritor.
         </Text>
           {renderFocus()}
         </View>
@@ -153,11 +148,14 @@ const Solutions = ({
 const styles = StyleSheet.create({
   header: {
     fontSize: 20,
-    textAlign: "left"
+    textAlign: "left",
+    marginTop: 30,
+    fontWeight: "600",
   },
   body: {
     fontSize: 20,
-    textAlign: "left"
+    textAlign: "left",
+    marginTop: 5,
   }
 })
 
