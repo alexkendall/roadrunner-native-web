@@ -25,15 +25,14 @@ const SocialFooter = () => {
     );
   }, [RootNavigation]);
 
-  const renderInstagram = useCallback((color: string) => {
+  const renderEmail = useCallback((color: string) => {
     return (
       <TouchableOpacity onPress={() => {
-        Linking.openURL("https://www.instagram.com/roadrunner.creative/")
-      }
+        Linking.openURL('mailto:alex.h@roadrunnercreative.com.com?subject=Inquiry&body=') }
       }
       >
         <Text style={{ color: color, fontStyle: "italic", fontSize: 14 }}>
-          {"ALEX.H@ROADRUNNER.CREATIVE"}
+          {"EMAIL   ALEX.H@ROADRUNNERCREATIVE.COM"}
         </Text>
       </TouchableOpacity>
     );
@@ -55,7 +54,6 @@ const SocialFooter = () => {
       }}
     >
       {renderEmail(Theme.maize)}
-      {renderInstagram(Theme.maize)}
     </View>
   );
 };

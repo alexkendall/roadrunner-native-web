@@ -45,11 +45,11 @@ const Contact = ({
           fontSize: isMobile ? 20 : 30,
           height: 500,
           textAlign: "center",
-          fontFamily: RRFonts.Menlo
+          fontFamily: RRFonts.RobotoMedium
         }}
       >
         {
-          "Contact us at info@roadrunnercreative.com and we will get to you as soon as possible."
+          "Feel free to contact me at alex.h@roadrunnercreative.com and I will get to you as soon as possible."
         }
       </Text>
     </View>

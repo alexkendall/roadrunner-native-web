@@ -44,13 +44,6 @@ const Solutions = ({
 
   const renderTopHeader = useCallback(() => {
     return (
-      <View
-        style={{
-          backgroundColor: Theme.white,
-          width: "100%",
-          paddingBottom: "5%",
-        }}
-      >
         <Text
           style={{
             fontSize: isMobile ? 20 : 60,
@@ -61,7 +54,6 @@ const Solutions = ({
         >
           {"SOLUTIONS"}
         </Text>
-      </View >
     );
   }, [isMobile]);
 
@@ -101,7 +93,6 @@ const Solutions = ({
           alignItems: "flex-start",
           flexDirection: "column",
           paddingTop: paddingTop,
-          paddingRight: paddingRight,
           paddingBottom: Platform.OS === "web" ? FOOTER_HEIGHT : 0,
           justifyContent: "center",
           backgroundColor: Theme.primary_light,
@@ -118,25 +109,25 @@ const Solutions = ({
           As a seasoned Senior React Native Developer and Software Engineer, I specialize in delivering innovative and robust mobile applications across various industries. With a solid foundation in Computer Science from the University of Michigan and expertise in a multitude of programming languages including TypeScript, Swift, Objective-C, Java, and Go, I've consistently spearheaded projects that push boundaries and exceed expectations.
         </Text>
         <Text style={styles.header}>
-          Mobile Development Expertise:
+          Mobile Development Expertise
         </Text>
         <Text style={styles.body}>
           Throughout my tenure at esteemed companies like Swoogo, Ally, and Gen Con, I've showcased my proficiency in React-Native, shaping dynamic mobile experiences that resonate with users. From enhancing stability and implementing critical bug fixes to integrating offline sync functionality and expanding electronic ticketing capabilities, I've consistently elevated the performance and usability of mobile applications.
         </Text>
         <Text style={styles.header}>
-          Client-Centric Approach:
+          Client-Centric Approach
         </Text>
         <Text style={styles.body}>
         Collaborating closely with stakeholders and engineering teams, I ensure that every solution aligns with business objectives and user needs. From conceptualization to deployment, I leverage my expertise to mentor junior engineers, drive product innovation, and exceed project milestones.
         </Text>
         <Text style={styles.header}>
-        Independent Contracts and Projects: 
+        Independent Contracts and Projects
         </Text>
         <Text style={styles.body}>
         From sole creation of mobile applications like CareExchange to providing key updates for Muze Frame and DND Mobile App, I've demonstrated my ability to deliver high-quality solutions independently and within diverse team environments.
         </Text>
         <Text style={styles.header}>
-        Beyond Mobile Development:
+        Beyond Mobile Development
         </Text>
         <Text style={styles.body}>
           My passion for technology extends beyond mobile development. Projects like Brooks Rec League, where I overhauled a local adult basketball league's web presence, showcase my versatility and commitment to delivering tailored solutions that make a lasting impact.

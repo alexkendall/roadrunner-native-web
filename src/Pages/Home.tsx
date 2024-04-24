@@ -274,7 +274,7 @@ const Home = ({
             fontFamily: RRFonts.RobotoBoldIttalic,
           }}
         >
-          {"CONTACT US"}
+          {"CONTACT ME"}
         </Text>
       </TouchableOpacity>
     );
