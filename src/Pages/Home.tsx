@@ -70,8 +70,6 @@ const Home = ({
           }}
           style={{
             padding: paddingHorizontal,
-            paddingTop: paddingVertical,
-            paddingBottom: paddingVertical,
             backgroundColor,
             border: "1px solid black",
             borderRightWidth: 0,
@@ -105,7 +103,6 @@ const Home = ({
       route: string
     ) => {
       const paddingHorizontal: number = isMobile ? 50.0 : 100.0;
-      const paddingVertical: number = isMobile ? 100.0 : 200.0;
       return (
         <TouchableOpacity
           onPress={() => {
@@ -114,8 +111,6 @@ const Home = ({
           style={{
             width: "100%",
             padding: paddingHorizontal,
-            paddingTop: paddingVertical,
-            paddingBottom: paddingVertical,
             backgroundColor,
             borderRightWidth: 0,
             borderLeftWidth: 0,
