@@ -15,7 +15,7 @@ import Theme from "../src/Config/Theme";
 import { useFonts } from "expo-font";
 import { RRFonts } from "../src/Config/Fonts";
 import { navigationRef } from "../src/Navigation";
-import { ActivityIndicator, View, Image, Text } from "react-native";
+import { ActivityIndicator, View, Text } from "react-native";
 import { BackButton } from "../src/Components/Common/BackButton";
 const Stack = createNativeStackNavigator();
 const FONT_LOAD_DELAY_MS = 240;
