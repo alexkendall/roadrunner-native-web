@@ -59,21 +59,7 @@ const Solutions = ({
             marginBottom: 10,
           }}
         >
-          {"OUR SOLUTIONS"}
-        </Text>
-        <Text
-          style={{
-            zIndex: 1,
-            color: Theme.blue,
-            textAlign: "left",
-            maxWidth: 1000,
-            fontSize: 20,
-            fontFamily: RRFonts.RobotoMedium
-          }}
-        >
-          {
-            "We create solutions in the mobile space using the latest technology and guidelines."
-          }
+          {"SOLUTIONS"}
         </Text>
       </View >
     );
