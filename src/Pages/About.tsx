@@ -52,7 +52,7 @@ const Solutions = ({
             marginBottom: 10,
           }}
         >
-          {"SOLUTIONS"}
+          {"ABOUT"}
         </Text>
     );
   }, [isMobile]);
@@ -103,13 +103,13 @@ const Solutions = ({
         {renderTopHeader()}
       
         <Text style={styles.header}>
-          Mobile Solutions
+          Mobile Background
         </Text>
         <Text style={styles.body}>
           As a seasoned Senior React Native Developer and Software Engineer, I specialize in delivering innovative and robust mobile applications across various industries. With a solid foundation in Computer Science from the University of Michigan and expertise in a multitude of programming languages including TypeScript, Swift, Objective-C, Java, and Go, I've consistently spearheaded projects that push boundaries and exceed expectations.
         </Text>
         <Text style={styles.header}>
-          Mobile Development Expertise
+          Applications and Experience
         </Text>
         <Text style={styles.body}>
           Throughout my tenure at esteemed companies like Swoogo, Ally, and Gen Con, I've showcased my proficiency in React-Native, shaping dynamic mobile experiences that resonate with users. From enhancing stability and implementing critical bug fixes to integrating offline sync functionality and expanding electronic ticketing capabilities, I've consistently elevated the performance and usability of mobile applications.

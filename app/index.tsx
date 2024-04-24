@@ -3,8 +3,8 @@ import store from "../src/Redux/Store";
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "../src/Pages/Home";
 import Cases from "../src/Pages/Cases";
-import Solutions from "../src/Pages/Solutions";
 import Contact from "../src/Pages/Contact";
+import About from "../src/Pages/About";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { dispatch } from "../src/Redux/Store";
 import { useEffect, useState } from "react";
@@ -87,8 +87,8 @@ export default () => {
           <Stack.Screen name={ScreenNavigationRoutes.HOME} component={Home} />
           <Stack.Screen name={ScreenNavigationRoutes.CASES} component={Cases} />
           <Stack.Screen
-            name={ScreenNavigationRoutes.SOLUTIONS}
-            component={Solutions}
+            name={ScreenNavigationRoutes.ABOUT}
+            component={About}
           />
           <Stack.Screen
             name={ScreenNavigationRoutes.CONTACT}

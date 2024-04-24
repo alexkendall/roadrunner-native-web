@@ -2,7 +2,7 @@ import { useEffect, useCallback } from "react";
 import { connect } from "react-redux";
 import Theme from "../Config/Theme";
 import SplitView from "../Components/Common/SplitView";
-import Solutions from "./Solutions";
+import About from "./About";
 import Cases from "./Cases";
 import { RootState } from "../Redux/Store";
 import {
@@ -69,7 +69,6 @@ const Home = ({
             navigation.navigate(route);
           }}
           style={{
-            height: SPLIT_VIEW_HEIGHT_WEB,
             padding: paddingHorizontal,
             paddingTop: paddingVertical,
             paddingBottom: paddingVertical,
@@ -142,143 +141,27 @@ const Home = ({
   const renderOption = isMobile ? renderOptionMobile : renderOptionWeb;
   const renderSplitLeftComponent = () =>
     renderOption(
-      "MOBILE SOLUTIONS THIS WAY",
+      "ABOUT",
       Theme.maize,
       Theme.primary,
-      "solutions",
-      ScreenNavigationRoutes.SOLUTIONS
+      "about",
+      ScreenNavigationRoutes.ABOUT
     );
   const renderSplitRightComponent = () =>
     renderOption(
-      "CASE STUDIES THIS WAY",
+      "CASE STUDIES",
       Theme.primary,
       Theme.white,
       "cases",
       ScreenNavigationRoutes.CASES
     );
-  const renderSolutionsContent = () => <Solutions />;
-  const renderCasesContent = () => <Cases />;
 
   const renderTopOptions = () => (
-    <SplitView
-      navigation={navigation}
-      height={SPLIT_VIEW_HEIGHT_WEB}
-      leftComponent={renderSplitLeftComponent()}
-      rightComponent={renderSplitRightComponent()}
-      leftContent={renderSolutionsContent()}
-      rightContent={renderCasesContent()}
-    />
-  );
-
-  const renderSingleSolution = (solution: Record<string, any>) => {
-    return (
-      <View
-        key={solution?.label}
-        style={{ margin: 20, alignItems: "center", justifyContent: "center" }}
-      >
-        <Image
-          style={{
-            width: dimensions.width * 0.3,
-            height: dimensions.width * 0.3,
-            maxHeight: 280,
-            maxWidth: 280,
-          }}
-          source={{ uri: solution?.icon }}
-          resizeMode={"contain"}
-        />
-        <Text
-          style={{
-            textAlign: "center",
-            marginTop: 10,
-            fontFamily: RRFonts.Menlo,
-          }}
-        >
-          {solution?.label}
-        </Text>
-      </View>
-    );
-  };
-
-  const renderSolutions = useCallback(() => {
-    const solutions: Array<Record<string, any>> =
-      homepage_data?.solutions ?? [];
-    const title = homepage_data?.solutions_title;
-    return (
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate(ScreenNavigationRoutes.SOLUTIONS);
-        }}
-        style={{
-          width: "100%",
-          backgroundColor: Theme.white,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          paddingBottom: 40,
-        }}
-      >
-        <Text style={{ color: Theme.primary, textAlign: "center" }}>
-          {title}
-        </Text>
-        <View style={{ display: "flex", flexDirection: "row" }}>
-          <Image />
-        </View>
-        <Text
-          style={{
-            marginTop: 40,
-            color: Theme.primary,
-            fontSize: 25,
-            fontWeight: "600",
-            fontStyle: "italic",
-          }}
-        >
-        </Text>
-      </TouchableOpacity>
-    );
-  }, [content_width, homepage_data, renderSingleSolution]);
-
-  const renderContact = () => {
-    return (
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate(ScreenNavigationRoutes.CONTACT);
-        }}
-        style={{
-          width: "100%",
-          backgroundColor: Theme.white,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: 40,
-          marginBottom: 40,
-        }}
-      >
-        <Text
-          style={{
-            color: Theme.blue,
-            textAlign: "center",
-            fontSize: 40,
-            fontFamily: RRFonts.RobotoMedium,
-          }}
-        >
-          {"LIKE WHAT YOU SEE?"}
-        </Text>
-        <Text
-          style={{
-            color: Theme.blue,
-            textAlign: "center",
-            marginTop: 40,
-            fontSize: 25,
-            fontFamily: RRFonts.RobotoBoldIttalic,
-          }}
-        >
-          {"CONTACT ME"}
-        </Text>
-      </TouchableOpacity>
-    );
-  };
+    <View>
+      {renderSplitLeftComponent()}
+      {renderSplitRightComponent()}
+    </View>
+  )
 
   const variants = {
     hidden: { opacity: 0 },
@@ -302,7 +185,6 @@ const Home = ({
           style={{ display: "flex", flex: 1, flexDirection: "column" }}
         >
           {renderTopOptions()}
-          {renderContact()}
         </View>
       </ScrollView>
     </SafeAreaView>
