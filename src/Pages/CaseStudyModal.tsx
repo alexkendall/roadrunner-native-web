@@ -64,12 +64,13 @@ const CaseStudyModal = ({
         color: Theme.primary, marginTop: isMobile ? 20.0 : 0.0, fontWeight: "600",
         marginBottom: 10,
         fontSize: isMobile ? 20 : 24,
-        fontFamily: RRFonts.RobotoMediumIttalic,
+        fontFamily: RRFonts.RobotoBlack,
       },
       content: {
         fontSize: isMobile ? 13 : 16,
         color: Theme.primary,
-        fontFamily: RRFonts.Menlo,
+        fontFamily: RRFonts.RobotoMedium,
+        fontWeight: "800"
       },
       thumbnailImage: {
         height: dimensions.width * 0.2,
@@ -78,7 +79,7 @@ const CaseStudyModal = ({
       typeLabel: {
         fontSize: isMobile ? 20 : 24,
         color: Theme.primary,
-        fontFamily: RRFonts.RobotoMediumIttalic,
+        fontFamily: RRFonts.RobotoMedium,
       }
     })
   }, [dimensions, isMobile])

@@ -92,7 +92,7 @@ const Solutions = ({
           display: "flex",
           alignItems: "flex-start",
           flexDirection: "column",
-          paddingTop: paddingTop,
+          paddingTop: 30,
           paddingBottom: Platform.OS === "web" ? FOOTER_HEIGHT : 0,
           justifyContent: "center",
           backgroundColor: Theme.primary_light,

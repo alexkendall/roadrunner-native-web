@@ -35,7 +35,7 @@ const Contact = ({
       transition={transition}
       animate={"visible"}
       variants={variants}
-      style={{ paddingTop, height: "100%", backgroundColor: Theme.white }}
+      style={{ paddingTop: 40, height: "100%", backgroundColor: Theme.white }}
     >
       <Text
         style={{
