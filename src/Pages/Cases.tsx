@@ -64,19 +64,6 @@ const Studies = ({ isMobile }: Props) => {
         >
           {"CASE STUDIES"}
         </Text>
-        <Text
-          style={{
-            color: Theme.blue,
-            textAlign: "center",
-            marginBottom: 20,
-            fontFamily: RRFonts.Menlo,
-            fontSize: isMobile ? 16 : 20,
-          }}
-        >
-          {
-            "I tackle problems across the digital space from ubiquitous and cross-platform solutions to solutions specific to particular devices and platforms."
-          }
-        </Text>
         <View
           style={{
             display: "flex",
