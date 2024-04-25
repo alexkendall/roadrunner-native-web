@@ -9,7 +9,7 @@
     "build-web": "npx expo export --platform web",
     "web": "expo start --web"
   },
-  "packageManager": "yarn@1.22.21.",
+  "packageManager": "yarn@1.22.21",
   "dependencies": {
     "@expo/metro-runtime": "~3.1.1",
     "@react-navigation/native": "^6.1.9",

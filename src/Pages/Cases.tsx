@@ -77,17 +77,12 @@ const Studies = ({ isMobile }: Props) => {
         >
           {CasesData.map((payload, index) => {
             return (
-              <TouchableOpacity key={index.toString()} onPress={() => {
-                setDisplayModal(true)
-                setModalPayload(payload)
-              }}>
               <Image
                 key={index.toString()}
                 resizeMode="contain"
                 source={{ uri: payload.featured_graphic }}
                 style={{ height: 100, width: 250, margin: 20 }}
               />
-              </TouchableOpacity>
             );
           })}
         </View>
