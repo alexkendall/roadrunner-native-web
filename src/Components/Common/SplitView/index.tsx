@@ -1,7 +1,7 @@
 import { ReactNode, useState } from "react";
 import { connect } from "react-redux";
 import { RootState } from "../../../Redux/Store";
-import { View } from 'react-native'
+import { View } from "react-native";
 
 const SPLIT_VIEW_MODES = {
   DEFAULT: "DEFAULT",
@@ -69,7 +69,7 @@ const SplitView = ({
         <View style={{ flex: 1 }} onMouseOver={onMouseOverLeft}>
           {leftComponent}
         </View>
-        <View style={{ flex: 1, }} onMouseOver={onMouseOverRight}>
+        <View style={{ flex: 1 }} onMouseOver={onMouseOverRight}>
           {rightComponent}
         </View>
       </View>
@@ -130,8 +130,7 @@ const SplitView = ({
   ) {
     return renderHoverPreview();
   }
-  const content =
-    mode === SPLIT_VIEW_MODES.LEFT ? leftContent : rightContent;
+  const content = mode === SPLIT_VIEW_MODES.LEFT ? leftContent : rightContent;
   return <View>{content}</View>;
 };
 

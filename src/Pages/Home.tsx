@@ -144,7 +144,7 @@ const Home = ({
     );
   const renderSplitRightComponent = () =>
     renderOption(
-      "CASE STUDIES",
+      "CLIENTS",
       Theme.primary,
       Theme.white,
       "cases",
@@ -156,7 +156,7 @@ const Home = ({
       {renderSplitLeftComponent()}
       {renderSplitRightComponent()}
     </View>
-  )
+  );
 
   const variants = {
     hidden: { opacity: 0 },
@@ -167,11 +167,13 @@ const Home = ({
     delay: 0.0,
   };
 
-  const uri = isMobile ? "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/bio%2Falex_harrison_mobile%202.jpg?alt=media&token=419f66d6-c94d-4c64-8721-a8abc6572aef" : "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/bio%2Falex_harrison_profile.jpg?alt=media&token=7234e499-9f37-4621-9345-b45cd3c863d2"
+  const uri = isMobile
+    ? "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/bio%2Falex_harrison_mobile%202.jpg?alt=media&token=419f66d6-c94d-4c64-8721-a8abc6572aef"
+    : "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/bio%2Falex_harrison_profile.jpg?alt=media&token=7234e499-9f37-4621-9345-b45cd3c863d2";
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Theme.primary }}>
       <ScrollView style={{ height: "100%", width: "100%" }}>
-        <Image style={{width: "100%", height: 450}} source={{uri}}/>
+        <Image style={{ width: "100%", height: 450 }} source={{ uri }} />
         <View
           animate={"visible"}
           initial={"hidden"}
