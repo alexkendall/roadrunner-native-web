@@ -4,7 +4,7 @@ import Theme from "../Config/Theme";
 import CaseStudyModal from "./CaseStudyModal";
 import { RootState } from "../Redux/Store";
 import { WordpressPost } from "../Redux/Slices/WordpressSlice";
-import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import { RRFonts } from "../Config/Fonts";
 import withFooter from "../Hoc/withFooter";
 import { CasesData } from "../Config/Cases";
@@ -44,7 +44,7 @@ const Studies = ({ isMobile }: Props) => {
           alignItems: "center",
           paddingLeft: 40,
           paddingRight: 40,
-          paddingBottom: 20,
+          paddingBottom: 60,
         }}
       >
         <Text

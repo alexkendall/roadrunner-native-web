@@ -172,14 +172,14 @@ const Home = ({
     : "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/bio%2Falex_harrison_profile.jpg?alt=media&token=7234e499-9f37-4621-9345-b45cd3c863d2";
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Theme.primary }}>
-      <ScrollView style={{ height: "100%", width: "100%" }}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{ height: "100%", width: "100%", paddingBottom: 50 }}>
         <Image style={{ width: "100%", height: 450 }} source={{ uri }} />
         <View
           animate={"visible"}
           initial={"hidden"}
           variants={variants}
           transition={transition}
-          style={{ display: "flex", flex: 1, flexDirection: "column" }}
+          style={{ display: "flex", flexDirection: "column" }}
         >
           {renderTopOptions()}
         </View>

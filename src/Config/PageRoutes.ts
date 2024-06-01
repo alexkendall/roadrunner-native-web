@@ -33,9 +33,9 @@ export default {
   },
   Page2: {
     index: 4,
-    key: "cases",
-    label: "Case Studies",
-    path: "/cases",
+    key: "clients",
+    label: "Clients",
+    path: "/clients",
     component: Cases,
     main: true,
   },
@@ -51,7 +51,7 @@ export default {
 
 export const ScreenNavigationRoutes = {
   HOME: "Roadrunner",
-  CASES: "Cases",
+  CASES: "Clients",
   ABOUT: "About",
   CONTACT: "Contact"
 }
