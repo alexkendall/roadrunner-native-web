@@ -10,7 +10,7 @@ export const BackButton = ({ onPress }: Props) => {
     return (
       <Image
         resizeMode="contain"
-        style={{ width: 60, height: 35, marginLeft: 10 }}
+        style={{ width: 80, height: 80, marginLeft: 10 }}
         source={{
           uri: 'https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Navigation%2FRRH2.png?alt=media&token=f90338bc-7500-417e-9ed2-12e0441b2af3',
         }}
