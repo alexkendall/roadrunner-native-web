@@ -1,13 +1,13 @@
-import { Dimensions } from "react-native";
+import { Dimensions } from 'react-native';
 
 type WindowDimensionTpe = {
-  height: number,
-  width: number,
-}
+  height: number;
+  width: number;
+};
 type WindowStateHandler = (state: WindowDimensionTpe) => void;
 
 export function addWindowStateListener(handler: WindowStateHandler) {
-  const { height, width } = Dimensions.get('window')
+  const { height, width } = Dimensions.get('window');
   handler({ height, width });
 }
 

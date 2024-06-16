@@ -1,4 +1,4 @@
-import { WordpressPost, WordpressCategory } from "../Redux/Slices/WordpressSlice";
+import { WordpressPost, WordpressCategory } from '../Redux/Slices/WordpressSlice';
 
 export default class WPUtilityManager {
   static filterPostsByCategory(
@@ -46,7 +46,7 @@ export default class WPUtilityManager {
 
   static stripTags(str: string): string {
     const regex = /(<([^>]+)>)/gi;
-    const result = str.replace(regex, "").replace(/(\r\n|\n|\r)/gm, "");
+    const result = str.replace(regex, '').replace(/(\r\n|\n|\r)/gm, '');
     return result;
   }
 }
