@@ -1,22 +1,21 @@
 @font-face {
   font-family: 'Menlo';
-  src: url('Fonts/Menlo.ttc'); 
+  src: url('Fonts/Menlo.ttc');
 }
 
 @font-face {
   font-family: 'Minion';
-  src: url('Fonts/MinionPro-Regular.otf'); 
+  src: url('Fonts/MinionPro-Regular.otf');
 }
 
 @font-face {
   font-family: 'Graphik';
-  src: url('Fonts/Graphik-MediumItalic.otf'); 
+  src: url('Fonts/Graphik-MediumItalic.otf');
 }
 
 * {
-  font-family: "Menlo"
+  font-family: 'Menlo';
 }
-
 
 #Tabs {
   padding-left: 20;
@@ -24,12 +23,12 @@
 }
 
 #slogan {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-size: 40;
 }
 
 h3 {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-weight: 300;
   margin: 50;
 }
@@ -40,12 +39,12 @@ h3 {
 
 #drawer_list_container {
   padding: 0px;
-  background-color: "white";
+  background-color: 'white';
 }
 
 #drawer_list_item {
   height: 49px;
-  border-bottom-color: "grey";
+  border-bottom-color: 'grey';
   border-bottom-style: solid;
   border-bottom-width: 1px;
 }

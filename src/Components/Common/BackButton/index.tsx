@@ -1,14 +1,20 @@
-import { TouchableOpacity } from "react-native";
-import { navigationRef } from "../../../Navigation";
-import { Image } from "react-native";
+import { TouchableOpacity } from 'react-native'
+import { navigationRef } from '../../../Navigation'
+import { Image } from 'react-native'
 
 interface Props {
   onPress?: () => void
 }
-export const BackButton = ({onPress} : Props) => {
+export const BackButton = ({ onPress }: Props) => {
   if (!navigationRef || !navigationRef || !navigationRef?.canGoBack()) {
     return (
-      <Image resizeMode="contain" style={{width: 50, height: 50, marginLeft: 10}} source={{uri: "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/bio%2FBlock_M-Hex.png?alt=media&token=de195572-c606-47cb-a972-4e98416800ff"}}/>
+      <Image
+        resizeMode="contain"
+        style={{ width: 60, height: 35, marginLeft: 10 }}
+        source={{
+          uri: 'https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Navigation%2FRRH2.png?alt=media&token=f90338bc-7500-417e-9ed2-12e0441b2af3',
+        }}
+      />
     )
   }
 
@@ -16,8 +22,8 @@ export const BackButton = ({onPress} : Props) => {
     <TouchableOpacity onPress={onPress ?? navigationRef.goBack}>
       <Image
         style={{ height: 20, width: 20, marginLeft: 10 }}
-        source={require("../../../../assets/Branding/chevron_back.png")}
+        source={require('../../../../assets/Branding/chevron_back.png')}
       />
     </TouchableOpacity>
-  );
-};
+  )
+}

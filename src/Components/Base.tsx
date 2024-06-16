@@ -1,26 +1,26 @@
-import { useCallback } from "react";
-import PageRoutes from "../Config/PageRoutes";
-import Tabs from "./Common/Tabs/Tabs";
+import { useCallback } from 'react'
+import PageRoutes from '../Config/PageRoutes'
+import Tabs from './Common/Tabs/Tabs'
 //import MenuIcon from "@material-ui/icons/Menu";
 //import IconButton from "@material-ui/core/IconButton";
-import Theme from "../Config/Theme";
-import { connect } from "react-redux";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { NativeRouter, Route as NativeRoute, Link } from "react-router-native";
-import Menu from "./Common/MobileMenu";
-import { setMenuVisibility } from "../Redux/Slices/WindowSlice";
-import { RootState } from "../Redux/Store";
-import { Action, Dispatch } from "redux";
+import Theme from '../Config/Theme'
+import { connect } from 'react-redux'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { NativeRouter, Route as NativeRoute, Link } from 'react-router-native'
+import Menu from './Common/MobileMenu'
+import { setMenuVisibility } from '../Redux/Slices/WindowSlice'
+import { RootState } from '../Redux/Store'
+import { Action, Dispatch } from 'redux'
 import { TouchableOpacity, View, Text, Platform, SafeAreaView } from 'react-native'
 
 interface Props {
-  doRenderTabs: boolean;
-  tab_height: number;
-  footer_height: number;
-  content_height: number;
-  content_width: number;
-  menu_visible: boolean;
-  setMenuVisible: (visible: boolean) => void;
+  doRenderTabs: boolean
+  tab_height: number
+  footer_height: number
+  content_height: number
+  content_width: number
+  menu_visible: boolean
+  setMenuVisible: (visible: boolean) => void
 }
 
 const mapStateToProps = (state: RootState) => {
@@ -31,25 +31,24 @@ const mapStateToProps = (state: RootState) => {
     content_width: state.window.content_width,
     doRenderTabs: state.window.doRenderTabs,
     menu_visible: state.window.menu_visible,
-  };
-};
+  }
+}
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
   return {
     setMenuVisible: (visible: boolean) => {
-      dispatch(setMenuVisibility(visible));
-    }
-  };
-};
+      dispatch(setMenuVisibility(visible))
+    },
+  }
+}
 
 const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisible }: Props) => {
-
   const renderTabs = useCallback(() => {
     if (!doRenderTabs) {
-      return null;
+      return null
     }
-    let color: string = Theme.maize;
-    let src = "assets/Branding/RR_WHITE.png";
+    let color: string = Theme.maize
+    let src = 'assets/Branding/RR_WHITE.png'
 
     /* let bodyColor = document.body.style.backgroundColor;
     bodyColor = tinycolor(bodyColor).toHexString().toLocaleUpperCase();
@@ -63,18 +62,18 @@ const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisible }: 
       <View
         style={{
           backgroundColor: bodyColor,
-          display: "flex",
+          display: 'flex',
           zIndex: 2,
-          flexDirection: "row",
+          flexDirection: 'row',
           right: 0,
           left: 0,
           top: 0,
           bottom: 0,
           flex: 1,
-          alignItems: "center",
-          alignContent: "center",
-          justifyContent: "space-between",
-          textAlign: "center",
+          alignItems: 'center',
+          alignContent: 'center',
+          justifyContent: 'space-between',
+          textAlign: 'center',
         }}
       >
         <Tabs
@@ -82,22 +81,22 @@ const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisible }: 
           color={color}
           hoverColor={color}
           tabs={Object.values(PageRoutes).filter((tab) => {
-            return tab.main;
+            return tab.main
           })}
         />
       </View>
-    );
-  }, [PageRoutes, doRenderTabs]);
+    )
+  }, [PageRoutes, doRenderTabs])
 
   const toggleDrawer = () => {
-    setMenuVisible(true);
-  };
+    setMenuVisible(true)
+  }
 
   const renderMenuButton = useCallback(() => {
     if (doRenderTabs) {
-      return null;
+      return null
     }
-    let color: string = Theme.maize;
+    let color: string = Theme.maize
     /*
     let bodyColor = document.body.style.backgroundColor;
     bodyColor = tinycolor(bodyColor).toHexString().toLocaleUpperCase();
@@ -107,28 +106,20 @@ const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisible }: 
     */
     return (
       <TouchableOpacity onPress={toggleDrawer}>
-        <Text>{"MENU BUTTON PLACEHOLDER"}</Text>
+        <Text>{'MENU BUTTON PLACEHOLDER'}</Text>
       </TouchableOpacity>
-
-    );
-  }, [doRenderTabs, toggleDrawer]);
+    )
+  }, [doRenderTabs, toggleDrawer])
 
   const renderRoutes = useCallback(() => {
-    if (Platform.OS === "web") {
+    if (Platform.OS === 'web') {
       return (
         <Router>
           {Object.values(PageRoutes).map((route, index) => {
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                exact
-                component={route.component}
-              />
-            );
+            return <Route key={index} path={route.path} exact component={route.component} />
           })}
         </Router>
-      );
+      )
     }
     return (
       <NativeRouter>
@@ -140,55 +131,46 @@ const MobileApp = ({ doRenderTabs, tab_height, footer_height, setMenuVisible }: 
               exact
               component={route.component}
             />
-          );
+          )
         })}
       </NativeRouter>
     )
-  }, [PageRoutes]);
-
-
+  }, [PageRoutes])
 
   const renderMenu = useCallback(() => {
-    return (
-      <Menu
-        routes={Object.values(PageRoutes)}
-      />
-    );
-  }, [PageRoutes]);
+    return <Menu routes={Object.values(PageRoutes)} />
+  }, [PageRoutes])
 
   return (
     <SafeAreaView
       style={{
-        display: "flex",
-        flexDirection: "column",
-        alignSelf: "flex-grow",
-        alignContent: "flex-grow",
+        display: 'flex',
+        flexDirection: 'column',
+        alignSelf: 'flex-grow',
+        alignContent: 'flex-grow',
       }}
       className="App"
     >
       {renderMenu()}
       <View
         style={{
-          position: "fixed",
+          position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
           height: tab_height,
           zIndex: 10,
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "flex-start",
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'flex-start',
         }}
       >
         {renderMenuButton()}
         {renderTabs()}
       </View>
-      <View style={{ paddingBottom: footer_height }}>
-        {renderRoutes()}
-      </View>
+      <View style={{ paddingBottom: footer_height }}>{renderRoutes()}</View>
     </SafeAreaView>
-  );
+  )
+}
 
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(MobileApp);
+export default connect(mapStateToProps, mapDispatchToProps)(MobileApp)

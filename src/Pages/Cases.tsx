@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { connect } from "react-redux";
-import Theme from "../Config/Theme";
-import CaseStudyModal from "./CaseStudyModal";
-import { RootState } from "../Redux/Store";
-import { WordpressPost } from "../Redux/Slices/WordpressSlice";
-import { View, Text, Image, ScrollView } from "react-native";
-import { RRFonts } from "../Config/Fonts";
-import withFooter from "../Hoc/withFooter";
-import { CasesData } from "../Config/Cases";
+import { useState } from 'react'
+import { connect } from 'react-redux'
+import Theme from '../Config/Theme'
+import CaseStudyModal from './CaseStudyModal'
+import { RootState } from '../Redux/Store'
+import { WordpressPost } from '../Redux/Slices/WordpressSlice'
+import { View, Text, Image, ScrollView } from 'react-native'
+import { RRFonts } from '../Config/Fonts'
+import withFooter from '../Hoc/withFooter'
+import { CasesData } from '../Config/Cases'
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -18,30 +18,30 @@ const mapStateToProps = (state: RootState) => {
     isMobile: state.window.isMobile,
     content_height: state.window.content_height,
     content_width: state.window.content_width,
-  };
-};
+  }
+}
 
 interface Props {
-  posts: Array<WordpressPost>;
-  paddingTop: number;
-  isMobile: boolean;
-  content_height: number;
-  content_width: number;
+  posts: Array<WordpressPost>
+  paddingTop: number
+  isMobile: boolean
+  content_height: number
+  content_width: number
 }
 
 const Studies = ({ isMobile }: Props) => {
-  const [showModal, setDisplayModal] = useState(false);
-  const [modalPayload, setModalPayload] = useState({});
+  const [showModal, setDisplayModal] = useState(false)
+  const [modalPayload, setModalPayload] = useState({})
 
   return (
-    <ScrollView style={{ height: "100%", backgroundColor: Theme.white }}>
+    <ScrollView style={{ height: '100%', backgroundColor: Theme.white }}>
       <View
         style={{
-          display: "flex",
+          display: 'flex',
           paddingTop: 20,
           backgroundColor: Theme.white,
-          flexDirection: "column",
-          alignItems: "center",
+          flexDirection: 'column',
+          alignItems: 'center',
           paddingLeft: 40,
           paddingRight: 40,
           paddingBottom: 60,
@@ -51,22 +51,22 @@ const Studies = ({ isMobile }: Props) => {
           style={{
             color: Theme.blue,
             fontSize: isMobile ? 24 : 70,
-            textAlign: "center",
+            textAlign: 'center',
             marginBottom: 10,
             fontFamily: RRFonts.RobotoBoldIttalic,
           }}
         >
-          {"CLIENTS"}
+          {'CLIENTS'}
         </Text>
         <View
           style={{
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
             backgroundColor: Theme.white,
             flex: 1,
-            alignItems: "center",
-            justifyContent: "center",
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           {CasesData.map((payload, index) => {
@@ -77,19 +77,19 @@ const Studies = ({ isMobile }: Props) => {
                 source={{ uri: payload.featured_graphic }}
                 style={{ height: 100, width: 250, margin: 20 }}
               />
-            );
+            )
           })}
         </View>
         <CaseStudyModal
           onClose={() => {
-            setDisplayModal(false);
+            setDisplayModal(false)
           }}
           data={modalPayload}
           visible={showModal}
         />
       </View>
     </ScrollView>
-  );
-};
+  )
+}
 
-export default withFooter(connect(mapStateToProps)(Studies));
+export default withFooter(connect(mapStateToProps)(Studies))
