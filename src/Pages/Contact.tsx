@@ -17,15 +17,7 @@ interface Props {
   isMobile: boolean
 }
 
-const Contact = ({ paddingTop, isMobile }: Props) => {
-  const variants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-  }
-  const transition = {
-    duration: 4.0,
-    delay: 0.0,
-  }
+const Contact = ({ isMobile }: Props) => {
   return (
     <View style={{ paddingTop: 40, height: '100%', backgroundColor: Theme.white }}>
       <Text

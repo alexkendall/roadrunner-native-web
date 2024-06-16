@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import Theme from '../Config/Theme'
 import { RootState } from '../Redux/Store'
 import { View, Image, Text, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
-import { useDimensions } from 'react-native-web-hooks'
 import { useNavigation } from '@react-navigation/native'
 import { ScreenNavigationRoutes } from '../Config/PageRoutes'
 import { RRFonts } from '../Config/Fonts'
@@ -21,8 +20,6 @@ const mapStateToProps = (state: RootState) => {
   return props
 }
 
-const SPLIT_VIEW_HEIGHT_WEB = 750
-
 interface Props {
   content_height: number
   content_width: number
@@ -32,14 +29,11 @@ interface Props {
 }
 
 const Home = ({ isMobile }: Props) => {
-  const dimensions = useDimensions().window
-
   const navigation = useNavigation()
 
   const renderOptionWeb = useCallback(
     (text: string, color: string, backgroundColor: string, link: string, route: string) => {
       const paddingHorizontal: number = isMobile ? 50.0 : 100.0
-      const paddingVertical: number = isMobile ? 100.0 : 200.0
       return (
         <TouchableOpacity
           onPress={() => {
@@ -116,15 +110,6 @@ const Home = ({ isMobile }: Props) => {
       {renderSplitRightComponent()}
     </View>
   )
-
-  const variants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-  }
-  const transition = {
-    duration: 4.0,
-    delay: 0.0,
-  }
 
   const uri = isMobile
     ? 'https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/bio%2Falex_harrison_mobile%202.jpg?alt=media&token=419f66d6-c94d-4c64-8721-a8abc6572aef'
