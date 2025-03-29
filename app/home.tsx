@@ -1,12 +1,12 @@
 import { useCallback } from 'react'
 import { connect } from 'react-redux'
-import Theme from '../Config/Theme'
-import { RootState } from '../Redux/Store'
+import Theme from '../src/Config/Theme'
+import { RootState } from '../src/Redux/Store'
 import { View, Image, Text, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
-import { ScreenNavigationRoutes } from '../Config/PageRoutes'
-import { RRFonts } from '../Config/Fonts'
-import withFooter from '../Hoc/withFooter'
+import { ScreenNavigationRoutes } from '../src/Config/PageRoutes'
+import { RRFonts } from '../src/Config/Fonts'
+import withFooter from '../src/Hoc/withFooter'
+import { useNavigation } from 'expo-router'
 
 const mapStateToProps = (state: RootState) => {
   const props = {

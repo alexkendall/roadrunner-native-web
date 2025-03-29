@@ -1,9 +1,8 @@
-import Solutions from "../Pages/Solutions";
 import Contact from "../Pages/Contact";
 import Cases from "../Pages/Cases";
-import Home from "../Pages/Home";
+import Home from "../../app/home";
 import { ReactNode } from "react";
-import About from "../Pages/About";
+import About from "../../app/about";
 
 export interface Route {
   index: number;
@@ -50,8 +49,8 @@ export default {
 };
 
 export const ScreenNavigationRoutes = {
-  HOME: "Roadrunner",
-  CASES: "Clients",
-  ABOUT: "About",
-  CONTACT: "Contact"
+  HOME: "roadrunner",
+  CASES: "clients",
+  ABOUT: "about",
+  CONTACT: "contact"
 }
