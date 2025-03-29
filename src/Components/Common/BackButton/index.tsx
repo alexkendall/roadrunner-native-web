@@ -1,12 +1,14 @@
 import { TouchableOpacity } from 'react-native'
 import { navigationRef } from '../../../Navigation'
 import { Image } from 'react-native'
+import { useNavigation } from 'expo-router'
 
 interface Props {
   onPress?: () => void
 }
 export const BackButton = ({ onPress }: Props) => {
-  if (!navigationRef || !navigationRef || !navigationRef?.canGoBack()) {
+  const navigation = useNavigation()
+  if (!navigation?.canGoBack()) {
     return (
       <Image
         resizeMode="contain"
@@ -19,7 +21,7 @@ export const BackButton = ({ onPress }: Props) => {
   }
 
   return (
-    <TouchableOpacity onPress={onPress ?? navigationRef.goBack}>
+    <TouchableOpacity onPress={onPress ?? navigation.goBack}>
       <Image
         style={{ height: 20, width: 20, marginLeft: 10 }}
         source={require('../../../../assets/Branding/chevron_back.png')}

@@ -1,13 +1,13 @@
 import { useCallback } from 'react'
 import { connect } from 'react-redux'
-import Theme from '../Config/Theme'
-import { RootState } from '../Redux/Store'
-import { WordpressPost } from '../Redux/Slices/WordpressSlice'
+import Theme from '../src/Config/Theme'
+import { RootState } from '../src/Redux/Store'
+import { WordpressPost } from '../src/Redux/Slices/WordpressSlice'
 import { View, Text, ScrollView, Platform, StyleSheet } from 'react-native'
-import { RRFonts } from '../Config/Fonts'
-import withFooter from '../Hoc/withFooter'
-import { FOOTER_HEIGHT } from '../Redux/Slices/WindowSlice'
-import SolutionsData from '../Data/Solutions'
+import { RRFonts } from '../src/Config/Fonts'
+import withFooter from '../src/Hoc/withFooter'
+import { FOOTER_HEIGHT } from '../src/Redux/Slices/WindowSlice'
+import SolutionsData from '../src/Data/Solutions'
 
 const mapStateToProps = (state: RootState) => {
   return {
