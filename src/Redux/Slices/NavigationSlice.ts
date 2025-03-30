@@ -15,7 +15,6 @@ const navigationSlice = createSlice({
   initialState,
   reducers: {
     setCurrentRoute(state, action: PayloadAction<string>) {
-        console.log("set current route", action.payload )
       state.currentRoute = action.payload
     },
   },
