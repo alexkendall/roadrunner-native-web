@@ -9,7 +9,8 @@ import { useFonts } from 'expo-font'
 import { RRFonts } from '../src/Config/Fonts'
 import { ActivityIndicator, View, Text } from 'react-native'
 import { BackButton } from '../src/Components/Common/BackButton'
-import { Stack } from 'expo-router';
+import { Stack, useRootNavigationState } from 'expo-router';
+import { setCurrentRoute } from '../src/Redux/Slices/NavigationSlice'
 
 const FONT_LOAD_DELAY_MS = 240
 
@@ -34,11 +35,10 @@ export default () => {
     },
     headerRight: () => (
       <Text style={{ fontSize: 20, marginRight: 20, fontWeight: '600', color: Theme.blue }}>
-        {' '}
         {'Alex Harrison'}
       </Text>
     ),
-    headerLeft: () => <BackButton canGoBack={true} />,
+    headerLeft: () => <BackButton />,
   }
 
   const fontsLoaded = useFonts({
@@ -52,6 +52,14 @@ export default () => {
     MenionPro: require('../assets/FontFiles/MinionPro-Regular.otf'),
     Ionicons: require('../assets/FontFiles/ionicons.ttf'),
   })
+
+  const navState = useRootNavigationState()
+  
+
+  useEffect(() => {
+    const currentRoute = navState.routes[navState.routes.length - 1].name
+    dispatch(setCurrentRoute(currentRoute))
+  }, [navState])
 
   if (fontsLoaded) {
     setTimeout(() => {
@@ -77,10 +85,10 @@ export default () => {
   return (
     <Provider store={store}>
         <Stack screenOptions={{ ...navigationOptions }}>
-        <Stack.Screen name={"index"} options={{title: "Home"}}/>
-        <Stack.Screen name={"home"} options={{title: "Home"}}/>
-        <Stack.Screen name={"clients"} options={{title: "Clients"}}/>
-        <Stack.Screen name={"about"} options={{title: "About"}}/>
+          <Stack.Screen name={"index"} options={{title: "Home"}}/>
+          <Stack.Screen name={"home"} options={{title: "Home"}}/>
+          <Stack.Screen name={"clients"} options={{title: "Clients"}}/>
+          <Stack.Screen name={"about"} options={{title: "About"}}/>
         </Stack>
     </Provider>
   )
