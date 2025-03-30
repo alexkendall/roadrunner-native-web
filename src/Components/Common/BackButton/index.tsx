@@ -11,15 +11,7 @@ export const BackButton = () => {
   const dispatch = useDispatch()
   const currentRoute = useSelector(navigationSelector)
 
-  useEffect(() => {
-    window.addEventListener('hashchange', function () {
-      console.log('location changed!');
-    });
-  }, [])
-
   const canGoBack = currentRoute !== "home" && currentRoute !== ""
-  console.log("current route", currentRoute)
-
 
   if (!canGoBack) {
     return (
