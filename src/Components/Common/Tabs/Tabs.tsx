@@ -57,6 +57,10 @@ export default ({
     );
   }, [siteLogo]);
 
+  window.addEventListener('locationchange', function () {
+    console.log('location changed!');
+  });
+
   return (
     <View className={"Tabs"} style={containerStyle ?? DefaultStyle}>
       {renderSiteLogo()}

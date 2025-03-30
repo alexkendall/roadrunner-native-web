@@ -8,6 +8,8 @@ import { RRFonts } from '../src/Config/Fonts'
 import withFooter from '../src/Hoc/withFooter'
 import { FOOTER_HEIGHT } from '../src/Redux/Slices/WindowSlice'
 import SolutionsData from '../src/Data/Solutions'
+import { useNavigation, useRootNavigationState } from 'expo-router'
+import { useIsFocused } from '@react-navigation/native'
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -32,6 +34,8 @@ interface Props {
 }
 
 const Solutions = ({ isMobile, content_width }: Props) => {
+  const navigation = useNavigation()
+
   const renderTopHeader = useCallback(() => {
     return (
       <Text

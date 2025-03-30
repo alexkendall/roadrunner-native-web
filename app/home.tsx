@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import Theme from '../src/Config/Theme'
 import { RootState } from '../src/Redux/Store'
 import { View, Image, Text, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
@@ -7,6 +7,7 @@ import { ScreenNavigationRoutes } from '../src/Config/PageRoutes'
 import { RRFonts } from '../src/Config/Fonts'
 import withFooter from '../src/Hoc/withFooter'
 import { useNavigation } from 'expo-router'
+import {setCurrentRoute} from '../src/Redux/Slices/NavigationSlice'
 
 const mapStateToProps = (state: RootState) => {
   const props = {
@@ -30,6 +31,7 @@ interface Props {
 
 const Home = ({ isMobile }: Props) => {
   const navigation = useNavigation()
+  const dispatch = useDispatch()
 
   const renderOptionWeb = useCallback(
     (text: string, color: string, backgroundColor: string, link: string, route: string) => {
@@ -38,6 +40,7 @@ const Home = ({ isMobile }: Props) => {
         <TouchableOpacity
           onPress={() => {
             navigation.navigate(route)
+            dispatch(setCurrentRoute(route))
           }}
           style={{
             padding: paddingHorizontal,
@@ -72,6 +75,7 @@ const Home = ({ isMobile }: Props) => {
         <TouchableOpacity
           onPress={() => {
             navigation.navigate(route)
+            dispatch(setCurrentRoute(route))
           }}
           style={{
             width: '100%',
