@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { TAB_BREAKPOINT } from '../../Config/Device'
 
 export interface NavigationState {
   currentRoute: string
