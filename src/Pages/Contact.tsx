@@ -5,7 +5,6 @@ import { RootState } from '../Redux/Store'
 import { View, Text } from 'react-native'
 import { RRFonts } from '../Config/Fonts'
 import withFooter from '../Hoc/withFooter'
-import Ionicons from '@expo/vector-icons/Ionicons';
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -20,7 +19,6 @@ interface Props {
 }
 
 const Contact = ({ isMobile }: Props) => {
-
 
   const mailIcon = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fmail.png?alt=media&token=a6ccd8de-838c-491d-b82d-2cf591bd029e"
   const instagramIcon = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Finstgram.jpg?alt=media&token=de432c95-a3bd-4423-9825-74cf042cc09b"
@@ -58,7 +56,7 @@ const Contact = ({ isMobile }: Props) => {
           fontSize: isMobile ? 20 : 30,
           height: 500,
           textAlign: 'center',
-          fontFamily: RRFonts.RobotoMediumIttalic,
+          fontFamily: RRFonts.RobotoMedium,
           flexDirection: "column",
           display: "flex",
           fontWeight: '200',

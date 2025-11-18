@@ -1,15 +1,10 @@
 import { View, ScrollView, Image } from 'react-native'
 import { PhotographyContentType, PhotographyContent } from '../Data/Photograph'
 
-
-
-// 4592 × 3448
 export const Photography = () => {
 
     const ratio = 4952 / 3448
     const height = 300
-
-
 
     const renderPhotography = (item: PhotographyContentType, index: number) => {
         return (
