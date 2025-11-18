@@ -99,15 +99,18 @@ const Home = ({ isMobile }: Props) => {
 
   // SplitView content for Top Options
   const renderOption = isMobile ? renderOptionMobile : renderOptionWeb
-  const renderSplitLeftComponent = () =>
+  const renderAboutComponent = () =>
     renderOption('ABOUT', Theme.white, Theme.primary, 'about', ScreenNavigationRoutes.ABOUT)
-  const renderSplitRightComponent = () =>
+  const renderClientsComponent = () =>
     renderOption('CLIENTS', Theme.primary, Theme.white, 'cases', ScreenNavigationRoutes.CASES)
+  const renderContactComponent = () =>
+    renderOption('CONTACT', Theme.white, Theme.primary, 'contact', ScreenNavigationRoutes.CONTACT)
 
   const renderTopOptions = () => (
     <View>
-      {renderSplitLeftComponent()}
-      {renderSplitRightComponent()}
+      {renderAboutComponent()}
+      {renderClientsComponent()}
+      {renderContactComponent()}
     </View>
   )
 
