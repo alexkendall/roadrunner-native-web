@@ -1,4 +1,10 @@
-export const DialogueContent = [
+export type DialogueContentType = {
+    title: string;
+    description: string;
+    image: string;
+}
+
+export const DialogueContent: DialogueContentType[] = [
     {
         title: 'Content',
         description: 'Content',

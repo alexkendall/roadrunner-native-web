@@ -4,6 +4,7 @@ import { Content } from "../Pages/Content";
 import Home from "../Pages/Home";
 import { ReactNode } from "react";
 import About from "../Pages/About";
+import { Photography } from "../Pages/Photography";
 
 export interface Route {
   index: number;
@@ -53,6 +54,14 @@ export default {
     label: "Conntent",
     path: "/content",
     component: Content,
+    main: true  ,
+  },
+  Page5: {
+    index: 4,
+    key: "photography",
+    label: "Photography",
+    path: "/photography",
+    component: Photography,
     main: true,
   },
 };
@@ -62,6 +71,7 @@ export const ScreenNavigationRoutes = {
   CASES: "Software",
   ABOUT: "About",
   CONTACT: "Contact",
-  CONTENT: "Content"
+  CONTENT: "Content",
+  PHOTOGRAPHY: "Photography",
 
 }
