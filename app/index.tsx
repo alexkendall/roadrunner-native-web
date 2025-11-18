@@ -17,6 +17,7 @@ import { RRFonts } from '../src/Config/Fonts'
 import { navigationRef } from '../src/Navigation'
 import { ActivityIndicator, View, Text } from 'react-native'
 import { BackButton } from '../src/Components/Common/BackButton'
+import '../src/Styling/ionicons.css'
 const Stack = createNativeStackNavigator()
 const FONT_LOAD_DELAY_MS = 240
 
@@ -25,7 +26,12 @@ export default () => {
   const [fontDelay, setfontDelay] = useState(true)
 
   useEffect(() => {
-    dispatch(updateWindowState({ height: dimensions.height, width: dimensions.width }))
+    dispatch(updateWindowState({
+      window_height: dimensions.height,
+      window_width: dimensions.width,
+      height: dimensions.height,
+      width: dimensions.width
+    }))
   }, [dimensions])
 
   const navigationOptions = {
@@ -58,6 +64,29 @@ export default () => {
     MenionPro: require('../assets/FontFiles/MinionPro-Regular.otf'),
     Ionicons: require('../assets/FontFiles/ionicons.ttf'),
   })
+
+  // Ensure Ionicons font is available on web (especially iOS Safari)
+  // The CSS import handles the @font-face, but we add this as a fallback
+  useEffect(() => {
+    if (typeof document !== 'undefined' && fontsLoaded) {
+      // Force font loading by creating a test element
+      // This helps iOS Safari recognize the font
+      const testElement = document.createElement('span')
+      testElement.style.fontFamily = 'Ionicons'
+      testElement.style.position = 'absolute'
+      testElement.style.visibility = 'hidden'
+      testElement.style.fontSize = '1px'
+      testElement.textContent = '\uF101' // Common Ionicons character
+      document.body.appendChild(testElement)
+
+      // Clean up after a short delay
+      setTimeout(() => {
+        if (testElement.parentNode) {
+          testElement.parentNode.removeChild(testElement)
+        }
+      }, 100)
+    }
+  }, [fontsLoaded])
 
   if (fontsLoaded) {
     setTimeout(() => {
