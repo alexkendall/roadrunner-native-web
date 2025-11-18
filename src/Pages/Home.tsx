@@ -102,7 +102,7 @@ const Home = ({ isMobile }: Props) => {
   const renderAboutComponent = () =>
     renderOption('ABOUT', Theme.white, Theme.primary, 'about', ScreenNavigationRoutes.ABOUT)
   const renderClientsComponent = () =>
-    renderOption('CLIENTS', Theme.primary, Theme.white, 'cases', ScreenNavigationRoutes.CASES)
+    renderOption('SOFTWARE', Theme.primary, Theme.white, 'cases', ScreenNavigationRoutes.CASES)
   const renderContactComponent = () =>
     renderOption('CONTACT', Theme.white, Theme.primary, 'contact', ScreenNavigationRoutes.CONTACT)
 

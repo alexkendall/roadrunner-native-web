@@ -1,4 +1,3 @@
-import Solutions from "../Pages/Solutions";
 import Contact from "../Pages/Contact";
 import Cases from "../Pages/Cases";
 import Home from "../Pages/Home";
@@ -51,7 +50,7 @@ export default {
 
 export const ScreenNavigationRoutes = {
   HOME: "Roadrunner Creative",
-  CASES: "Clients",
+  CASES: "Software",
   ABOUT: "About",
   CONTACT: "Contact"
 }
