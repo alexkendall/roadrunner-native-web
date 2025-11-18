@@ -12,7 +12,7 @@ export const BackButton = ({ onPress }: Props) => {
         resizeMode="contain"
         style={{ width: 80, height: 80, marginLeft: 10 }}
         source={{
-          uri: 'https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Navigation%2FRRH2.png?alt=media&token=f90338bc-7500-417e-9ed2-12e0441b2af3',
+          uri: 'https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Navigation%2FRRH2.png?alt=media&token=ef756a4e-cb71-4046-b990-1fa64d5242e5',
         }}
       />
     )

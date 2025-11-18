@@ -1,5 +1,6 @@
 
 
+const Paramount = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fparamount_plus.png?alt=media&token=aee6612a-df25-4e7b-96db-bb64fbef2f61"
 const GenCon = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2F2020.gencon.logo.black.png?alt=media&token=9c87bc5c-0afa-4bcc-90d4-0a300278d02d"
 const Ally = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2FAllyLogo.png?alt=media&token=11f4bdd4-a8bc-4edb-a267-5e8174732f99"
 const HereNow = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2FHereNowAppLogo.png?alt=media&token=cea2eca1-ef63-4446-ae7f-10e0100657d3"
@@ -15,6 +16,22 @@ export interface CasesData {
 }
 
 export const CasesData: Array<CasesData> = [
+  {
+    featured_graphic: Paramount,
+      data: {
+        "client": "Paramount Plus",
+        "featured_graphic": "https://flim-1-0-2.s3.eu-central-1.amazonaws.com/full/f075f4b4900d11ec94cd10ddb1aba44f.png",
+        "industry": "Entertainment",
+        "services": [
+          "Mobile Application Development",
+          "UI/UX Design Integration",
+          "Feature Integration",
+        ],
+        "challenge": "Roadrunner Creative was tasked with developing the Paramount Plus mobile application from scratch, aiming to integrate complex features and design elements specified in Figma designs.",
+        "solutions": "Roadrunner Creative meticulously translated the Paramount Plus specification into a fully functional mobile application. Using redux-toolkit and rtk-query, a middleware layer was created to manage application state and data flow efficiently. The team successfully integrated features such as visit creation, client activity logging, visit history viewing with filtering, access to tutorials and files, messaging, and file uploading, enhancing the caregiver's user experience.",
+        "delivery": "The Paramount Plus mobile application was delivered successfully, providing users with a comprehensive tool to manage client care efficiently."
+      }
+  },
     {
         featured_graphic: Ally,
         data: {

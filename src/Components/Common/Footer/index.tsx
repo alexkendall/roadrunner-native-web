@@ -9,11 +9,12 @@ const SocialFooter = () => {
   const renderEmail = useCallback((color: string) => {
     return (
       <TouchableOpacity onPress={() => {
-        Linking.openURL('mailto:alex.h@roadrunnercreative.com.com?subject=Inquiry&body=') }
+        Linking.openURL('mailto:alex.h@roadrunnercreative.com.com?subject=Inquiry&body=')
+      }
       }
       >
         <Text style={{ color: color, fontStyle: "italic", fontSize: 14 }}>
-          {"EMAIL   ALEX.H@ROADRUNNERCREATIVE.COM"}
+          {"EMAIL INFO.H@ROADRUNNERCREATIVE.COM"}
         </Text>
       </TouchableOpacity>
     );

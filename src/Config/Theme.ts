@@ -1,6 +1,6 @@
 export default {
-  primary: "#00274C",
-  secondary: "#FFCB05",
+  primary: "#0c0c0c",
+  secondary: "#FFFFFF",
   light_green: "#DBE6D5",
   light_blue: "#F2F8F8",
   orange: "#FF3B00",
@@ -9,6 +9,6 @@ export default {
   black: "black",
   primary_light: "white",
   white: "white",
-  blue: "#00274C",
-  maize: "#FFCB05"
+  blue: "#000000",
+  maize: "#FFFFFF"
 };

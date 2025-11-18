@@ -42,7 +42,6 @@ export default () => {
     headerRight: () => (
       <Text style={{ fontSize: 20, marginRight: 20, fontWeight: '600', color: Theme.blue }}>
         {' '}
-        {'Alex Harrison'}
       </Text>
     ),
     headerLeft: () => <BackButton />,

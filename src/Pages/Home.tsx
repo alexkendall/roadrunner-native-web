@@ -100,7 +100,7 @@ const Home = ({ isMobile }: Props) => {
   // SplitView content for Top Options
   const renderOption = isMobile ? renderOptionMobile : renderOptionWeb
   const renderSplitLeftComponent = () =>
-    renderOption('ABOUT', Theme.maize, Theme.primary, 'about', ScreenNavigationRoutes.ABOUT)
+    renderOption('ABOUT', Theme.white, Theme.primary, 'about', ScreenNavigationRoutes.ABOUT)
   const renderSplitRightComponent = () =>
     renderOption('CLIENTS', Theme.primary, Theme.white, 'cases', ScreenNavigationRoutes.CASES)
 
@@ -112,8 +112,8 @@ const Home = ({ isMobile }: Props) => {
   )
 
   const uri = isMobile
-    ? 'https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/bio%2Falex_harrison_mobile%202.jpg?alt=media&token=419f66d6-c94d-4c64-8721-a8abc6572aef'
-    : 'https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/bio%2Falex_harrison_profile.jpg?alt=media&token=7234e499-9f37-4621-9345-b45cd3c863d2'
+    ? 'https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Home-Banner%2Fbanner-web.jpeg?alt=media&token=85e9b668-5b6c-44a6-98bb-33337a53423f'
+    : 'https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Home-Banner%2Fbanner-web.jpeg?alt=media&token=85e9b668-5b6c-44a6-98bb-33337a53423f'
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Theme.primary }}>
       <ScrollView
