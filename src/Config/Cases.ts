@@ -9,7 +9,6 @@ const ServicersWeb = "https://firebasestorage.googleapis.com/v0/b/roadrunner-nat
 const Swoogo = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fswoogo.png?alt=media&token=3d425f8f-f60f-490e-9bdb-eb4016f53eb3"
 const CareExchange = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fcareexchange.png?alt=media&token=014fe254-2d0c-42fa-938f-96e6c8c3ebef"
 const Muze = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2FMuzeFrameAlpha.png?alt=media&token=e3216182-a132-4d3e-bc25-822e2ef3a1bd"
-const Paramount = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fparamount_plus.png?alt=media&token=aee6612a-df25-4e7b-96db-bb64fbef2f61"
 
 export interface CasesData {
     featured_graphic: string
@@ -178,23 +177,6 @@ export const CasesData: Array<CasesData> = [
               }
               
     },
-    {
-      featured_graphic: Paramount,
-      data: {
-              "client": "Paramount",
-              featured_graphic: Paramount,
-              "industry": "TV Streaming",
-              "services": [
-                "Mobile Application Development",
-                "UI/UX Design Integration",
-                "Feature Integration",
-              ],
-              "challenge": "",
-              "solutions": "",
-              "delivery": ""
-            }
-            
-  },
 ]
 
 export interface CasesDetailsDataType {
