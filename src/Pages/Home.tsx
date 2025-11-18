@@ -29,6 +29,7 @@ interface Props {
 }
 
 const Home = ({ isMobile }: Props) => {
+
   const navigation = useNavigation()
 
   const renderOptionWeb = useCallback(
@@ -106,12 +107,15 @@ const Home = ({ isMobile }: Props) => {
   const renderClientsComponent = () =>
     renderOption('SOFTWARE', Theme.primary, Theme.white, 'cases', ScreenNavigationRoutes.CASES)
   const renderContactComponent = () =>
-    renderOption('CONTACT', Theme.white, Theme.primary, 'contact', ScreenNavigationRoutes.CONTACT)
+    renderOption('CONTACT', Theme.black, Theme.white, 'contact', ScreenNavigationRoutes.CONTACT)
+  const renderContentComponent = () =>
+    renderOption('CONTENT', Theme.white, Theme.black, 'content', ScreenNavigationRoutes.CONTENT)
 
   const renderTopOptions = () => (
     <View>
       {renderAboutComponent()}
       {renderClientsComponent()}
+      {renderContentComponent()}
       {renderContactComponent()}
     </View>
   )

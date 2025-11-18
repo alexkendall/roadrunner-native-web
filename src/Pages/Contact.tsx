@@ -44,7 +44,8 @@ const Contact = ({ isMobile }: Props) => {
           fontSize: isMobile ? 24 : 70,
           textAlign: 'center',
           marginBottom: 10,
-          fontFamily: RRFonts.RobotoBoldIttalic,
+          fontFamily: RRFonts.RobotoMediumIttalic,
+          fontWeight: '200',
         }}
       >
         {'CONTACT'}
@@ -57,9 +58,10 @@ const Contact = ({ isMobile }: Props) => {
           fontSize: isMobile ? 20 : 30,
           height: 500,
           textAlign: 'center',
-          fontFamily: RRFonts.RobotoMedium,
+          fontFamily: RRFonts.RobotoMediumIttalic,
           flexDirection: "column",
           display: "flex",
+          fontWeight: '200',
         }}
       >
         {renderContactInfo(mailIcon, "info.h@roadrunnercreative.com", () => Linking.openURL("mailto:info.h@roadrunnercreative.com"))}

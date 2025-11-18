@@ -1,5 +1,6 @@
 import Contact from "../Pages/Contact";
 import Cases from "../Pages/Cases";
+import { Content } from "../Pages/Content";
 import Home from "../Pages/Home";
 import { ReactNode } from "react";
 import About from "../Pages/About";
@@ -46,11 +47,21 @@ export default {
     component: Contact,
     main: true,
   },
+  Page4: {
+    index: 4,
+    key: "content",
+    label: "Conntent",
+    path: "/content",
+    component: Content,
+    main: true,
+  },
 };
 
 export const ScreenNavigationRoutes = {
   HOME: "Roadrunner Creative",
   CASES: "Software",
   ABOUT: "About",
-  CONTACT: "Contact"
+  CONTACT: "Contact",
+  CONTENT: "Content"
+
 }

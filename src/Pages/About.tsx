@@ -81,7 +81,7 @@ const About = ({ isMobile, content_width }: Props) => {
         <Text
           style={{
             color: Theme.blue,
-            fontSize: isMobile ? 24 : 70,
+            fontSize: isMobile ? 54 : 70,
             textAlign: 'center',
             marginBottom: 10,
             fontFamily: RRFonts.RobotoBoldIttalic,
@@ -113,16 +113,19 @@ const styles = StyleSheet.create({
     fontSize: 40,
     textAlign: 'left',
     marginTop: 30,
-    fontWeight: '600',
     color: Theme.blue,
     marginBottom: 20,
+    fontFamily: RRFonts.RobotoMediumIttalic,
+    fontWeight: '100',
   },
   header2: {
     fontSize: 30,
     textAlign: 'left',
     marginTop: 5,
-    fontWeight: '600',
     color: Theme.blue,
+    fontFamily: RRFonts.RobotoMediumIttalic,
+    fontWeight: '100',
+
   },
   body: {
     fontSize: 20,
