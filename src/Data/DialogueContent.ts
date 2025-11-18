@@ -4,7 +4,7 @@ export type DialogueContentType = {
     image: string;
 }
 
-export const DialogueContent: DialogueContent[] = [
+export const DialogueContent: DialogueContentType[] = [
     {
         title: 'Content',
         description: 'Content',

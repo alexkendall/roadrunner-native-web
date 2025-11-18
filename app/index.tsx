@@ -19,6 +19,7 @@ import { ActivityIndicator, View, Text } from 'react-native'
 import { BackButton } from '../src/Components/Common/BackButton'
 import '../src/Styling/ionicons.css'
 import { Content } from '../src/Pages/Content'
+import { Photography } from '../src/Pages/Photography'
 const Stack = createNativeStackNavigator()
 const FONT_LOAD_DELAY_MS = 240
 
@@ -119,6 +120,7 @@ export default () => {
           <Stack.Screen name={ScreenNavigationRoutes.ABOUT} component={About} />
           <Stack.Screen name={ScreenNavigationRoutes.CONTACT} component={Contact} />
           <Stack.Screen name={ScreenNavigationRoutes.CONTENT} component={Content} />
+          <Stack.Screen name={ScreenNavigationRoutes.PHOTOGRAPHY} component={Photography} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

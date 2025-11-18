@@ -106,16 +106,20 @@ const Home = ({ isMobile }: Props) => {
     renderOption('ABOUT', Theme.white, Theme.primary, 'about', ScreenNavigationRoutes.ABOUT)
   const renderClientsComponent = () =>
     renderOption('SOFTWARE', Theme.primary, Theme.white, 'cases', ScreenNavigationRoutes.CASES)
-  const renderContactComponent = () =>
-    renderOption('CONTACT', Theme.black, Theme.white, 'contact', ScreenNavigationRoutes.CONTACT)
+  const renderPhotographyComponent = () =>
+    renderOption('PHOTOGRAPHY', Theme.black, Theme.white, 'photography', ScreenNavigationRoutes.PHOTOGRAPHY)
   const renderContentComponent = () =>
     renderOption('CONTENT', Theme.white, Theme.black, 'content', ScreenNavigationRoutes.CONTENT)
+  const renderContactComponent = () =>
+    renderOption('CONTACT', Theme.white, Theme.black, 'contact', ScreenNavigationRoutes.CONTACT)
+
 
   const renderTopOptions = () => (
     <View>
       {renderAboutComponent()}
       {renderClientsComponent()}
       {renderContentComponent()}
+      {renderPhotographyComponent()}
       {renderContactComponent()}
     </View>
   )
