@@ -9,6 +9,8 @@ const ServicersWeb = "https://firebasestorage.googleapis.com/v0/b/roadrunner-nat
 const Swoogo = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fswoogo.png?alt=media&token=3d425f8f-f60f-490e-9bdb-eb4016f53eb3"
 const CareExchange = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fcareexchange.png?alt=media&token=014fe254-2d0c-42fa-938f-96e6c8c3ebef"
 const Muze = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2FMuzeFrameAlpha.png?alt=media&token=e3216182-a132-4d3e-bc25-822e2ef3a1bd"
+const BrooksRecLeague = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fbrooks_logo.png?alt=media&token=c2ecca3e-4aba-44d7-bbf8-0663bd184011"
+const CutCreators = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2FCutCreators.png?alt=media&token=faa1d5b5-6032-4f7d-aa06-ab4c0da70e86"
 
 export interface CasesData {
     featured_graphic: string
@@ -20,7 +22,7 @@ export const CasesData: Array<CasesData> = [
     featured_graphic: Paramount,
       data: {
         "client": "Paramount Plus",
-        "featured_graphic": "https://flim-1-0-2.s3.eu-central-1.amazonaws.com/full/f075f4b4900d11ec94cd10ddb1aba44f.png",
+        "featured_graphic": "https://flim-1-0-2.s3.eu-central-1.amazonaws.com/full/f075f4b4900d11ec94cd10d db1aba44f.png",
         "industry": "Entertainment",
         "services": [
           "Mobile Application Development",
@@ -177,6 +179,40 @@ export const CasesData: Array<CasesData> = [
               }
               
     },
+    {
+        featured_graphic: BrooksRecLeague,
+        data: {
+            "client": "Brooks Rec League",
+            featured_graphic: "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fbrooks_logo.png?alt=media&token=c2ecca3e-4aba-44d7-bbf8-0663bd184011",
+            "industry": "Sports",
+            "services": [
+                "Mobile Application Development",
+                "UI/UX Design Integration",
+                "Feature Integration",
+                "Continuous Delivery"
+            ],
+            "challenge": "Roadrunner Creative took on the challenge of developing the Brooks Rec League mobile application from scratch, aiming to integrate complex features and design elements specified in Figma designs.",
+            "solutions": "Roadrunner Creative meticulously translated the Brooks Rec League specification into a fully functional mobile application. Using redux-toolkit and rtk-query, a middleware layer was created to manage application state and data flow efficiently. The team successfully integrated features such as visit creation, client activity logging, visit history viewing with filtering, access to tutorials and files, messaging, and file uploading, enhancing the caregiver's user experience.",
+            "delivery": "The Brooks Rec League mobile application was delivered successfully, providing users with a comprehensive tool to manage client care efficiently."
+          }
+        },
+        {
+          featured_graphic: CutCreators,
+          data: {
+            "client": "Cut Creators",
+            featured_graphic: "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2FCutCreators.png?alt=media&token=faa1d5b5-6032-4f7d-aa06-ab4c0da70e86",
+            "industry": "Photography",
+            "services": [
+              "Mobile Application Development",
+              "UI/UX Design Integration",
+              "Feature Integration",
+              "Continuous Delivery"
+            ],
+            "challenge": "Roadrunner Creative took on the challenge of developing the Cut Creators mobile application from scratch, aiming to integrate complex features and design elements specified in Figma designs.",
+            "solutions": "Roadrunner Creative meticulously translated the Cut Creators specification into a fully functional mobile application. Using redux-toolkit and rtk-query, a middleware layer was created to manage application state and data flow efficiently. The team successfully integrated features such as visit creation, client activity logging, visit history viewing with filtering, access to tutorials and files, messaging, and file uploading, enhancing the caregiver's user experience.",
+            "delivery": "The Cut Creators mobile application was delivered successfully, providing users with a comprehensive tool to manage client care efficiently."
+          }
+        },
 ]
 
 export interface CasesDetailsDataType {
