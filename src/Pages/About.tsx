@@ -3,11 +3,13 @@ import { connect } from 'react-redux'
 import Theme from '../Config/Theme'
 import { RootState } from '../Redux/Store'
 import { WordpressPost } from '../Redux/Slices/WordpressSlice'
-import { View, Text, ScrollView, Platform, StyleSheet } from 'react-native'
+import { View, Text, ScrollView, Platform, StyleSheet, TouchableOpacity } from 'react-native'
 import { RRFonts } from '../Config/Fonts'
 import withFooter from '../Hoc/withFooter'
 import { FOOTER_HEIGHT } from '../Redux/Slices/WindowSlice'
 import SolutionsData from '../Data/Solutions'
+import { ScreenNavigationRoutes } from '../Config/PageRoutes'
+import { useNavigation } from 'expo-router'
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -31,7 +33,9 @@ interface Props {
   content_width: number
 }
 
-const Solutions = ({ isMobile, content_width }: Props) => {
+const About = ({ isMobile, content_width }: Props) => {
+
+  const navigation = useNavigation()
 
   const renderFocus = useCallback(() => {
     return (
@@ -85,9 +89,13 @@ const Solutions = ({ isMobile, content_width }: Props) => {
         >
           WHAT WE DO
         </Text>
-        <Text style={styles.header2}>
-          SOFTWARE
-        </Text>
+        <TouchableOpacity onPress={() => {
+          // TODO: Navigate to Cases
+        }}>
+          <Text style={styles.header2}>
+            SOFTWARE
+          </Text>
+        </TouchableOpacity>
         <Text style={styles.header2}>
           CONTENT
         </Text>
@@ -124,4 +132,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default withFooter(connect(mapStateToProps)(Solutions))
+export default withFooter(connect(mapStateToProps)(About))
