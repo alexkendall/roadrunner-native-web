@@ -1,5 +1,5 @@
 import Theme from '../Config/Theme'
-import { TouchableOpacity, Linking } from 'react-native'
+import { TouchableOpacity, Linking, Image } from 'react-native'
 import { connect } from 'react-redux'
 import { RootState } from '../Redux/Store'
 import { View, Text } from 'react-native'
@@ -22,11 +22,13 @@ interface Props {
 const Contact = ({ isMobile }: Props) => {
 
 
+  const mailIcon = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fmail.png?alt=media&token=a6ccd8de-838c-491d-b82d-2cf591bd029e"
+  const instagramIcon = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Finstgram.jpg?alt=media&token=de432c95-a3bd-4423-9825-74cf042cc09b"
 
-  const renderContactInfo = (iconName: string, text: string, onPress: () => void) => {
+  const renderContactInfo = (uri: string, text: string, onPress: () => void) => {
     return (
       <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 10 }}>
-        <Ionicons name={iconName} size={40} color="black" style={{ marginRight: 10 }} />
+        <Image source={{ uri }} style={{ width: 40, height: 40, marginRight: 10 }} />
         <TouchableOpacity onPress={onPress}>
           <Text>{text}</Text>
         </TouchableOpacity>
@@ -60,8 +62,8 @@ const Contact = ({ isMobile }: Props) => {
           display: "flex",
         }}
       >
-        {renderContactInfo("mail", "info.h@roadrunnercreative.com", () => Linking.openURL("mailto:info.h@roadrunnercreative.com"))}
-        {renderContactInfo("logo-instagram", "@roadrunner.creative", () => Linking.openURL("https://www.instagram.com/roadrunner.creative/"))}
+        {renderContactInfo(mailIcon, "info.h@roadrunnercreative.com", () => Linking.openURL("mailto:info.h@roadrunnercreative.com"))}
+        {renderContactInfo(instagramIcon, "@roadrunner.creative", () => Linking.openURL("https://www.instagram.com/roadrunner.creative/"))}
       </Text>
     </View>
   )
