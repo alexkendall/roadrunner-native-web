@@ -44,7 +44,6 @@ const Home = ({ isMobile }: Props) => {
           style={{
             padding: paddingHorizontal,
             backgroundColor,
-            border: '1px solid black',
             borderRightWidth: 0,
             borderLeftWidth: 0,
             borderColor: Theme.primary,
@@ -88,7 +87,7 @@ const Home = ({ isMobile }: Props) => {
           <Text
             style={{
               color,
-              fontSize: 50,
+              fontSize: 20,
               fontFamily: RRFonts.RobotoBoldIttalic,
             }}
           >
@@ -125,7 +124,7 @@ const Home = ({ isMobile }: Props) => {
   )
 
   const uri = isMobile
-    ? 'https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Home-Banner%2Fbanner-web.jpeg?alt=media&token=85e9b668-5b6c-44a6-98bb-33337a53423f'
+    ? 'https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Home-Banner%2Fbanner-mobile.jpeg?alt=media&token=a02a83d4-9ca4-4510-ac13-b5fb10e86be7'
     : 'https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Home-Banner%2Fbanner-web.jpeg?alt=media&token=85e9b668-5b6c-44a6-98bb-33337a53423f'
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Theme.primary }}>
