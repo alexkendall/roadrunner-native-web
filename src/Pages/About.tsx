@@ -64,7 +64,6 @@ const Solutions = ({ isMobile, content_width }: Props) => {
       <View
         style={{
           display: 'flex',
-          alignItems: 'flex-start',
           flexDirection: 'column',
           paddingTop: 30,
           paddingBottom: Platform.OS === 'web' ? FOOTER_HEIGHT : 0,
@@ -72,9 +71,18 @@ const Solutions = ({ isMobile, content_width }: Props) => {
           backgroundColor: Theme.primary_light,
           flex: 1,
           paddingHorizontal: 40,
+          alignItems: 'center',
         }}
       >
-        <Text style={styles.header1}>
+        <Text
+          style={{
+            color: Theme.blue,
+            fontSize: isMobile ? 24 : 70,
+            textAlign: 'center',
+            marginBottom: 10,
+            fontFamily: RRFonts.RobotoBoldIttalic,
+          }}
+        >
           WHAT WE DO
         </Text>
         <Text style={styles.header2}>
