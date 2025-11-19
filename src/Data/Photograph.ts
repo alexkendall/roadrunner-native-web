@@ -12,10 +12,6 @@ export const PhotographyContent: PhotographyContentType[] = [
     {
         image: "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Photography%2Ftoronto.jpg?alt=media&token=f8df8c4c-5df7-41b1-a2ba-13129f4b5d03",
     },
-
-    {
-        image: "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Photography%2Fbugs.JPG?alt=media&token=808fee04-fe6f-4dd3-9b18-134bf5ebdbaa",
-    },
     {
         image: "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Photography%2Fgrand_rapids.jpeg?alt=media&token=ee9a53ce-634c-4d97-b4c9-270b5d48eda4",
     },
@@ -30,6 +26,9 @@ export const PhotographyContent: PhotographyContentType[] = [
     },
     {
         image: "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Photography%2Fottowa.JPG?alt=media&token=114c57eb-105b-468f-b64c-4c735d8e2ade",
-    }
+    },
+    {
+        image: "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Photography%2Fdetroit2.jpg?alt=media&token=8d3be43d-59e0-425d-858f-4a2d8badc186",
+    },
 
 ]
