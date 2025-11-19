@@ -9,7 +9,8 @@ import withFooter from '../Hoc/withFooter'
 import { FOOTER_HEIGHT } from '../Redux/Slices/WindowSlice'
 import SolutionsData from '../Data/Solutions'
 import { ScreenNavigationRoutes } from '../Config/PageRoutes'
-import { useNavigation } from 'expo-router'
+import { navigate } from '../Navigation'
+
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -34,8 +35,6 @@ interface Props {
 }
 
 const About = ({ isMobile, content_width }: Props) => {
-
-  const navigation = useNavigation()
 
   const renderFocus = useCallback(() => {
     return (
@@ -90,18 +89,26 @@ const About = ({ isMobile, content_width }: Props) => {
           WHAT WE DO
         </Text>
         <TouchableOpacity onPress={() => {
-          // TODO: Navigate to Cases
+          navigate(ScreenNavigationRoutes.CASES)
         }}>
-          <Text style={styles.header2}>
+          <Text style={styles.header2} >
             SOFTWARE
           </Text>
         </TouchableOpacity>
-        <Text style={styles.header2}>
-          CONTENT
-        </Text>
-        <Text style={styles.header2}>
-          PHOTOGRAPHY
-        </Text>
+        <TouchableOpacity onPress={() => {
+          navigate(ScreenNavigationRoutes.CONTENT)
+        }}>
+          <Text style={styles.header2}>
+            CONTENT
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {
+          navigate(ScreenNavigationRoutes.PHOTOGRAPHY)
+        }}>
+          <Text style={styles.header2}>
+            PHOTOGRAPHY
+          </Text>
+        </TouchableOpacity>
         {renderFocus()}
       </View>
     </ScrollView>

@@ -138,7 +138,6 @@ const CaseStudyModal = ({
 
   const renderButtons = useCallback(() => {
     return null
-    console.log('data secondary link', data.secondary_link_label)
     let button1 = null
     let button2 = null
     if (data?.primary_link && data?.primary_link_label) {

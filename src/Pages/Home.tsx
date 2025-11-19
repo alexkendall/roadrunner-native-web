@@ -39,7 +39,6 @@ const Home = ({ isMobile }: Props) => {
         <TouchableOpacity
           onPress={() => {
             navigation.navigate(route)
-            console.log("navigation", navigation.getState().routes)
           }}
           style={{
             padding: paddingHorizontal,
@@ -73,7 +72,6 @@ const Home = ({ isMobile }: Props) => {
         <TouchableOpacity
           onPress={() => {
             navigation.navigate(route)
-            console.log("navigation", navigation.getState().routes)
           }}
           style={{
             width: '100%',
