@@ -1,8 +1,8 @@
-import { View, Image, ScrollView, ActivityIndicator, Text } from 'react-native'
+import { View, Image, ScrollView, Text } from 'react-native'
 import { DialogueContentType } from '../Data/DialogueContent'
 import { useEffect, useState } from 'react'
 import { fetchDialogueContentImages } from '../Services/DialogueContentService'
-import Theme from '../Config/Theme'
+import { LoadingIndicator } from '../Components/Common/LoadingIndicator'
 
 export const Content = () => {
     const [dialogueContent, setDialogueContent] = useState<DialogueContentType[]>([])
@@ -34,12 +34,7 @@ export const Content = () => {
     }
 
     if (loading) {
-        return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
-                <ActivityIndicator size="large" color={Theme.primary} />
-                <Text style={{ marginTop: 10, color: Theme.primary }}>Loading content...</Text>
-            </View>
-        )
+        return <LoadingIndicator message="Loading content..." />
     }
 
     if (error) {

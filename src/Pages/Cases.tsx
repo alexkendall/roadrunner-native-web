@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import Theme from '../Config/Theme'
 import CaseStudyModal from './CaseStudyModal'
@@ -7,7 +7,10 @@ import { WordpressPost } from '../Redux/Slices/WordpressSlice'
 import { View, Text, Image, ScrollView } from 'react-native'
 import { RRFonts } from '../Config/Fonts'
 import withFooter from '../Hoc/withFooter'
-import { CasesData } from '../Config/Cases'
+import { CasesData as CasesDataType } from '../Config/Cases'
+import { fetchCaseStudyImages } from '../Services/CaseStudiesService'
+import { CaseStudyImageType } from '../Services/CaseStudiesService'
+import { LoadingIndicator } from '../Components/Common/LoadingIndicator'
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -31,7 +34,43 @@ interface Props {
 
 const Studies = ({ isMobile }: Props) => {
   const [showModal, setDisplayModal] = useState(false)
-  const [modalPayload, setModalPayload] = useState({})
+  const [modalPayload, setModalPayload] = useState<CasesDataType | null>(null)
+  const [caseStudyImages, setCaseStudyImages] = useState<CaseStudyImageType[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const loadImages = async () => {
+      try {
+        setLoading(true)
+        setError(null)
+        const images = await fetchCaseStudyImages()
+        setCaseStudyImages(images)
+      } catch (err) {
+        console.error('Failed to load case study images:', err)
+        setError('Failed to load images. Please try again later.')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadImages()
+  }, [])
+
+  if (loading) {
+    return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20, backgroundColor: Theme.white }}>
+      <LoadingIndicator message="Loading software..." />
+    </View>
+
+  }
+
+  if (error) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
+        <Text style={{ color: 'red', textAlign: 'center' }}>{error}</Text>
+      </View>
+    )
+  }
 
   return (
     <ScrollView style={{ height: '100%', backgroundColor: Theme.white }}>
@@ -69,27 +108,29 @@ const Studies = ({ isMobile }: Props) => {
             justifyContent: 'center',
           }}
         >
-          {CasesData.map((payload, index) => {
+          {caseStudyImages.map((item, index) => {
             return (
               <Image
                 key={index.toString()}
                 resizeMode="contain"
-                source={{ uri: payload.featured_graphic }}
+                source={{ uri: item.image }}
                 style={{ height: 100, width: 250, margin: 20 }}
               />
             )
           })}
         </View>
-        <CaseStudyModal
-          onClose={() => {
-            setDisplayModal(false)
-          }}
-          data={modalPayload}
-          visible={showModal}
-        />
+        {modalPayload && (
+          <CaseStudyModal
+            onClose={() => {
+              setDisplayModal(false)
+            }}
+            data={modalPayload}
+            visible={showModal}
+          />
+        )}
       </View>
     </ScrollView>
   )
 }
 
-export default withFooter(connect(mapStateToProps)(Studies))
+export default withFooter(connect(mapStateToProps)(Studies) as any)
