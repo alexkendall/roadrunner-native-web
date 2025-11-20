@@ -1,8 +1,8 @@
-import { View, ScrollView, Image, ActivityIndicator, Text } from 'react-native'
+import { View, ScrollView, Image, Text } from 'react-native'
 import { PhotographyContentType } from '../Data/Photograph'
 import { useEffect, useState } from 'react'
 import { fetchPhotographyImages } from '../Services/PhotographyService'
-import Theme from '../Config/Theme'
+import { LoadingIndicator } from '../Components/Common/LoadingIndicator'
 
 export const Photography = () => {
     const [photographyContent, setPhotographyContent] = useState<PhotographyContentType[]>([])
@@ -39,12 +39,7 @@ export const Photography = () => {
     }
 
     if (loading) {
-        return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
-                <ActivityIndicator size="large" color={Theme.primary} />
-                <Text style={{ marginTop: 10, color: Theme.primary }}>Loading photography...</Text>
-            </View>
-        )
+        return <LoadingIndicator message="Loading photography..." />
     }
 
     if (error) {
