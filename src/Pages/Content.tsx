@@ -1,24 +1,64 @@
-import { View, Image, ScrollView } from 'react-native'
-import { DialogueContent, DialogueContentType } from '../Data/DialogueContent'
+import { View, Image, ScrollView, ActivityIndicator, Text } from 'react-native'
+import { DialogueContentType } from '../Data/DialogueContent'
+import { useEffect, useState } from 'react'
+import { fetchDialogueContentImages } from '../Services/DialogueContentService'
+import Theme from '../Config/Theme'
 
 export const Content = () => {
+    const [dialogueContent, setDialogueContent] = useState<DialogueContentType[]>([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState<string | null>(null)
+
+    useEffect(() => {
+        const loadImages = async () => {
+            try {
+                setLoading(true)
+                setError(null)
+                const images = await fetchDialogueContentImages()
+                setDialogueContent(images)
+            } catch (err) {
+                console.error('Failed to load dialogue content images:', err)
+                setError('Failed to load images. Please try again later.')
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        loadImages()
+    }, [])
 
     const renderContent = (item: DialogueContentType, index: number) => {
         return (
             <Image key={index.toString()} source={{ uri: item.image }} style={{ width: 300, height: 300, margin: 10 }} />
         )
     }
-    return (
 
+    if (loading) {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
+                <ActivityIndicator size="large" color={Theme.primary} />
+                <Text style={{ marginTop: 10, color: Theme.primary }}>Loading content...</Text>
+            </View>
+        )
+    }
+
+    if (error) {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
+                <Text style={{ color: 'red', textAlign: 'center' }}>{error}</Text>
+            </View>
+        )
+    }
+
+    return (
         <ScrollView>
             <View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                {DialogueContent.map((item: DialogueContentType, index) => (
+                {dialogueContent.map((item: DialogueContentType, index) => (
                     renderContent(item, index)
                 ))}
             </View>
         </ScrollView>
     )
-
 }
 
 
