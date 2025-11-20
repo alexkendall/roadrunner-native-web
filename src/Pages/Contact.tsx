@@ -5,6 +5,9 @@ import { RootState } from '../Redux/Store'
 import { View, Text } from 'react-native'
 import { RRFonts } from '../Config/Fonts'
 import withFooter from '../Hoc/withFooter'
+import { useState, useEffect } from 'react'
+import { getContactIcons } from '../Services/ContactService'
+import { LoadingIndicator } from '../Components/Common/LoadingIndicator'
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -19,17 +22,53 @@ interface Props {
 }
 
 const Contact = ({ isMobile }: Props) => {
+  const [mailIcon, setMailIcon] = useState<string>('')
+  const [instagramIcon, setInstagramIcon] = useState<string>('')
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-  const mailIcon = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Fmail.png?alt=media&token=a6ccd8de-838c-491d-b82d-2cf591bd029e"
-  const instagramIcon = "https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Case-Studies%2Finstgram.jpg?alt=media&token=de432c95-a3bd-4423-9825-74cf042cc09b"
+  useEffect(() => {
+    const loadImages = async () => {
+      try {
+        setLoading(true)
+        setError(null)
+        const icons = await getContactIcons()
+        setMailIcon(icons.mailIcon)
+        setInstagramIcon(icons.instagramIcon)
+      } catch (err) {
+        console.error('Failed to load contact images:', err)
+        setError('Failed to load images. Please try again later.')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadImages()
+  }, [])
 
   const renderContactInfo = (uri: string, text: string, onPress: () => void) => {
     return (
       <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 10 }}>
-        <Image source={{ uri }} style={{ width: 40, height: 40, marginRight: 10 }} />
+        <Image resizeMode='contain' source={{ uri }} style={{ width: 40, height: 40, marginRight: 10 }} />
         <TouchableOpacity onPress={onPress}>
           <Text>{text}</Text>
         </TouchableOpacity>
+      </View>
+    )
+  }
+
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20, backgroundColor: Theme.white }}>
+        <LoadingIndicator message="Loading contact..." />
+      </View>
+    )
+  }
+
+  if (error) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20, backgroundColor: Theme.white }}>
+        <Text style={{ color: 'red', textAlign: 'center' }}>{error}</Text>
       </View>
     )
   }
@@ -62,8 +101,8 @@ const Contact = ({ isMobile }: Props) => {
           fontWeight: '200',
         }}
       >
-        {renderContactInfo(mailIcon, "info.h@roadrunnercreative.com", () => Linking.openURL("mailto:info.h@roadrunnercreative.com"))}
-        {renderContactInfo(instagramIcon, "@roadrunner.creative", () => Linking.openURL("https://www.instagram.com/roadrunner.creative/"))}
+        {mailIcon && renderContactInfo(mailIcon, "info.h@roadrunnercreative.com", () => Linking.openURL("mailto:info.h@roadrunnercreative.com"))}
+        {instagramIcon && renderContactInfo(instagramIcon, "@roadrunner.creative", () => Linking.openURL("https://www.instagram.com/roadrunner.creative/"))}
       </Text>
     </View>
   )
