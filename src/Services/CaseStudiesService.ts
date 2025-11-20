@@ -22,15 +22,12 @@ export const fetchCaseStudyImages = async (): Promise<CaseStudyImageType[]> => {
     
     // Wait for the ID token to be available (ensures auth token is ready for Storage requests)
     await user.getIdToken();
-    console.log('Auth token obtained, user ID:', user.uid);
 
     // Create a reference to the Case-Studies folder
     const caseStudiesRef = ref(storage, 'Case-Studies');
-    console.log('Listing items in Case-Studies folder...');
 
     // List all items in the Case-Studies folder
     const result = await listAll(caseStudiesRef);
-    console.log(`Found ${result.items.length} items in Case-Studies folder`);
 
     // Get download URLs and metadata for all items
     const imagePromises = result.items.map(async (itemRef) => {

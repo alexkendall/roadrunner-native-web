@@ -50,9 +50,6 @@ export const Photography = () => {
         )
     }
 
-    console.log("photographyContent", photographyContent)
-
-
     return (
         <ScrollView>
             <View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', padding: 10 }}>
