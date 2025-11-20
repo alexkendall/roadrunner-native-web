@@ -61,5 +61,3 @@ const VM = constructViewModel(breakpoints, 3000, [
   "c8",
   "c9",
 ]);
-
-console.log("VM", VM);

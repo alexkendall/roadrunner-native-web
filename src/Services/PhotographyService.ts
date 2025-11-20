@@ -18,15 +18,12 @@ export const fetchPhotographyImages = async (): Promise<PhotographyContentType[]
     
     // Wait for the ID token to be available (ensures auth token is ready for Storage requests)
     await user.getIdToken();
-    console.log('Auth token obtained, user ID:', user.uid);
 
     // Create a reference to the Photography folder
     const photographyRef = ref(storage, 'Photography');
-    console.log('Listing items in Photography folder...');
 
     // List all items in the Photography folder
     const result = await listAll(photographyRef);
-    console.log(`Found ${result.items.length} items in Photography folder`);
 
     // Get download URLs and metadata for all items
     const imagePromises = result.items.map(async (itemRef) => {

@@ -22,15 +22,12 @@ export const fetchContactImages = async (): Promise<Map<string, string>> => {
     
     // Wait for the ID token to be available (ensures auth token is ready for Storage requests)
     await user.getIdToken();
-    console.log('Auth token obtained, user ID:', user.uid);
 
     // Create a reference to the Contact folder
     const contactRef = ref(storage, 'Contact');
-    console.log('Listing items in Contact folder...');
 
     // List all items in the Contact folder
     const result = await listAll(contactRef);
-    console.log(`Found ${result.items.length} items in Contact folder`);
 
     // Get download URLs for all items and create a map by filename (case-insensitive)
     const imagePromises = result.items.map(async (itemRef) => {
