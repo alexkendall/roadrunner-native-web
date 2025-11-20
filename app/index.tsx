@@ -20,6 +20,7 @@ import { BackButton } from '../src/Components/Common/BackButton'
 import '../src/Styling/ionicons.css'
 import { Content } from '../src/Pages/Content'
 import { Photography } from '../src/Pages/Photography'
+import { initializeAuth } from '../src/Config/Firebase'
 const Stack = createNativeStackNavigator()
 const FONT_LOAD_DELAY_MS = 240
 
@@ -66,6 +67,13 @@ export default () => {
     MenionPro: require('../assets/FontFiles/MinionPro-Regular.otf'),
     Ionicons: require('../assets/FontFiles/ionicons.ttf'),
   })
+
+  // Initialize Firebase anonymous authentication
+  useEffect(() => {
+    initializeAuth().catch((error) => {
+      console.error('Failed to initialize Firebase authentication:', error)
+    })
+  }, [])
 
   // Ensure Ionicons font is available on web (especially iOS Safari)
   // The CSS import handles the @font-face, but we add this as a fallback

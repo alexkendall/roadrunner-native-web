@@ -1,10 +1,34 @@
-import { View, ScrollView, Image } from 'react-native'
-import { PhotographyContentType, PhotographyContent } from '../Data/Photograph'
+import { View, ScrollView, Image, ActivityIndicator, Text } from 'react-native'
+import { PhotographyContentType } from '../Data/Photograph'
+import { useEffect, useState } from 'react'
+import { fetchPhotographyImages } from '../Services/PhotographyService'
+import Theme from '../Config/Theme'
 
 export const Photography = () => {
+    const [photographyContent, setPhotographyContent] = useState<PhotographyContentType[]>([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState<string | null>(null)
 
     const ratio = 4952 / 3448
     const height = 300
+
+    useEffect(() => {
+        const loadImages = async () => {
+            try {
+                setLoading(true)
+                setError(null)
+                const images = await fetchPhotographyImages()
+                setPhotographyContent(images)
+            } catch (err) {
+                console.error('Failed to load photography images:', err)
+                setError('Failed to load images. Please try again later.')
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        loadImages()
+    }, [])
 
     const renderPhotography = (item: PhotographyContentType, index: number) => {
         return (
@@ -13,10 +37,31 @@ export const Photography = () => {
             }} />
         )
     }
+
+    if (loading) {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
+                <ActivityIndicator size="large" color={Theme.primary} />
+                <Text style={{ marginTop: 10, color: Theme.primary }}>Loading photography...</Text>
+            </View>
+        )
+    }
+
+    if (error) {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
+                <Text style={{ color: 'red', textAlign: 'center' }}>{error}</Text>
+            </View>
+        )
+    }
+
+    console.log("photographyContent", photographyContent)
+
+
     return (
         <ScrollView>
             <View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                {PhotographyContent.map((item: PhotographyContentType, index: number) => (
+                {photographyContent.map((item: PhotographyContentType, index: number) => (
                     renderPhotography(item, index)
                 ))}
             </View>
