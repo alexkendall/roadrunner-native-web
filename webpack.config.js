@@ -10,5 +10,14 @@ module.exports = async function (env, argv) {
     },
     extensions: [".web.ts", ".web.tsx", ".web.js", ".js", ".ts", ".tsx", ".ttc", ".otf"],
   };
+  
+  // Ensure all routes serve index.html for client-side routing
+  if (config.devServer) {
+    config.devServer.historyApiFallback = {
+      disableDotRule: false,
+      index: '/index.html',
+    };
+  }
+  
   return config;
 };
