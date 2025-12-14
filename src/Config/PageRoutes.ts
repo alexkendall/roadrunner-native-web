@@ -5,6 +5,7 @@ import Home from "../Pages/Home";
 import { ReactNode } from "react";
 import About from "../Pages/About";
 import { Photography } from "../Pages/Photography";
+import { MentalHealth } from "../Pages/MentalHealthContent";
 
 export interface Route {
   index: number;
@@ -64,6 +65,14 @@ export default {
     component: Photography,
     main: true,
   },
+  Page6: {
+    index: 4,
+    key: "mental-health-content",
+    label: "Mental Health Content",
+    path: "/mental-health-content",
+    component: MentalHealth,
+    main: true,
+  },
 };
 
 export const ScreenNavigationRoutes = {
@@ -73,5 +82,6 @@ export const ScreenNavigationRoutes = {
   CONTACT: "Contact",
   CONTENT: "Content",
   PHOTOGRAPHY: "Photography",
+  MENTAL_HEALTH_CONTENT: "Mental Health Content",
 
-}
+} as const

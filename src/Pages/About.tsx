@@ -92,6 +92,13 @@ const About = ({ isMobile, content_width }: Props) => {
           navigate(ScreenNavigationRoutes.CASES)
         }}>
           <Text style={styles.header2} >
+            MENTAL HEALTH
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {
+          navigate(ScreenNavigationRoutes.CASES)
+        }}>
+          <Text style={styles.header2} >
             SOFTWARE
           </Text>
         </TouchableOpacity>
