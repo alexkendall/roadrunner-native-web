@@ -9,7 +9,6 @@ export const MentalHealth = () => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
 
-    const ratio = 4952 / 3448
     const height = 300
 
     useEffect(() => {
@@ -17,7 +16,7 @@ export const MentalHealth = () => {
             try {
                 setLoading(true)
                 setError(null)
-                const images = await fetchPhotographyImages()
+                const images = await fetchPhotographyImages(true)
                 setMentalHealthyContentContent(images)
             } catch (err) {
                 console.error('Failed to load content:', err)
@@ -33,7 +32,7 @@ export const MentalHealth = () => {
     const renderContent = (item: PhotographyContentType, index: number) => {
         return (
             <Image key={index.toString()} source={{ uri: item.image }} style={{
-                width: height * ratio, height: height, margin: 5, borderWidth: 0.5, borderColor: '#4c4c4c',
+                width: height, height: height, margin: 5, borderWidth: 0.5, borderColor: '#4c4c4c',
             }} />
         )
     }

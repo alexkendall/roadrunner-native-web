@@ -20,6 +20,7 @@ import { BackButton } from '../src/Components/Common/BackButton'
 import '../src/Styling/ionicons.css'
 import { Content } from '../src/Pages/Content'
 import { Photography } from '../src/Pages/Photography'
+import { MentalHealth } from '../src/Pages/MentalHealthContent'
 import { initializeAuth } from '../src/Config/Firebase'
 const Stack = createNativeStackNavigator()
 const FONT_LOAD_DELAY_MS = 240
@@ -129,6 +130,10 @@ export default () => {
           <Stack.Screen name={ScreenNavigationRoutes.CONTACT} component={Contact} />
           <Stack.Screen name={ScreenNavigationRoutes.CONTENT} component={Content} />
           <Stack.Screen name={ScreenNavigationRoutes.PHOTOGRAPHY} component={Photography} />
+          <Stack.Screen
+            name={ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT}
+            component={MentalHealth}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

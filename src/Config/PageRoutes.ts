@@ -82,6 +82,6 @@ export const ScreenNavigationRoutes = {
   CONTACT: "Contact",
   CONTENT: "Content",
   PHOTOGRAPHY: "Photography",
-  MENTAL_HEALTH_CONTENT: "Mental Health Content",
+  MENTAL_HEALTH_CONTENT: "Mental Health",
 
 } as const
