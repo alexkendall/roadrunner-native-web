@@ -17,6 +17,7 @@ type RootStackParamList = {
   'Contact': undefined
   'Content': undefined
   'Photography': undefined
+  'Mental Health Content': undefined
 }
 
 export type NavigationProp = NativeStackNavigationProp<RootStackParamList>

@@ -7,7 +7,7 @@ import { PhotographyContentType } from '../Data/Photograph';
  * Images should be stored in the 'Photography' folder in your Storage bucket
  * Images are sorted by date added (newest first)
  */
-export const fetchPhotographyImages = async (): Promise<PhotographyContentType[]> => {
+export const fetchPhotographyImages = async (mentalHealth: boolean = false): Promise<PhotographyContentType[]> => {
   try {
     // Ensure user is authenticated
     const user = await initializeAuth();
@@ -20,7 +20,7 @@ export const fetchPhotographyImages = async (): Promise<PhotographyContentType[]
     await user.getIdToken();
 
     // Create a reference to the Photography folder
-    const photographyRef = ref(storage, 'Photography');
+    const photographyRef = ref(storage, mentalHealth ? 'Mental-Health' : 'Photography');
 
     // List all items in the Photography folder
     const result = await listAll(photographyRef);

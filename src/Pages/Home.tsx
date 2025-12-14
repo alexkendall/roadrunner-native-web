@@ -102,21 +102,24 @@ const Home = ({ isMobile }: Props) => {
   const renderAboutComponent = () =>
     renderOption('ABOUT', Theme.white, Theme.primary, 'about', ScreenNavigationRoutes.ABOUT)
   const renderClientsComponent = () =>
-    renderOption('SOFTWARE', Theme.primary, Theme.white, 'cases', ScreenNavigationRoutes.CASES)
+    renderOption('SOFTWARE', Theme.white, Theme.black, 'cases', ScreenNavigationRoutes.CASES)
+  const renderMentalHealthComponent = () =>
+    renderOption('MENTAL HEALTH', Theme.black, Theme.white, 'mental-health', ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT)
   const renderPhotographyComponent = () =>
     renderOption('PHOTOGRAPHY', Theme.black, Theme.white, 'photography', ScreenNavigationRoutes.PHOTOGRAPHY)
   const renderContentComponent = () =>
     renderOption('CONTENT', Theme.white, Theme.black, 'content', ScreenNavigationRoutes.CONTENT)
   const renderContactComponent = () =>
-    renderOption('CONTACT', Theme.white, Theme.black, 'contact', ScreenNavigationRoutes.CONTACT)
+    renderOption('CONTACT', Theme.black, Theme.white, 'contact', ScreenNavigationRoutes.CONTACT)
 
 
   const renderTopOptions = () => (
     <View>
       {renderAboutComponent()}
+      {renderMentalHealthComponent()}
       {renderClientsComponent()}
-      {renderContentComponent()}
       {renderPhotographyComponent()}
+      {renderContentComponent()}
       {renderContactComponent()}
     </View>
   )
