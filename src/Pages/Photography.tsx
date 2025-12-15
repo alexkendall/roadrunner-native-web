@@ -1,11 +1,11 @@
 import { View, ScrollView, Image, Text } from 'react-native'
-import { PhotographyContentType } from '../Data/Photograph'
+import { FirebaseAssetContentType } from '../Types/FirebaseAssetContentType'
 import { useEffect, useState } from 'react'
-import { fetchPhotographyImages } from '../Services/PhotographyService'
 import { LoadingIndicator } from '../Components/Common/LoadingIndicator'
+import { fetchAssetImagesFromFirebase } from '../Services/fetchAssetImagesFromFirebase'
 
 export const Photography = () => {
-    const [photographyContent, setPhotographyContent] = useState<PhotographyContentType[]>([])
+    const [photographyContent, setPhotographyContent] = useState<FirebaseAssetContentType []>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
 
@@ -17,7 +17,7 @@ export const Photography = () => {
             try {
                 setLoading(true)
                 setError(null)
-                const images = await fetchPhotographyImages()
+                const images = await fetchAssetImagesFromFirebase('Photography')
                 setPhotographyContent(images)
             } catch (err) {
                 console.error('Failed to load photography images:', err)
@@ -30,7 +30,7 @@ export const Photography = () => {
         loadImages()
     }, [])
 
-    const renderPhotography = (item: PhotographyContentType, index: number) => {
+    const renderPhotography = (item: FirebaseAssetContentType , index: number) => {
         return (
             <Image key={index.toString()} source={{ uri: item.image }} style={{
                 width: height * ratio, height: height, margin: 5, borderWidth: 0.5, borderColor: '#4c4c4c',
@@ -53,7 +53,7 @@ export const Photography = () => {
     return (
         <ScrollView>
             <View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                {photographyContent.map((item: PhotographyContentType, index: number) => (
+                {photographyContent.map((item: FirebaseAssetContentType, index: number) => (
                     renderPhotography(item, index)
                 ))}
             </View>
