@@ -21,6 +21,8 @@ import '../src/Styling/ionicons.css'
 import { Content } from '../src/Pages/Content'
 import { Photography } from '../src/Pages/Photography'
 import { MentalHealth } from '../src/Pages/MentalHealthContent'
+import { Education } from '../src/Pages/Education'
+import { SportsTraining } from '../src/Pages/SportsTraining'
 import { initializeAuth } from '../src/Config/Firebase'
 const Stack = createNativeStackNavigator()
 const FONT_LOAD_DELAY_MS = 240
@@ -134,6 +136,8 @@ export default () => {
             name={ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT}
             component={MentalHealth}
           />
+          <Stack.Screen name={ScreenNavigationRoutes.EDUCATION} component={Education} />
+          <Stack.Screen name={ScreenNavigationRoutes.SPORTS_TRAINING} component={SportsTraining} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

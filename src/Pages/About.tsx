@@ -116,6 +116,22 @@ const About = ({ isMobile, content_width }: Props) => {
             PHOTOGRAPHY
           </Text>
         </TouchableOpacity>
+        {/*
+        <TouchableOpacity onPress={() => {
+          navigate(ScreenNavigationRoutes.EDUCATION)
+        }}>
+          <Text style={styles.header2}>
+            EDUCATION
+          </Text>
+        </TouchableOpacity>
+        */}
+        <TouchableOpacity onPress={() => {
+          navigate(ScreenNavigationRoutes.SPORTS_TRAINING)
+        }}>
+          <Text style={styles.header2}>
+            SPORTS TRAINING
+          </Text>
+        </TouchableOpacity>
         {renderFocus()}
       </View>
     </ScrollView>

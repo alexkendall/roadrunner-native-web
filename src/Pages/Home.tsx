@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native'
 import { ScreenNavigationRoutes } from '../Config/PageRoutes'
 import { RRFonts } from '../Config/Fonts'
 import withFooter from '../Hoc/withFooter'
+import type { NavigationProp, RootStackParamList } from '../Navigation'
 
 const mapStateToProps = (state: RootState) => {
   const props = {
@@ -30,10 +31,10 @@ interface Props {
 
 const Home = ({ isMobile }: Props) => {
 
-  const navigation = useNavigation()
+  const navigation = useNavigation<NavigationProp>()
 
   const renderOptionWeb = useCallback(
-    (text: string, color: string, backgroundColor: string, link: string, route: string) => {
+    (text: string, color: string, backgroundColor: string, link: string, route: keyof RootStackParamList) => {
       const paddingHorizontal: number = isMobile ? 50.0 : 100.0
       return (
         <TouchableOpacity
@@ -66,7 +67,7 @@ const Home = ({ isMobile }: Props) => {
   )
 
   const renderOptionMobile = useCallback(
-    (text: string, color: string, backgroundColor: string, link: string, route: string) => {
+    (text: string, color: string, backgroundColor: string, link: string, route: keyof RootStackParamList) => {
       const paddingHorizontal: number = isMobile ? 50.0 : 100.0
       return (
         <TouchableOpacity
@@ -99,44 +100,17 @@ const Home = ({ isMobile }: Props) => {
 
   // SplitView content for Top Options
   const renderOption = isMobile ? renderOptionMobile : renderOptionWeb
-  const renderAboutComponent = () =>
-    renderOption('ABOUT', Theme.white, Theme.primary, 'about', ScreenNavigationRoutes.ABOUT)
-  const renderClientsComponent = () =>
-    renderOption('SOFTWARE', Theme.white, Theme.black, 'cases', ScreenNavigationRoutes.CASES)
-  const renderMentalHealthComponent = () =>
-    renderOption('MENTAL HEALTH', Theme.black, Theme.white, 'mental-health', ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT)
-  const renderPhotographyComponent = () =>
-    renderOption('PHOTOGRAPHY', Theme.black, Theme.white, 'photography', ScreenNavigationRoutes.PHOTOGRAPHY)
-  const renderContentComponent = () =>
-    renderOption('CONTENT', Theme.white, Theme.black, 'content', ScreenNavigationRoutes.CONTENT)
-  const renderContactComponent = () =>
-    renderOption('CONTACT', Theme.black, Theme.white, 'contact', ScreenNavigationRoutes.CONTACT)
 
-
-  const renderTopOptions = () => (
-    <View>
-      {renderAboutComponent()}
-      {renderMentalHealthComponent()}
-      {renderClientsComponent()}
-      {renderPhotographyComponent()}
-      {renderContentComponent()}
-      {renderContactComponent()}
-    </View>
-  )
-
-  const uri = isMobile
-    ? 'https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Home-Banner%2Fbanner-mobile.jpeg?alt=media&token=a02a83d4-9ca4-4510-ac13-b5fb10e86be7'
-    : 'https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Home-Banner%2Fbanner-web.jpeg?alt=media&token=85e9b668-5b6c-44a6-98bb-33337a53423f'
-  return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: Theme.primary }}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={{ height: '100%', width: '100%', paddingBottom: 50 }}
-      >
-        <Image style={{ width: '100%', height: 450 }} source={{ uri }} />
-        <View style={{ display: 'flex', flexDirection: 'column' }}>{renderTopOptions()}</View>
+return (
+  <ScrollView>
+      {renderOption('ABOUT', Theme.white, Theme.primary, 'about', ScreenNavigationRoutes.ABOUT)}
+      {renderOption('MENTAL HEALTH', Theme.black, Theme.white, 'mental-health', ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT)}
+      {renderOption('SOFTWARE', Theme.white, Theme.black, 'cases', ScreenNavigationRoutes.CASES)}
+      {renderOption('PHOTOGRAPHY', Theme.black, Theme.white, 'photography', ScreenNavigationRoutes.PHOTOGRAPHY)}
+      {renderOption('CONTENT', Theme.white, Theme.black, 'content', ScreenNavigationRoutes.CONTENT)}
+      {renderOption('SPORTS TRAINING', Theme.black, Theme.white, 'sports-training', ScreenNavigationRoutes.SPORTS_TRAINING)}
+      {renderOption('CONTACT', Theme.white, Theme.black, 'contact', ScreenNavigationRoutes.CONTACT)}
       </ScrollView>
-    </SafeAreaView>
   )
 }
 

@@ -24,7 +24,7 @@ export function goBack() {
 }
 
 
-type RootStackParamList = {
+export type RootStackParamList = {
   'Roadrunner Creative': undefined
   'Software': undefined
   'About': undefined
@@ -32,6 +32,8 @@ type RootStackParamList = {
   'Content': undefined
   'Photography': undefined
   'Mental Health': undefined
+  'Education': undefined
+  'Sports Training': undefined
 }
 
 export type NavigationProp = NativeStackNavigationProp<RootStackParamList>

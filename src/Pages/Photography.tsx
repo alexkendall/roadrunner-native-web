@@ -2,7 +2,7 @@ import { View, ScrollView, Image, Text } from 'react-native'
 import { FirebaseAssetContentType } from '../Types/FirebaseAssetContentType'
 import { useEffect, useState } from 'react'
 import { LoadingIndicator } from '../Components/Common/LoadingIndicator'
-import { fetchAssetImagesFromFirebase } from '../Services/fetchAssetImagesFromFirebase'
+import { fetchAssetImagesFromFirebase } from '../Services/FetchAssetImagesFromFirebase'
 
 export const Photography = () => {
     const [photographyContent, setPhotographyContent] = useState<FirebaseAssetContentType []>([])

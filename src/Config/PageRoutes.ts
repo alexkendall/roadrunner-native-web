@@ -6,6 +6,8 @@ import { ReactNode } from "react";
 import About from "../Pages/About";
 import { Photography } from "../Pages/Photography";
 import { MentalHealth } from "../Pages/MentalHealthContent";
+import { Education } from "../Pages/Education";
+import { SportsTraining } from "../Pages/SportsTraining";
 
 export interface Route {
   index: number;
@@ -73,6 +75,22 @@ export default {
     component: MentalHealth,
     main: true,
   },
+  Page7: {
+    index: 4,
+    key: "education",
+    label: "Education",
+    path: "/education",
+    component: Education,
+    main: true,
+  },
+  Page8: {
+    index: 4,
+    key: "sports-training",
+    label: "Sports Training",
+    path: "/sports-training",
+    component: SportsTraining,
+    main: true,
+  },
 };
 
 export const ScreenNavigationRoutes = {
@@ -83,5 +101,7 @@ export const ScreenNavigationRoutes = {
   CONTENT: "Content",
   PHOTOGRAPHY: "Photography",
   MENTAL_HEALTH_CONTENT: "Mental Health",
+  EDUCATION: "Education",
+  SPORTS_TRAINING: "Sports Training",
 
 } as const

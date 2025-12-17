@@ -1,7 +1,7 @@
 import { View, ScrollView, Image, Text } from 'react-native'
 import { FirebaseAssetContentType } from '../Types/FirebaseAssetContentType'
 import { useEffect, useState } from 'react'
-import { fetchAssetImagesFromFirebase } from '../Services/fetchAssetImagesFromFirebase'
+import { fetchAssetImagesFromFirebase } from '../Services/FetchAssetImagesFromFirebase'
 import { LoadingIndicator } from '../Components/Common/LoadingIndicator'
 
 export const MentalHealth = () => {

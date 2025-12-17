@@ -8,7 +8,7 @@ import { View, Text, Image, ScrollView } from 'react-native'
 import { RRFonts } from '../Config/Fonts'
 import withFooter from '../Hoc/withFooter'
 import { CasesData as CasesDataType } from '../Config/Cases'
-import { fetchAssetImagesFromFirebase } from '../Services/fetchAssetImagesFromFirebase'
+import { fetchAssetImagesFromFirebase } from '../Services/FetchAssetImagesFromFirebase'
 import { FirebaseAssetContentType } from '../Types/FirebaseAssetContentType'
 import { LoadingIndicator } from '../Components/Common/LoadingIndicator'
 
