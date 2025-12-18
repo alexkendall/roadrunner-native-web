@@ -8,8 +8,8 @@ import { View, Text, Image, ScrollView } from 'react-native'
 import { RRFonts } from '../Config/Fonts'
 import withFooter from '../Hoc/withFooter'
 import { CasesData as CasesDataType } from '../Config/Cases'
-import { fetchCaseStudyImages } from '../Services/CaseStudiesService'
-import { CaseStudyImageType } from '../Services/CaseStudiesService'
+import { fetchAssetImagesFromFirebase } from '../Services/FetchAssetImagesFromFirebase'
+import { FirebaseAssetContentType } from '../Types/FirebaseAssetContentType'
 import { LoadingIndicator } from '../Components/Common/LoadingIndicator'
 
 const mapStateToProps = (state: RootState) => {
@@ -35,7 +35,7 @@ interface Props {
 const Studies = ({ isMobile }: Props) => {
   const [showModal, setDisplayModal] = useState(false)
   const [modalPayload, setModalPayload] = useState<CasesDataType | null>(null)
-  const [caseStudyImages, setCaseStudyImages] = useState<CaseStudyImageType[]>([])
+  const [caseStudyImages, setCaseStudyImages] = useState<FirebaseAssetContentType[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -44,7 +44,7 @@ const Studies = ({ isMobile }: Props) => {
       try {
         setLoading(true)
         setError(null)
-        const images = await fetchCaseStudyImages()
+        const images = await fetchAssetImagesFromFirebase('Case-Studies')
         setCaseStudyImages(images)
       } catch (err) {
         console.error('Failed to load case study images:', err)

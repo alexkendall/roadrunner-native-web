@@ -1,11 +1,11 @@
 import { View, ScrollView, Image, Text } from 'react-native'
-import { PhotographyContentType } from '../Data/Photograph'
+import { FirebaseAssetContentType } from '../Types/FirebaseAssetContentType'
 import { useEffect, useState } from 'react'
-import { fetchPhotographyImages } from '../Services/PhotographyService'
+import { fetchAssetImagesFromFirebase } from '../Services/FetchAssetImagesFromFirebase'
 import { LoadingIndicator } from '../Components/Common/LoadingIndicator'
 
 export const MentalHealth = () => {
-    const [mentalHealthContent, setMentalHealthyContentContent] = useState<PhotographyContentType[]>([])
+    const [mentalHealthContent, setMentalHealthyContentContent] = useState<FirebaseAssetContentType[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
 
@@ -16,7 +16,7 @@ export const MentalHealth = () => {
             try {
                 setLoading(true)
                 setError(null)
-                const images = await fetchPhotographyImages(true)
+                const images = await fetchAssetImagesFromFirebase('Mental-Health')
                 setMentalHealthyContentContent(images)
             } catch (err) {
                 console.error('Failed to load content:', err)
@@ -29,7 +29,7 @@ export const MentalHealth = () => {
         loadImages()
     }, [])
 
-    const renderContent = (item: PhotographyContentType, index: number) => {
+    const renderContent = (item: FirebaseAssetContentType, index: number) => {
         return (
             <Image key={index.toString()} source={{ uri: item.image }} style={{
                 width: height, height: height, margin: 5, borderWidth: 0.5, borderColor: '#4c4c4c',
@@ -52,7 +52,7 @@ export const MentalHealth = () => {
     return (
         <ScrollView>
             <View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                {mentalHealthContent.map((item: PhotographyContentType, index: number) => (
+                {mentalHealthContent.map((item: FirebaseAssetContentType, index: number) => (
                     renderContent(item, index)
                 ))}
             </View>

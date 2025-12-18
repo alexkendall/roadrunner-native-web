@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { View, Text, StyleSheet, Animated } from 'react-native'
+import { View, Text, StyleSheet, Animated, Platform } from 'react-native'
 import Theme from '../../../Config/Theme'
 
 interface LoadingIndicatorProps {
@@ -11,6 +11,7 @@ const BOLT_ICON_URL = 'https://firebasestorage.googleapis.com/v0/b/roadrunner-na
 
 export const LoadingIndicator = ({ message, showBoltIcon = true }: LoadingIndicatorProps) => {
   const opacity = useRef(new Animated.Value(0.3)).current
+  const useNativeDriver = Platform.OS !== 'web'
 
   useEffect(() => {
     const pulseAnimation = Animated.loop(
@@ -18,12 +19,12 @@ export const LoadingIndicator = ({ message, showBoltIcon = true }: LoadingIndica
         Animated.timing(opacity, {
           toValue: 1,
           duration: 1000,
-          useNativeDriver: true,
+          useNativeDriver,
         }),
         Animated.timing(opacity, {
           toValue: 0.3,
           duration: 1000,
-          useNativeDriver: true,
+          useNativeDriver,
         }),
       ])
     )

@@ -1,11 +1,11 @@
 import { View, Image, ScrollView, Text } from 'react-native'
-import { DialogueContentType } from '../Data/DialogueContent'
+import { FirebaseAssetContentType } from '../Types/FirebaseAssetContentType'
 import { useEffect, useState } from 'react'
-import { fetchDialogueContentImages } from '../Services/DialogueContentService'
+import { fetchAssetImagesFromFirebase } from '../Services/FetchAssetImagesFromFirebase'
 import { LoadingIndicator } from '../Components/Common/LoadingIndicator'
 
 export const Content = () => {
-    const [dialogueContent, setDialogueContent] = useState<DialogueContentType[]>([])
+    const [dialogueContent, setDialogueContent] = useState<FirebaseAssetContentType[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
 
@@ -14,7 +14,7 @@ export const Content = () => {
             try {
                 setLoading(true)
                 setError(null)
-                const images = await fetchDialogueContentImages()
+                const images = await fetchAssetImagesFromFirebase('Dialogue-Content')
                 setDialogueContent(images)
             } catch (err) {
                 console.error('Failed to load dialogue content images:', err)
@@ -27,7 +27,7 @@ export const Content = () => {
         loadImages()
     }, [])
 
-    const renderContent = (item: DialogueContentType, index: number) => {
+    const renderContent = (item: FirebaseAssetContentType, index: number) => {
         return (
             <Image key={index.toString()} source={{ uri: item.image }} style={{ width: 300, height: 300, margin: 10 }} />
         )
@@ -48,7 +48,7 @@ export const Content = () => {
     return (
         <ScrollView>
             <View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                {dialogueContent.map((item: DialogueContentType, index) => (
+                {dialogueContent.map((item: FirebaseAssetContentType, index) => (
                     renderContent(item, index)
                 ))}
             </View>
