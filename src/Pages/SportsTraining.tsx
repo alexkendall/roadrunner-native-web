@@ -90,6 +90,16 @@ export const SportsTraining = () => {
         />
       </View>
       <Text style={{ fontSize: 18, margin: 10, fontWeight: "300" }}>In this scenario, we have 6 open hoops. It is a good usage, to use every hoop. Getting up shots in an open gym allows less pre-planed behavior than a typical drill and simulates a more game-time scenario where ball placement and scenarios are never perfect.</Text>
+
+      <Text style={{ fontSize: 30, margin: 10 }}>One On One Drills</Text>
+
+      <GoogleDriveVideoEmbed
+          driveUrlOrId="https://drive.google.com/file/d/1aieZYeuERE1ceT1b3ITT1ZDLbmJD1ceo/view?usp=sharing"
+          title="One on One Drills"
+          width={videoWidth}
+          aspectRatio={aspectRatio}
+        />
+        <Text style={{ fontSize: 18, margin: 10, fontWeight: "300" }}>Here we perform different move variations, from all areas in the half court. These moves are more geared towards guards, but show some different variations in finishing, operating into the mid-range, and from outside of the arc. One thing to notice in this video, is how we can use our left hand on the right side of the hoop and our right hand on the left side of the hoop to create better angles.</Text>
     </ScrollView>
   )
 }
