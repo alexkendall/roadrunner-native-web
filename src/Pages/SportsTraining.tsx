@@ -87,7 +87,7 @@ export const SportsTraining = () => {
       {Object.values(VideoContent).map((item) => {
         return (
           <View key={item.title}>
-          <Text style={{ fontSize: 30, margin: 10 }}>Multiple Hoops Variation</Text>
+          <Text style={{ fontSize: 30, margin: 10 }}>{item.title}</Text>
           <Text>
             </Text>
           <View
@@ -106,7 +106,7 @@ export const SportsTraining = () => {
               aspectRatio={aspectRatio}
             />
           </View>
-          <Text style={{ fontSize: 18, margin: 10, fontWeight: "300" }}>In this scenario, we have 6 open hoops. It is a good usage, to use every hoop. Getting up shots in an open gym allows less pre-planed behavior than a typical drill and simulates a more game-time scenario where ball placement and scenarios are never perfect.</Text>
+          <Text style={{ fontSize: 18, margin: 10, fontWeight: "300" }}>{item.description}</Text>
         </View>
       )})}
     </ScrollView>
