@@ -1,4 +1,4 @@
-import { View, ScrollView, Image, Text } from 'react-native'
+import { View, ScrollView, Image, Text, Dimensions } from 'react-native'
 import { FirebaseAssetContentType } from '../Types/FirebaseAssetContentType'
 import { useEffect, useState } from 'react'
 import { fetchAssetImagesFromFirebase } from '../Services/FetchAssetImagesFromFirebase'
@@ -9,14 +9,28 @@ import { GoogleDriveVideoEmbed } from '../Components/Common/GoogleDriveVideoEmbe
 // update this constant (e.g. "Sports-Training" vs "SportsTraining").
 const FIREBASE_DIRECTORY = 'Sports-Training'
 
+const VideoContent = [
+  {
+    title: 'Multiple Hoops Variation',
+    description: 'In this scenario, we have 6 open hoops. It is a good usage, to use every hoop. Getting up shots in an open gym allows less pre-planed behavior than a typical drill and simulates a more game-time scenario where ball placement and scenarios are never perfect.',
+    video: 'https://drive.google.com/file/d/1Uv1_2jq6MgWvFHC9YH9QjG4txLBM8Jt6/view?usp=sharing',
+  },
+  {
+    title: 'One-On-One Drills',
+    description: 'Here we perform different move variations, from all areas in the half court. These moves are more geared towards guards, but show some different variations in finishing, operating into the mid-range, and from outside of the arc. One thing to notice in this video, is how we can use our left hand on the right side of the hoop and our right hand on the left side of the hoop to create better angles.',
+    video: 'https://drive.google.com/file/d/1aieZYeuERE1ceT1b3ITT1ZDLbmJD1ceo/view?usp=sharing',
+  },
+]
+
 export const SportsTraining = () => {
   const [sportsTrainingContent, setSportsTrainingContent] = useState<FirebaseAssetContentType[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  const videoWidth = 560
+  const width = Dimensions.get('window').width
+
+  const videoWidth =   width < 600 ? width - 20 : 560
   const aspectRatio = 16 / 9
-  const videoHeight = Math.round(videoWidth / aspectRatio)
   const imageSize = 300
 
   useEffect(() => {
@@ -70,34 +84,31 @@ export const SportsTraining = () => {
       <Text style={{ fontSize: 30, margin: 10, fontWeight: "bold" }}>
       {"Basketball"}
       </Text>
-      <Text style={{ fontSize: 30, margin: 10 }}>Multiple Hoops Variation</Text>
-      <Text>
-        </Text>
-      <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          padding: 10,
-        }}
-      >
-        <GoogleDriveVideoEmbed
-          driveUrlOrId="https://drive.google.com/file/d/1Uv1_2jq6MgWvFHC9YH9QjG4txLBM8Jt6/view?usp=sharing"
-          title="Multiple Hoops Variation"
-          width={videoWidth}
-          aspectRatio={aspectRatio}
-        />
-      </View>
-      <Text style={{ fontSize: 18, margin: 10, fontWeight: "300" }}>In this scenario, we have 6 open hoops. It is a good usage, to use every hoop. Getting up shots in an open gym allows less pre-planed behavior than a typical drill and simulates a more game-time scenario where ball placement and scenarios are never perfect.</Text>
-      <Text style={{ fontSize: 30, margin: 10, marginBottom: 20 }}>One-On-One Drills</Text>
-      <GoogleDriveVideoEmbed
-          driveUrlOrId="https://drive.google.com/file/d/1aieZYeuERE1ceT1b3ITT1ZDLbmJD1ceo/view?usp=sharing"
-          title="One-on-One Drills"
-          width={videoWidth}
-          aspectRatio={aspectRatio}
-        />
-        <Text style={{ fontSize: 18, margin: 10, marginTop: 20, fontWeight: "300" }}>Here we perform different move variations, from all areas in the half court. These moves are more geared towards guards, but show some different variations in finishing, operating into the mid-range, and from outside of the arc. One thing to notice in this video, is how we can use our left hand on the right side of the hoop and our right hand on the left side of the hoop to create better angles.</Text>
+      {Object.values(VideoContent).map((item) => {
+        return (
+          <View key={item.title}>
+          <Text style={{ fontSize: 30, margin: 10 }}>Multiple Hoops Variation</Text>
+          <Text>
+            </Text>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+            }}
+          >
+    
+            <GoogleDriveVideoEmbed
+              driveUrlOrId={item.video}
+              title={item.title}
+              width={videoWidth}
+              aspectRatio={aspectRatio}
+            />
+          </View>
+          <Text style={{ fontSize: 18, margin: 10, fontWeight: "300" }}>In this scenario, we have 6 open hoops. It is a good usage, to use every hoop. Getting up shots in an open gym allows less pre-planed behavior than a typical drill and simulates a more game-time scenario where ball placement and scenarios are never perfect.</Text>
+        </View>
+      )})}
     </ScrollView>
   )
 }
