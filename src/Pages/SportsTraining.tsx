@@ -1,4 +1,4 @@
-import { View, ScrollView, Image, Text } from 'react-native'
+import { View, ScrollView, Image, Text, Dimensions } from 'react-native'
 import { useEffect, useMemo, useState } from 'react'
 import { LoadingIndicator } from '../Components/Common/LoadingIndicator'
 import { GoogleDriveVideoEmbed } from '../Components/Common/GoogleDriveVideoEmbed'
@@ -35,7 +35,9 @@ export const SportsTraining = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  const videoWidth = 560
+  const width = Dimensions.get('window').width
+
+  const videoWidth =   width < 600 ? width - 20 : 560
   const aspectRatio = 16 / 9
   const imageSize = 300
 
