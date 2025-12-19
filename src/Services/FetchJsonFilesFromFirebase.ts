@@ -1,4 +1,4 @@
-import { ref, listAll, getDownloadURL, getMetadata } from 'firebase/storage'
+import { ref, listAll, getDownloadURL, getMetadata, getBytes } from 'firebase/storage'
 import { initializeAuth, storage } from '../Config/Firebase'
 
 export type FirebaseJsonFile<T = unknown> = {
@@ -30,19 +30,21 @@ export async function fetchJsonFilesFromFirebase<T = unknown>(directory: string)
       const [downloadURL, metadata] = await Promise.all([getDownloadURL(itemRef), getMetadata(itemRef)])
 
       console.log('downloadURL', downloadURL)
-      const resp = await fetch(downloadURL as string, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-
-      console.log('resp', resp)
-
-      if (!resp.ok) {
-        throw new Error(`Failed to download "${itemRef.fullPath}" (${resp.status})`)
+      // Prefer Storage SDK reads over plain fetch(downloadURL).
+      // Some objects may not have a public download token, causing downloadURL fetches to 403 on web.
+      let data: T
+      try {
+        const bytes = await getBytes(itemRef)
+        const text = new TextDecoder('utf-8').decode(bytes)
+        data = JSON.parse(text) as T
+      } catch (e) {
+        // Fallback: if getBytes fails for any environment-specific reason, try downloadURL fetch.
+        const resp = await fetch(downloadURL as string)
+        if (!resp.ok) {
+          throw new Error(`Failed to download "${itemRef.fullPath}" (${resp.status})`)
+        }
+        data = (await resp.json()) as T
       }
-
-      const data = (await resp.json()) as T
 
       console.log('data', data)
 
