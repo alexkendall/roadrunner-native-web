@@ -138,42 +138,87 @@ const Home = ({ isMobile }: Props) => {
   // SplitView content for Top Options
   const renderOption = isMobile ? renderOptionMobile : renderOptionWeb
 
-return (
-  <ScrollView>
-      {flagsLoading ? (
-        <Text
-          style={{
-            color: Theme.white,
-            backgroundColor: Theme.primary,
-            padding: 16,
-            fontFamily: RRFonts.RobotoBoldIttalic,
-          }}
-        >
-          Loading…
-        </Text>
-      ) : null}
+  const options = [
+    {
+      label: 'ABOUT',
+      value: 'about',
+      route: ScreenNavigationRoutes.ABOUT,
+      color: Theme.white,
+      backgroundColor: Theme.primary,
+    },
+    {
+      label: 'MENTAL HEALTH',
+      value: 'mental_health',
+      route: ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT,
+      color: Theme.black,
+      backgroundColor: Theme.white,
+    },
+    {
+      label: 'SOFTWARE',
+      value: 'software',
+      route: ScreenNavigationRoutes.CASES,
+      color: Theme.white,
+      backgroundColor: Theme.black,
+    },
+    {
+      label: 'PHOTOGRAPHY',
+      value: 'photography',
+      route: ScreenNavigationRoutes.PHOTOGRAPHY,
+      color: Theme.black,
+      backgroundColor: Theme.white,
+    },
+    {
+      label: 'CONTENT',
+      value: 'content',
+      route: ScreenNavigationRoutes.CONTENT,
+      color: Theme.white,
+      backgroundColor: Theme.black,
+    },
+    {
+      label: 'SPORTS TRAINING',
+      value: 'sports_training',
+      route: ScreenNavigationRoutes.SPORTS_TRAINING,
+    },
+    {
+      label: 'CONTACT',
+      value: 'contact',
+      route: ScreenNavigationRoutes.CONTACT,
+      color: Theme.white,
+      backgroundColor: Theme.black,
+    },
+  ]
 
-      {isEnabled('about') ? renderOption('ABOUT', Theme.white, Theme.primary, 'about', ScreenNavigationRoutes.ABOUT) : null}
-      {isEnabled('mental_health')
-        ? renderOption(
-            'MENTAL HEALTH',
-            Theme.black,
-            Theme.white,
-            'mental-health',
-            ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT
+  const filteredOptions = options.filter((option) => isEnabled(option.value))
+
+
+  return (
+    <ScrollView>
+        {flagsLoading ? (
+          <Text
+            style={{
+              color: Theme.white,
+              backgroundColor: Theme.primary,
+              padding: 16,
+              fontFamily: RRFonts.RobotoBoldIttalic,
+            }}
+          >
+            Loading…
+          </Text>
+        ) : null}
+
+        {filteredOptions.map((option, index) => {
+          const backgroundColor = index % 2 === 0 ? "black" : Theme.white
+          const color = index % 2 === 0 ? Theme.white : Theme.black
+          return (
+            <TouchableOpacity key={option.value} onPress={() => {
+              navigation.navigate(option.route)
+            }}>
+              {isEnabled(option.value) ? renderOption(option.label, backgroundColor, color, option.route, ScreenNavigationRoutes.ABOUT) : null}
+            </TouchableOpacity>
           )
-        : null}
-      {isEnabled('software') ? renderOption('SOFTWARE', Theme.white, Theme.black, 'cases', ScreenNavigationRoutes.CASES) : null}
-      {isEnabled('photography')
-        ? renderOption('PHOTOGRAPHY', Theme.black, Theme.white, 'photography', ScreenNavigationRoutes.PHOTOGRAPHY)
-        : null}
-      {isEnabled('content') ? renderOption('CONTENT', Theme.white, Theme.black, 'content', ScreenNavigationRoutes.CONTENT) : null}
-      {isEnabled('sports_training')
-        ? renderOption('SPORTS TRAINING', Theme.black, Theme.white, 'sports-training', ScreenNavigationRoutes.SPORTS_TRAINING)
-        : null}
-      {isEnabled('contact') ? renderOption('CONTACT', Theme.white, Theme.black, 'contact', ScreenNavigationRoutes.CONTACT) : null}
+        })}
       </ScrollView>
-  )
+    )
 }
 
 export default withFooter(connect(mapStateToProps)(Home) as any)
