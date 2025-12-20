@@ -193,19 +193,6 @@ const Home = ({ isMobile }: Props) => {
 
   return (
     <ScrollView>
-        {flagsLoading ? (
-          <Text
-            style={{
-              color: Theme.white,
-              backgroundColor: Theme.primary,
-              padding: 16,
-              fontFamily: RRFonts.RobotoBoldIttalic,
-            }}
-          >
-            Loading…
-          </Text>
-        ) : null}
-
         {filteredOptions.map((option, index) => {
           const backgroundColor = index % 2 === 0 ? "black" : Theme.white
           const color = index % 2 === 0 ? Theme.white : Theme.black
