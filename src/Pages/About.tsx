@@ -89,7 +89,7 @@ const About = ({ isMobile, content_width }: Props) => {
           WHAT WE DO
         </Text>
         <TouchableOpacity onPress={() => {
-          navigate(ScreenNavigationRoutes.CASES)
+          navigate(ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT)
         }}>
           <Text style={styles.header2} >
             MENTAL HEALTH
