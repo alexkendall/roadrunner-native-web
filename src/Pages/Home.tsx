@@ -6,9 +6,10 @@ import { Text, ScrollView, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { ScreenNavigationRoutes } from '../Config/PageRoutes'
 import { RRFonts } from '../Config/Fonts'
-import withFooter from '../Hoc/withFooter'
+import withFooter from '../Navigation/withFooter'
 import type { NavigationProp, RootStackParamList } from '../Navigation'
 import { fetchFeatureFlags } from '../Services/FeatureFlagsService'
+import { FOOTER_HEIGHT } from '../Constants'
 
 const mapStateToProps = (state: RootState) => {
   const props = {
@@ -192,7 +193,7 @@ const Home = ({ isMobile }: Props) => {
 
 
   return (
-    <ScrollView>
+    <ScrollView style={{ flex: 1, backgroundColor: Theme.primary_light, paddingBottom: FOOTER_HEIGHT }}>
         {filteredOptions.map((option, index) => {
           const backgroundColor = index % 2 === 0 ? "black" : Theme.white
           const color = index % 2 === 0 ? Theme.white : Theme.black

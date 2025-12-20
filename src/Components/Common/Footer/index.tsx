@@ -2,8 +2,7 @@ import { useCallback } from "react";
 import { Image } from "react-native";
 import Theme from "../../../Config/Theme";
 import { TouchableOpacity, View, Linking, Text } from 'react-native'
-
-const FOOTER_HEIGHT = 50.0;
+import { FOOTER_HEIGHT } from "../../../Constants";
 
 const SocialFooter = () => {
 

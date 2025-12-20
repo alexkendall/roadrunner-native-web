@@ -2,19 +2,15 @@ import { useCallback } from 'react'
 import { connect } from 'react-redux'
 import Theme from '../Config/Theme'
 import { RootState } from '../Redux/Store'
-import { WordpressPost } from '../Redux/Slices/WordpressSlice'
 import { View, Text, ScrollView, Platform, StyleSheet, TouchableOpacity } from 'react-native'
 import { RRFonts } from '../Config/Fonts'
-import withFooter from '../Hoc/withFooter'
+import withFooter from '../Navigation/withFooter'
 import { FOOTER_HEIGHT } from '../Redux/Slices/WindowSlice'
-import SolutionsData from '../Data/Solutions'
 import { ScreenNavigationRoutes } from '../Config/PageRoutes'
 import { navigate } from '../Navigation'
 
-
 const mapStateToProps = (state: RootState) => {
   return {
-    solutions_data: Object.values(SolutionsData),
     width: state.window.content_width,
     tab_height: state.window.tab_height,
     paddingRight: state.window.paddingRight,
@@ -25,8 +21,6 @@ const mapStateToProps = (state: RootState) => {
 }
 
 interface Props {
-  solutions_data?: Array<Record<string, any>>
-  posts?: Array<WordpressPost>
   tab_height?: number
   paddingRight?: number
   paddingTop?: number
