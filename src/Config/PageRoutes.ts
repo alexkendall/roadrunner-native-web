@@ -2,7 +2,7 @@ import Contact from "../Pages/Contact";
 import Cases from "../Pages/Cases";
 import { Content } from "../Pages/Content";
 import Home from "../Pages/Home";
-import { ReactNode } from "react";
+import type { ComponentType } from "react";
 import About from "../Pages/About";
 import { Photography } from "../Pages/Photography";
 import { MentalHealth } from "../Pages/MentalHealthContent";
@@ -14,7 +14,7 @@ export interface Route {
   key: string;
   label: string;
   path: string;
-  component: ReactNode;
+  component: ComponentType<any>;
   main: boolean;
 }
 

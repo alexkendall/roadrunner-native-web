@@ -1,13 +1,14 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { connect } from 'react-redux'
 import Theme from '../Config/Theme'
 import { RootState } from '../Redux/Store'
-import { View, Image, Text, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
+import { Text, ScrollView, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { ScreenNavigationRoutes } from '../Config/PageRoutes'
 import { RRFonts } from '../Config/Fonts'
 import withFooter from '../Hoc/withFooter'
 import type { NavigationProp, RootStackParamList } from '../Navigation'
+import { fetchFeatureFlags } from '../Services/FeatureFlagsService'
 
 const mapStateToProps = (state: RootState) => {
   const props = {
@@ -32,6 +33,42 @@ interface Props {
 const Home = ({ isMobile }: Props) => {
 
   const navigation = useNavigation<NavigationProp>()
+
+  const [flagsLoading, setFlagsLoading] = useState(true)
+  const [flagsError, setFlagsError] = useState<Error | null>(null)
+  const [flags, setFlags] = useState<Record<string, boolean> | null>(null)
+
+  useEffect(() => {
+    let cancelled = false
+
+    ;(async () => {
+      try {
+        const result = await fetchFeatureFlags()
+        if (cancelled) return
+        setFlags(result?.flags ?? null)
+        setFlagsError(null)
+      } catch (e) {
+        if (cancelled) return
+        setFlags(null)
+        setFlagsError(e instanceof Error ? e : new Error('Failed to load feature flags'))
+      } finally {
+        if (cancelled) return
+        setFlagsLoading(false)
+      }
+    })()
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const isEnabled = useMemo(() => {
+    // If flags fail to load, keep current behavior (show all).
+    if (flagsError) {
+      return (_key: string) => true
+    }
+    return (key: string) => (flags ? flags[key] !== false : true)
+  }, [flags, flagsError])
 
   const renderOptionWeb = useCallback(
     (text: string, color: string, backgroundColor: string, link: string, route: keyof RootStackParamList) => {
@@ -101,17 +138,87 @@ const Home = ({ isMobile }: Props) => {
   // SplitView content for Top Options
   const renderOption = isMobile ? renderOptionMobile : renderOptionWeb
 
-return (
-  <ScrollView>
-      {renderOption('ABOUT', Theme.white, Theme.primary, 'about', ScreenNavigationRoutes.ABOUT)}
-      {renderOption('MENTAL HEALTH', Theme.black, Theme.white, 'mental-health', ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT)}
-      {renderOption('SOFTWARE', Theme.white, Theme.black, 'cases', ScreenNavigationRoutes.CASES)}
-      {renderOption('PHOTOGRAPHY', Theme.black, Theme.white, 'photography', ScreenNavigationRoutes.PHOTOGRAPHY)}
-      {renderOption('CONTENT', Theme.white, Theme.black, 'content', ScreenNavigationRoutes.CONTENT)}
-      {renderOption('SPORTS TRAINING', Theme.black, Theme.white, 'sports-training', ScreenNavigationRoutes.SPORTS_TRAINING)}
-      {renderOption('CONTACT', Theme.white, Theme.black, 'contact', ScreenNavigationRoutes.CONTACT)}
+  const options = [
+    {
+      label: 'ABOUT',
+      value: 'about',
+      route: ScreenNavigationRoutes.ABOUT,
+      color: Theme.white,
+      backgroundColor: Theme.primary,
+    },
+    {
+      label: 'MENTAL HEALTH',
+      value: 'mental_health',
+      route: ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT,
+      color: Theme.black,
+      backgroundColor: Theme.white,
+    },
+    {
+      label: 'SOFTWARE',
+      value: 'software',
+      route: ScreenNavigationRoutes.CASES,
+      color: Theme.white,
+      backgroundColor: Theme.black,
+    },
+    {
+      label: 'PHOTOGRAPHY',
+      value: 'photography',
+      route: ScreenNavigationRoutes.PHOTOGRAPHY,
+      color: Theme.black,
+      backgroundColor: Theme.white,
+    },
+    {
+      label: 'CONTENT',
+      value: 'content',
+      route: ScreenNavigationRoutes.CONTENT,
+      color: Theme.white,
+      backgroundColor: Theme.black,
+    },
+    {
+      label: 'SPORTS TRAINING',
+      value: 'sports_training',
+      route: ScreenNavigationRoutes.SPORTS_TRAINING,
+    },
+    {
+      label: 'CONTACT',
+      value: 'contact',
+      route: ScreenNavigationRoutes.CONTACT,
+      color: Theme.white,
+      backgroundColor: Theme.black,
+    },
+  ]
+
+  const filteredOptions = options.filter((option) => isEnabled(option.value))
+
+
+  return (
+    <ScrollView>
+        {flagsLoading ? (
+          <Text
+            style={{
+              color: Theme.white,
+              backgroundColor: Theme.primary,
+              padding: 16,
+              fontFamily: RRFonts.RobotoBoldIttalic,
+            }}
+          >
+            Loading…
+          </Text>
+        ) : null}
+
+        {filteredOptions.map((option, index) => {
+          const backgroundColor = index % 2 === 0 ? "black" : Theme.white
+          const color = index % 2 === 0 ? Theme.white : Theme.black
+          return (
+            <TouchableOpacity key={option.value} onPress={() => {
+              navigation.navigate(option.route)
+            }}>
+              {isEnabled(option.value) ? renderOption(option.label, backgroundColor, color, option.route, ScreenNavigationRoutes.ABOUT) : null}
+            </TouchableOpacity>
+          )
+        })}
       </ScrollView>
-  )
+    )
 }
 
-export default withFooter(connect(mapStateToProps)(Home))
+export default withFooter(connect(mapStateToProps)(Home) as any)
