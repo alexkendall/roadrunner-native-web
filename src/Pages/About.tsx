@@ -82,13 +82,7 @@ const About = ({ isMobile, content_width }: Props) => {
         >
           WHAT WE DO
         </Text>
-        <TouchableOpacity onPress={() => {
-          navigate(ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT)
-        }}>
-          <Text style={styles.header2} >
-            MENTAL HEALTH
-          </Text>
-        </TouchableOpacity>
+    
         <TouchableOpacity onPress={() => {
           navigate(ScreenNavigationRoutes.CASES)
         }}>
@@ -108,6 +102,13 @@ const About = ({ isMobile, content_width }: Props) => {
         }}>
           <Text style={styles.header2}>
             PHOTOGRAPHY
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {
+          navigate(ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT)
+        }}>
+          <Text style={styles.header2} >
+            MENTAL HEALTH
           </Text>
         </TouchableOpacity>
         {/*
