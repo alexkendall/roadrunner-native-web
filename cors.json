@@ -1,0 +1,15 @@
+[
+  {
+    "origin": [
+      "http://localhost:8084",
+      "http://127.0.0.1:8084",
+      "http://localhost:19006",
+      "http://127.0.0.1:19006",
+      "https://roadrunnercreative.com",
+      "https://www.roadrunnercreative.com"
+    ],
+    "method": ["GET", "HEAD", "OPTIONS"],
+    "responseHeader": ["Content-Type", "Authorization"],
+    "maxAgeSeconds": 3600
+  }
+]
