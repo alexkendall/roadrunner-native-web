@@ -119,6 +119,7 @@ const About = ({ isMobile, content_width }: Props) => {
           </Text>
         </TouchableOpacity>
         */}
+        {/*
         <TouchableOpacity onPress={() => {
           navigate(ScreenNavigationRoutes.SPORTS_TRAINING)
         }}>
@@ -126,6 +127,7 @@ const About = ({ isMobile, content_width }: Props) => {
             SPORTS TRAINING
           </Text>
         </TouchableOpacity>
+        */}
         {renderFocus()}
       </View>
     </ScrollView>

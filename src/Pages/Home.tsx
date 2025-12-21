@@ -176,11 +176,6 @@ const Home = ({ isMobile }: Props) => {
       backgroundColor: Theme.black,
     },
     {
-      label: 'SPORTS TRAINING',
-      value: 'sports_training',
-      route: ScreenNavigationRoutes.SPORTS_TRAINING,
-    },
-    {
       label: 'CONTACT',
       value: 'contact',
       route: ScreenNavigationRoutes.CONTACT,
