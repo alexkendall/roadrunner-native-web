@@ -155,6 +155,13 @@ const Home = ({ isMobile }: Props) => {
       backgroundColor: Theme.black,
     },
     {
+      label: 'SPORTS',
+      value: 'sports training',
+      route: ScreenNavigationRoutes.SPORTS_TRAINING,
+      color: Theme.black,
+      backgroundColor: Theme.white,
+    },  
+    {
       label: 'CONTENT',
       value: 'content',
       route: ScreenNavigationRoutes.CONTENT,
@@ -165,13 +172,6 @@ const Home = ({ isMobile }: Props) => {
       label: 'PHOTOGRAPHY',
       value: 'photography',
       route: ScreenNavigationRoutes.PHOTOGRAPHY,
-      color: Theme.black,
-      backgroundColor: Theme.white,
-    },
-    {
-      label: 'MENTAL HEALTH',
-      value: 'mental_health',
-      route: ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT,
       color: Theme.black,
       backgroundColor: Theme.white,
     },
@@ -196,7 +196,7 @@ const Home = ({ isMobile }: Props) => {
             <TouchableOpacity key={option.value} onPress={() => {
               navigation.navigate(option.route)
             }}>
-              {isEnabled(option.value) ? renderOption(option.label, backgroundColor, color, option.route, ScreenNavigationRoutes.ABOUT) : null}
+              {isEnabled(option.value) ? renderOption(option.label, backgroundColor, color, option.route, option.route) : null}
             </TouchableOpacity>
           )
         })}
