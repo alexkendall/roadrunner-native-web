@@ -155,13 +155,6 @@ const Home = ({ isMobile }: Props) => {
       backgroundColor: Theme.black,
     },
     {
-      label: 'SPORTS',
-      value: 'sports training',
-      route: ScreenNavigationRoutes.SPORTS_TRAINING,
-      color: Theme.black,
-      backgroundColor: Theme.white,
-    },  
-    {
       label: 'CONTENT',
       value: 'content',
       route: ScreenNavigationRoutes.CONTENT,
@@ -175,6 +168,22 @@ const Home = ({ isMobile }: Props) => {
       color: Theme.black,
       backgroundColor: Theme.white,
     },
+    /*
+    {
+      label: 'SPORTS TRAINING',
+      value: 'sports_training',
+      route: ScreenNavigationRoutes.SPORTS_TRAINING,
+      color: Theme.white,
+      backgroundColor: Theme.black,
+    },
+    {
+      label: 'MENTAL HEALTH',
+      value: 'mental_health',
+      route: ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT,
+      color: Theme.black,
+      backgroundColor: Theme.white,
+    },
+    */
     {
       label: 'CONTACT',
       value: 'contact',
