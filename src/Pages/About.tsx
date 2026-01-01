@@ -104,6 +104,7 @@ const About = ({ isMobile, content_width }: Props) => {
             PHOTOGRAPHY
           </Text>
         </TouchableOpacity>
+        {/*
         <TouchableOpacity onPress={() => {
           navigate(ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT)
         }}>

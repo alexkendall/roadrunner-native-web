@@ -168,6 +168,14 @@ const Home = ({ isMobile }: Props) => {
       color: Theme.black,
       backgroundColor: Theme.white,
     },
+    /*
+    {
+      label: 'SPORTS TRAINING',
+      value: 'sports_training',
+      route: ScreenNavigationRoutes.SPORTS_TRAINING,
+      color: Theme.white,
+      backgroundColor: Theme.black,
+    },
     {
       label: 'MENTAL HEALTH',
       value: 'mental_health',
@@ -175,6 +183,7 @@ const Home = ({ isMobile }: Props) => {
       color: Theme.black,
       backgroundColor: Theme.white,
     },
+    */
     {
       label: 'CONTACT',
       value: 'contact',

@@ -2,6 +2,8 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, signInAnonymously, User } from 'firebase/auth';
 import { getStorage } from 'firebase/storage';
 import { getAnalytics } from "firebase/analytics";
+import { getDatabase } from 'firebase/database';
+import { getFirestore } from 'firebase/firestore';
 
 // Firebase configuration
 // 
@@ -19,6 +21,7 @@ import { getAnalytics } from "firebase/analytics";
 // EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=roadrunner-native-web.appspot.com
 // EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
 // EXPO_PUBLIC_FIREBASE_APP_ID=your_app_id
+// EXPO_PUBLIC_FIREBASE_DATABASE_URL=https://<your-database>.firebaseio.com
 
 // Import the functions you need from the SDKs you need
 // TODO: Add SDKs for Firebase products that you want to use
@@ -36,6 +39,7 @@ const firebaseConfig = {
   measurementId: "G-XS8FYX4VBC"
 };
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
@@ -44,6 +48,8 @@ export const auth = getAuth(app);
 
 // Initialize Firebase Storage
 export const storage = getStorage(app);
+export const database = getDatabase(app);
+export const firestore = getFirestore(app);
 
 // Initialize Firebase Analytics (only in browser environment)
 export const analytics = typeof window !== 'undefined' ? getAnalytics(app) : null;
