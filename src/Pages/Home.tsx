@@ -205,7 +205,7 @@ const Home = ({ isMobile }: Props) => {
             <TouchableOpacity key={option.value} onPress={() => {
               navigation.navigate(option.route)
             }}>
-              {isEnabled(option.value) ? renderOption(option.label, backgroundColor, color, option.route, ScreenNavigationRoutes.ABOUT) : null}
+              {isEnabled(option.value) ? renderOption(option.label, backgroundColor, color, option.route, option.route) : null}
             </TouchableOpacity>
           )
         })}
