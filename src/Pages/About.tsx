@@ -112,6 +112,7 @@ const About = ({ isMobile, content_width }: Props) => {
             MENTAL HEALTH
           </Text>
         </TouchableOpacity>
+        */}
         {/*
         <TouchableOpacity onPress={() => {
           navigate(ScreenNavigationRoutes.EDUCATION)
