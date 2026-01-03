@@ -24,8 +24,26 @@ import { MentalHealth } from '../src/Pages/MentalHealthContent'
 import { Education } from '../src/Pages/Education'
 import { SportsTraining } from '../src/Pages/SportsTraining'
 import { initializeAuth } from '../src/Config/Firebase'
+import * as Linking from 'expo-linking'
 const Stack = createNativeStackNavigator()
 const FONT_LOAD_DELAY_MS = 240
+
+const linking = {
+  prefixes: [Linking.createURL('/'), 'https://roadrunnercreative.com'],
+  config: {
+    screens: {
+      [ScreenNavigationRoutes.HOME]: '',
+      [ScreenNavigationRoutes.CASES]: 'software',
+      [ScreenNavigationRoutes.ABOUT]: 'about',
+      [ScreenNavigationRoutes.CONTACT]: 'contact',
+      [ScreenNavigationRoutes.CONTENT]: 'content',
+      [ScreenNavigationRoutes.PHOTOGRAPHY]: 'photography',
+      [ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT]: 'mental-health-content',
+      [ScreenNavigationRoutes.EDUCATION]: 'education',
+      [ScreenNavigationRoutes.SPORTS_TRAINING]: 'sports-training',
+    },
+  },
+}
 
 export default () => {
   const dimensions = useDimensions().window
@@ -124,7 +142,7 @@ export default () => {
 
   return (
     <Provider store={store}>
-      <NavigationContainer ref={navigationRef}>
+      <NavigationContainer ref={navigationRef} linking={linking}>
         <Stack.Navigator screenOptions={{ ...navigationOptions }}>
           <Stack.Screen name={ScreenNavigationRoutes.HOME} component={Home} />
           <Stack.Screen name={ScreenNavigationRoutes.CASES} component={Cases} />
