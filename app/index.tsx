@@ -25,8 +25,34 @@ import { Education } from '../src/Pages/Education'
 import { SportsTraining } from '../src/Pages/SportsTraining'
 import { initializeAuth } from '../src/Config/Firebase'
 import * as Linking from 'expo-linking'
+import { registerRootComponent } from 'expo'
 const Stack = createNativeStackNavigator()
 const FONT_LOAD_DELAY_MS = 240
+
+type ScreenRouteName = (typeof ScreenNavigationRoutes)[keyof typeof ScreenNavigationRoutes]
+
+const pathRouteMap: Record<string, ScreenRouteName> = {
+  '': ScreenNavigationRoutes.HOME,
+  home: ScreenNavigationRoutes.HOME,
+  software: ScreenNavigationRoutes.CASES,
+  about: ScreenNavigationRoutes.ABOUT,
+  contact: ScreenNavigationRoutes.CONTACT,
+  content: ScreenNavigationRoutes.CONTENT,
+  photography: ScreenNavigationRoutes.PHOTOGRAPHY,
+  'mental-health-content': ScreenNavigationRoutes.MENTAL_HEALTH_CONTENT,
+  education: ScreenNavigationRoutes.EDUCATION,
+  'sports-training': ScreenNavigationRoutes.SPORTS_TRAINING,
+}
+
+const normalizePath = (path?: string | null) => {
+  const trimmed = path?.replace(/^\/+|\/+$/g, '') ?? ''
+  return trimmed.toLowerCase()
+}
+
+const routeFromPath = (path?: string | null) => {
+  const normalized = normalizePath(path)
+  return pathRouteMap[normalized]
+}
 
 const linking = {
   prefixes: [Linking.createURL('/'), 'https://roadrunnercreative.com'],
@@ -45,9 +71,11 @@ const linking = {
   },
 }
 
-export default () => {
+const App = () => {
+
   const dimensions = useDimensions().window
   const [fontDelay, setfontDelay] = useState(true)
+
 
   useEffect(() => {
     dispatch(updateWindowState({
@@ -57,6 +85,32 @@ export default () => {
       width: dimensions.width
     }))
   }, [dimensions])
+
+  useEffect(() => {
+    const navigateForPath = (path?: string | null) => {
+      const routeName = routeFromPath(path)
+      if (!routeName) return
+      if (!navigationRef.isReady()) return
+      const currentRoute = navigationRef.getCurrentRoute()
+      if (currentRoute?.name === routeName) return
+      navigationRef.navigate(routeName)
+    }
+
+    const handleUrlEvent = ({ url }: { url: string }) => {
+      navigateForPath(Linking.parse(url).path)
+    }
+
+    const subscription = Linking.addEventListener('url', handleUrlEvent)
+
+    Linking.getInitialURL().then((initialUrl) => {
+      if (initialUrl) {
+        console.log('initialUrl', initialUrl)
+        navigateForPath(Linking.parse(initialUrl).path)
+      }
+    })
+
+    return () => subscription.remove()
+  }, [])
 
   const navigationOptions = {
     headerTintColor: Theme.primary,
@@ -139,6 +193,7 @@ export default () => {
       </View>
     )
   }
+  
 
   return (
     <Provider store={store}>
@@ -161,3 +216,7 @@ export default () => {
     </Provider>
   )
 }
+
+registerRootComponent(App)
+
+export default App
