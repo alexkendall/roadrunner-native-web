@@ -14,16 +14,20 @@ export const isNavigationReady = () => {
   return navigationRef.isReady()
 }
 
-export const asyncCanGoBack = async () => {
-  const currentRouteName = navigationRef.getCurrentRoute()?.name
-  if(currentRouteName?.length && currentRouteName.length > 0) {
-    return true
+export const canGoBack = () => {
+  while(!navigationRef.isReady()) {
+    console.log('navigationRef.isReady()', navigationRef.isReady())
+    setTimeout(() => {
+      return canGoBack()
+    }, 50)
   }
-  return false
+  console.log('navigationRef.isReady()', navigationRef.isReady())
+  const currentRouteName = navigationRef.getCurrentRoute()?.name
+  return currentRouteName ? true : false
 }
 
 export const goBack = async () => {
-  if(await asyncCanGoBack()) {
+  if(canGoBack()) {
     navigationRef.navigate(ScreenNavigationRoutes.HOME)
       return
   }

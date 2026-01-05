@@ -1,8 +1,7 @@
 import { TouchableOpacity } from 'react-native'
 import { Image } from 'react-native'
-import { asyncCanGoBack, goBack as asyncGoBack } from '../../../Navigation'
-import { useEffect, useState } from 'react'
-  
+import { goBack as asyncGoBack } from '../../../Navigation'
+import { useCanGoBack } from '../../../Hooks/useCanGoBack'
 interface Props {
   onPress?: () => void
 }
@@ -12,14 +11,11 @@ const CHEVRON_BACK_ICON_URL = 'https://firebasestorage.googleapis.com/v0/b/roadr
 
 export const BackButton = ({ onPress }: Props) => {
 
-  const [canGoBack, setCanGoBack] = useState(false)
+  const { canGoBack, isLoading } = useCanGoBack()
 
-  useEffect(() => {
-    asyncCanGoBack().then((canGoBack) => {
-      setCanGoBack(canGoBack)
-    })
-  }, [])
-
+  if (isLoading) {
+    return null
+  }
   if (!canGoBack) {
     return (
       <Image
