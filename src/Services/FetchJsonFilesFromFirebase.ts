@@ -24,12 +24,8 @@ export async function fetchJsonFilesFromFirebase<T = unknown>(directory: string)
 
     const jsonItems = result.items.filter((item) => item.name.toLowerCase().endsWith('.json'))
 
-    console.log('jsonItems', jsonItems)
-
     const filePromises = jsonItems.map(async (itemRef) => {
       const [downloadURL, metadata] = await Promise.all([getDownloadURL(itemRef), getMetadata(itemRef)])
-
-      console.log('downloadURL', downloadURL)
       // Prefer Storage SDK reads over plain fetch(downloadURL).
       // Some objects may not have a public download token, causing downloadURL fetches to 403 on web.
       let data: T
@@ -45,10 +41,6 @@ export async function fetchJsonFilesFromFirebase<T = unknown>(directory: string)
         }
         data = (await resp.json()) as T
       }
-
-      console.log('data', data)
-
-      console.log("itemRef", itemRef)
 
       return {
         name: itemRef.name,

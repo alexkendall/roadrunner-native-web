@@ -19,11 +19,7 @@ const isFeatureFlagsResponse = (value: any): value is FeatureFlagsResponse =>
   Boolean(value && typeof value === 'object' && typeof value.flags === 'object')
 
 async function fetchFromDatabase(): Promise<FeatureFlagsResponse> {
-  console.log('fetchFromDatabase')
   const snapshot = await getDoc(doc(firestore, ...FEATURE_FLAGS_FIRESTORE_PATH))
-
-  console.log('snapshot', snapshot)
-
   if (!snapshot.exists()) {
     const path = FEATURE_FLAGS_FIRESTORE_PATH.join('/')
     console.error(`No feature flags found in Firestore at "${path}"`)
@@ -32,7 +28,6 @@ async function fetchFromDatabase(): Promise<FeatureFlagsResponse> {
 
   const data = snapshot.data()
 
-  console.log('data', data)
   if (!isFeatureFlagsResponse(data)) {
     throw new Error('Realtime Database returned unexpected feature flag payload')
   }
@@ -62,16 +57,11 @@ export async function fetchFeatureFlags(): Promise<FeatureFlagsResponse> {
   try {
     // Ensure user is authenticated for Storage requests.
     const user = await initializeAuth()
-    console.log('user', user)
     if (!user) throw new Error('User authentication failed')
     await user.getIdToken()
-
-    console.log('user.getIdToken()', await user.getIdToken())
-
     try {
       return await fetchFromDatabase()
     } catch (dbError) {
-      console.log('dbError', dbError)
       console.warn(
         'Realtime Database fetch failed, falling back to Storage feature flags',
         dbError
