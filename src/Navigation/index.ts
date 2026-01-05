@@ -15,13 +15,6 @@ export const isNavigationReady = () => {
 }
 
 export const canGoBack = () => {
-  while(!navigationRef.isReady()) {
-    console.log('navigationRef.isReady()', navigationRef.isReady())
-    setTimeout(() => {
-      return canGoBack()
-    }, 50)
-  }
-  console.log('navigationRef.isReady()', navigationRef.isReady())
   const currentRouteName = navigationRef.getCurrentRoute()?.name
   return currentRouteName ? true : false
 }
