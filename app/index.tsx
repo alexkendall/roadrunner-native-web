@@ -104,7 +104,6 @@ const App = () => {
 
     Linking.getInitialURL().then((initialUrl) => {
       if (initialUrl) {
-        console.log('initialUrl', initialUrl)
         navigateForPath(Linking.parse(initialUrl).path)
       }
     })

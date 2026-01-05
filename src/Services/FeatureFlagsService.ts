@@ -62,12 +62,8 @@ export async function fetchFeatureFlags(): Promise<FeatureFlagsResponse> {
   try {
     // Ensure user is authenticated for Storage requests.
     const user = await initializeAuth()
-    console.log('user', user)
     if (!user) throw new Error('User authentication failed')
     await user.getIdToken()
-
-    console.log('user.getIdToken()', await user.getIdToken())
-
     try {
       return await fetchFromDatabase()
     } catch (dbError) {

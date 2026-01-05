@@ -7,7 +7,7 @@ interface LoadingIndicatorProps {
   showBoltIcon?: boolean
 }
 
-const BOLT_ICON_URL = 'https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Navigation%2Fbolt_black.png?alt=media&token=aca76000-7a43-470d-9fd2-5fe66adaa2bc'
+const HALF_CIRCLE_ICON_URL = 'https://firebasestorage.googleapis.com/v0/b/roadrunner-native-web.appspot.com/o/Navigation%2Froadrunner_loading.png?alt=media&token=af218997-10b7-4e38-af4e-b4e6e5b9c5e2'
 
 export const LoadingIndicator = ({ message, showBoltIcon = true }: LoadingIndicatorProps) => {
   const opacity = useRef(new Animated.Value(0.3)).current
@@ -40,7 +40,7 @@ export const LoadingIndicator = ({ message, showBoltIcon = true }: LoadingIndica
     <View style={styles.container}>
       {showBoltIcon && (
         <Animated.Image
-          source={{ uri: BOLT_ICON_URL }}
+          source={{ uri: HALF_CIRCLE_ICON_URL }}
           style={[styles.boltIcon, { opacity }]}
           resizeMode="contain"
         />

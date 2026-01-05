@@ -1,26 +1,33 @@
 import { createNavigationContainerRef } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { ScreenNavigationRoutes } from '../Config/PageRoutes'
 
 export const navigationRef = createNavigationContainerRef<RootStackParamList>()
 
-export function navigate(name: string, params?: any) {
+export const navigate = (name: string, params?: any) => {
   if (navigationRef.isReady()) {
     ;(navigationRef as any).navigate(name, params)
   }
 }
 
-export function isNavigationReady() {
+export const isNavigationReady = () => {
   return navigationRef.isReady()
 }
 
-export function canGoBack() {
-  return navigationRef.isReady() ? navigationRef.canGoBack() : false
+export const asyncCanGoBack = async () => {
+  const currentRouteName = navigationRef.getCurrentRoute()?.name
+  if(currentRouteName?.length && currentRouteName.length > 0) {
+    return true
+  }
+  return false
 }
 
-export function goBack() {
-  if (!navigationRef.isReady()) return
-  if (!navigationRef.canGoBack()) return
-  navigationRef.goBack()
+export const goBack = async () => {
+  if(await asyncCanGoBack()) {
+    navigationRef.navigate(ScreenNavigationRoutes.HOME)
+      return
+  }
+  return
 }
 
 
