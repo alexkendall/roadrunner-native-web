@@ -101,7 +101,7 @@ const Contact = ({ isMobile }: Props) => {
           fontWeight: '200',
         }}
       >
-        {mailIcon && renderContactInfo(mailIcon, "info.h@roadrunnercreative.com", () => Linking.openURL("mailto:info.h@roadrunnercreative.com"))}
+        {mailIcon && renderContactInfo(mailIcon, "info@roadrunnercreative.com", () => Linking.openURL("mailto:info.h@roadrunnercreative.com"))}
         {instagramIcon && renderContactInfo(instagramIcon, "@roadrunner.creative", () => Linking.openURL("https://www.instagram.com/roadrunner.creative/"))}
       </Text>
     </View>
