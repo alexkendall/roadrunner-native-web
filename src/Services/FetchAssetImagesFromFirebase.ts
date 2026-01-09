@@ -26,7 +26,7 @@ export const fetchAssetImagesFromFirebase = async (directory: string): Promise<F
     const result = await listAll(photographyRef);
 
     // Get download URLs and metadata for all items
-    const imagePromises = result.items.map(async (itemRef) => {
+    const imagePromises: Promise<FirebaseAssetContentType>[] = result.items.map(async (itemRef) => {
       const [downloadURL, metadata] = await Promise.all([
         getDownloadURL(itemRef),
         getMetadata(itemRef)
@@ -34,7 +34,7 @@ export const fetchAssetImagesFromFirebase = async (directory: string): Promise<F
       return {
         image: downloadURL,
         timeCreated: metadata.timeCreated ? new Date(metadata.timeCreated).getTime() : 0,
-      };
+      } satisfies FirebaseAssetContentType;
     });
 
     const images = await Promise.all(imagePromises);
@@ -42,8 +42,7 @@ export const fetchAssetImagesFromFirebase = async (directory: string): Promise<F
     // Sort by date added (newest first)
     const sortedImages = images.sort((a, b) => b.timeCreated - a.timeCreated);
 
-    // Remove the timeCreated property before returning (it was only used for sorting)
-    return sortedImages.map(({ timeCreated, ...image }) => image as FirebaseAssetContentType );
+    return sortedImages;
   } catch (error: any) {
     console.error('Error fetching photography images:', error);
     

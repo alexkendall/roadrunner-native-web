@@ -5,6 +5,7 @@
  */
 
 export { useTranslation } from './useTranslation';
+export { usePagination } from './usePagination';
 
 
 
