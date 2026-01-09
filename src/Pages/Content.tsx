@@ -62,7 +62,6 @@ export const Content = () => {
     const renderContent = (item: FirebaseAssetContentType, index: number) => (
         <View key={`${item.image}-${index}`} style={styles.imageWrapper}>
             <Image source={{ uri: item.image }} style={styles.image} />
-            <Text style={styles.imageDate}>{new Date(item.timeCreated).toLocaleDateString()}</Text>
         </View>
     )
 
@@ -80,7 +79,6 @@ export const Content = () => {
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <Text style={styles.filterHeading}>Filter by date:</Text>
             <View style={styles.filterRow}>
                 {DateFilterOptions.map((filter) => (
                     <Pressable
@@ -168,11 +166,6 @@ const styles = StyleSheet.create({
         width: 300,
         height: 300,
         borderRadius: 6,
-    },
-    imageDate: {
-        marginTop: 6,
-        fontSize: 12,
-        color: '#555',
     },
     emptyText: {
         fontSize: 14,
